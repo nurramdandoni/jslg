@@ -20,6 +20,6 @@ class Jslg extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('super_admin');
+		$this->load->view('super_admin/dashboard');
 	}
 }

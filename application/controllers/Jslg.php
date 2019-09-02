@@ -20,6 +20,14 @@ class Jslg extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('super_admin/dashboard');
+		$data['menu'] = 'Dashboard';
+		$data['submenu'] = '';
+		$this->load->view('super_admin/dashboard',$data);
+	}
+		public function create_produk()
+	{
+		$data['menu'] = 'Management Produk ( Diklat )';
+		$data['submenu'] = 'Create Produk';
+		$this->load->view('super_admin/manajemen_produk@create_produk',$data);
 	}
 }

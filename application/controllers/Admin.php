@@ -54,5 +54,11 @@ class Admin extends CI_Controller {
 		$data['menu'] = 'Template';
 		$data['submenu'] = 'Create Sertificate';
 		$this->load->view('super_admin/template@create_sertificate',$data);
+	}	
+	public function printing_monitor()
+	{
+		$data['menu'] = 'Template';
+		$data['submenu'] = 'Printing Monitor';
+		$this->load->view('super_admin/template@printing_monitor',$data);
 	}
 }

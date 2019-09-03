@@ -36,5 +36,11 @@ class Jslg extends CI_Controller {
 		$data['menu'] = 'Management Produk ( Diklat )';
 		$data['submenu'] = 'Create Diklat';
 		$this->load->view('super_admin/manajemen_produk@create_diklat',$data);
+	}	
+	public function all_diklat()
+	{
+		$data['menu'] = 'Management Produk ( Diklat )';
+		$data['submenu'] = 'All Diklat';
+		$this->load->view('super_admin/manajemen_produk@all_diklat',$data);
 	}
 }

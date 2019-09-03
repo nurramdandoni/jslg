@@ -55,6 +55,11 @@
         <!--begin::Global Theme Bundle(used by all pages) -->
         <script src="<?php echo base_url(); ?>template/assets2/js/demo1/scripts.bundle.js" type="text/javascript"></script>
         <!--end::Global Theme Bundle -->
+
+        <!--begin::Page Vendors(used by this page) -->
+        <script src="<?php echo base_url(); ?>template/assets2/vendors/custom/datatables.bundle.js" type="text/javascript"></script>
+        <!--end::Page Vendors -->
+
         <!--end::Page Scripts -->
     </body>
     <!-- end::Body -->

@@ -12,6 +12,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">       
          <!--end::Fonts -->
 
+         <!--begin::Page Vendors Styles(used by this page) -->
+        <link href="<?php echo base_url(); ?>template/assets2/vendors/custom/datatables.bundle.css" rel="stylesheet" type="text/css" />
+        <!--end::Page Vendors Styles -->
+
         <!--begin:: Global Mandatory Vendors -->
         <link href="<?php echo base_url(); ?>template/assets2/vendors/general/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
         <!--end:: Global Mandatory Vendors -->

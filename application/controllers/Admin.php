@@ -60,5 +60,11 @@ class Admin extends CI_Controller {
 		$data['menu'] = 'Template';
 		$data['submenu'] = 'Printing Monitor';
 		$this->load->view('super_admin/template@printing_monitor',$data);
+	}	
+	public function create_date()
+	{
+		$data['menu'] = 'Tempat & Jadwal';
+		$data['submenu'] = 'Create date';
+		$this->load->view('super_admin/tempat@create_date',$data);
 	}
 }

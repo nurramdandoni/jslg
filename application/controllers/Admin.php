@@ -67,10 +67,16 @@ class Admin extends CI_Controller {
 		$data['submenu'] = 'Create date';
 		$this->load->view('super_admin/tempat@create_date',$data);
 	}	
-	public function all_list()
+	public function all_list_jadwal()
 	{
 		$data['menu'] = 'Tempat & Jadwal';
 		$data['submenu'] = 'All List';
 		$this->load->view('super_admin/tempat@all_list',$data);
+	}	
+	public function create_silabus()
+	{
+		$data['menu'] = 'Silabus';
+		$data['submenu'] = 'Create Silabus';
+		$this->load->view('super_admin/silabus@create_silabus',$data);
 	}
 }

@@ -19,7 +19,11 @@ $this->load->view('template_layout/sidebar_menu');
 			<div class="kt-portlet__head-toolbar">
 	            <div class="kt-portlet__head-wrapper">
 				<div class="kt-portlet__head-actions">
+<<<<<<< HEAD
 					<a href="<?php echo base_url() ?>admin/create_diklat" class="btn btn-brand btn-elevate btn-icon-sm">
+=======
+					<a href="<?php echo base_url() ?>jslg/create_diklat" class="btn btn-brand btn-elevate btn-icon-sm">
+>>>>>>> cce56a4aa5f96c9b40b5b60c1fcceb5c970778fd
 						<i class="la la-plus"></i>
 						Create New Record
 					</a>

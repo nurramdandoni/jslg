@@ -28,7 +28,7 @@ $this->load->view('template_layout/sidebar_menu');
 			<span class="form-text text-muted"></span>
 			</div>
 			<div class="form-group">
-				<select class="form-control" id="kategori diklat">
+				<select class="form-control" id="kategori_diklat">
 					<option value="0">-Pilih Kategori Diklat-</option>
 					<option value="1">Legal Drafting</option>
 					<option value="2">Auditor Hukum</option>

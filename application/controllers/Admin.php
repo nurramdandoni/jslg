@@ -48,5 +48,11 @@ class Admin extends CI_Controller {
 		$data['menu'] = 'Template';
 		$data['submenu'] = 'Blast Mailchimp';
 		$this->load->view('super_admin/template@blast_mailchimp',$data);
+	}	
+	public function create_sertificate()
+	{
+		$data['menu'] = 'Template';
+		$data['submenu'] = 'Create Sertificate';
+		$this->load->view('super_admin/template@create_sertificate',$data);
 	}
 }

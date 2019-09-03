@@ -34,7 +34,7 @@
                                 </span>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>jslg/create_produk" class="kt-menu__link kt-menu__toggle">
+                                <a  href="<?php echo base_url() ?>admin/create_produk" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span>
 
@@ -48,7 +48,7 @@
                                 </a>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>jslg/create_diklat" class="kt-menu__link kt-menu__toggle">
+                                <a  href="<?php echo base_url() ?>admin/create_diklat" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span>
 
@@ -62,7 +62,7 @@
                                 </a>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>jslg/all_diklat" class="kt-menu__link kt-menu__toggle">
+                                <a  href="<?php echo base_url() ?>admin/all_diklat" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span>
 
@@ -94,7 +94,7 @@
                                 </span>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                <a  href="<?php echo base_url() ?>admin/blast_mailchimp" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span>
 

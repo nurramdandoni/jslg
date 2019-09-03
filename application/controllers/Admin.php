@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jslg extends CI_Controller {
+class Admin extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -42,5 +42,11 @@ class Jslg extends CI_Controller {
 		$data['menu'] = 'Management Produk ( Diklat )';
 		$data['submenu'] = 'All Diklat';
 		$this->load->view('super_admin/manajemen_produk@all_diklat',$data);
+	}	
+	public function blast_mailchimp()
+	{
+		$data['menu'] = 'Template';
+		$data['submenu'] = 'Blast Mailchimp';
+		$this->load->view('super_admin/template@blast_mailchimp',$data);
 	}
 }

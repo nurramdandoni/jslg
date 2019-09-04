@@ -1,0 +1,32 @@
+<?php 
+
+$this->load->view('template_layout/header');
+$this->load->view('template_layout/sidebar_menu');
+
+?>
+
+<div class="kt-portlet">
+	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-label">
+			<h3 class="kt-portlet__head-title">
+				Ekstend Vidcart
+			</h3>
+		</div>
+	</div>
+	<!-- awal -->
+		<div class="kt-portlet__body">
+			<form>
+				! wireframe 
+			</form>
+		</div>
+
+		<!-- akhir -->
+		
+</div>
+
+<?php
+
+$this->load->view('template_layout/footer');
+// $this->load->view('template_layout/index');
+
+ ?>

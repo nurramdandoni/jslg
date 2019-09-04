@@ -169,4 +169,10 @@ class Admin extends CI_Controller {
 		$data['submenu'] = 'Report Alumni';
 		$this->load->view('super_admin/report@alumni',$data);
 	}
+	public function report_vidcart()
+	{
+		$data['menu'] = 'Report';
+		$data['submenu'] = 'Ekstens Vidcart';
+		$this->load->view('super_admin/report@vidcart',$data);
+	}
 }

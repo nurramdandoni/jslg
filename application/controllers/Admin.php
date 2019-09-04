@@ -90,5 +90,11 @@ class Admin extends CI_Controller {
 		$data['menu'] = 'Alumni';
 		$data['submenu'] = 'Create Batch';
 		$this->load->view('super_admin/alumni@create_batch',$data);
+	}	
+	public function upload_dokumentasi()
+	{
+		$data['menu'] = 'Alumni';
+		$data['submenu'] = 'Dokumentasi';
+		$this->load->view('super_admin/alumni@upload_dokumentasi',$data);
 	}
 }

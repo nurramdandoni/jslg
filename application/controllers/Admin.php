@@ -109,4 +109,10 @@ class Admin extends CI_Controller {
 		$data['submenu'] = 'In House Training';
 		$this->load->view('super_admin/alumni@in_house_training',$data);
 	}
+	public function all_list_narasumber()
+	{
+		$data['menu'] = 'Narasumber';
+		$data['submenu'] = 'All Narasumber';
+		$this->load->view('super_admin/narasumber@all_list',$data);
+	}
 }

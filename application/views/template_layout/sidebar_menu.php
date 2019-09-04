@@ -401,7 +401,7 @@
                                             </span>
                                             <ul class="kt-menu__subnav">
                                                 <li class="kt-menu__item " aria-haspopup="true" >
-                                                    <a  href="demo1/custom/apps/user/list-default.html" class="kt-menu__link ">
+                                                    <a  href="<?php echo base_url() ?>admin/peserta" class="kt-menu__link ">
                                                         <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
                                                             <span>
                                 

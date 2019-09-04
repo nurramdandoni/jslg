@@ -446,7 +446,7 @@
                                     </span>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <a  href="<?php echo base_url() ?>admin/report_peserta" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                             <span>
 
@@ -460,7 +460,7 @@
                                     </a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <a  href="<?php echo base_url() ?>admin/report_alumni" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                             <span>
 
@@ -523,7 +523,7 @@
                                             </span>
                                         </i>
                                         <span class="kt-menu__link-text">
-                                            Pengeluaran Dana
+                                            Pengeluaran dan Pemasukan
                                         </span>
 
                                         </i>

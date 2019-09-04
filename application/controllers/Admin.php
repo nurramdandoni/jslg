@@ -145,4 +145,10 @@ class Admin extends CI_Controller {
 		$data['submenu'] = 'Detail Peserta';
 		$this->load->view('super_admin/peserta@detail_peserta',$data);
 	}
+	public function instansi()
+	{
+		$data['menu'] = 'Peserta';
+		$data['submenu'] = 'Instansi';
+		$this->load->view('super_admin/peserta@instansi',$data);
+	}
 }

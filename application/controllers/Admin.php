@@ -127,4 +127,10 @@ class Admin extends CI_Controller {
 		$data['submenu'] = 'Detail Narasumber';
 		$this->load->view('super_admin/narasumber@detail_narasumber',$data);
 	}
+	public function calon_peserta()
+	{
+		$data['menu'] = 'Peserta';
+		$data['submenu'] = 'Calon Peserta';
+		$this->load->view('super_admin/peserta@calon_peserta',$data);
+	}
 }

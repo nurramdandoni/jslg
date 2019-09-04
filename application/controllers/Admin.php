@@ -84,5 +84,11 @@ class Admin extends CI_Controller {
 		$data['menu'] = 'Silabus';
 		$data['submenu'] = 'All List';
 		$this->load->view('super_admin/silabus@all_list',$data);
+	}	
+	public function create_batch()
+	{
+		$data['menu'] = 'Alumni';
+		$data['submenu'] = 'Create Batch';
+		$this->load->view('super_admin/alumni@create_batch',$data);
 	}
 }

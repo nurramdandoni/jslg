@@ -51,7 +51,7 @@ $this->load->view('template_layout/sidebar_menu');
 				  		<td>Portofolio.jpg</td>
 				  		<td>S1.jpg S2.jpg S3.jpg</td>
 				  		<td>Waiting Verification</td>
-				  		<td><a href="">Detail</a>|Update|Delete</td>
+				  		<td><a href="<?php echo base_url() ?>admin/detail_narasumber">Detail</a>|Update|Delete</td>
 				  	</tr>
 				</tbody>
 			</table>

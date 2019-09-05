@@ -581,7 +581,7 @@
                 
                 <div class="kt-notification__custom kt-space-between">
 
-                <a href="demo1/custom/user/login-v2.html" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+                <a href="<?php echo base_url() ?>login" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
                 </div>
                 </div>
                 <!--end: Navigation -->

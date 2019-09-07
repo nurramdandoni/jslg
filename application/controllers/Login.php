@@ -39,5 +39,20 @@ class Login extends CI_Controller {
 		$this->load->view('register@narasumber',$data);
 	}
 
+	public function process_login(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+		if($username=='admin' && $password=='jslg2019'){
+			redirect('admin');
+		}else if($username=='peserta' && $password=='jslg2019'){
+			redirect('login/register_peserta');
+		}else if($username=='narasumber' && $password=='jslg2019'){
+			redirect('login/register_narasumber');
+		}else{
+			echo "<script>alert('Username atau Password Salah!');javascript:history.go(-1);</script>";
+		}
+	}
+
 	
 }

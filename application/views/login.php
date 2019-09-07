@@ -102,7 +102,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="kt-login__desc">
 						<h6>Saya Sudah Memiliki Account</h6>
 					</span>	
-						<form class="kt-form" action="">
+						<form class="kt-form" action="<?php echo base_url() ?>login/process_login" method="post">
 							<div class="form-group">
 								<input class="form-control" type="text" placeholder="Username" name="username" autocomplete="off">
 							</div>
@@ -114,9 +114,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<a href="javascript:;" id="kt_login_forgot" class="kt-link">Forget Password ?</a>
 								</div>
 							</div>
-							<div class="kt-login__actions">
-								<button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Sign In</button>
-							</div>
+							<input type="submit" name="" class="btn btn-brand btn-pill btn-elevate" value="Login">
 						</form>			
 					</div>
 				</div>		

@@ -48,7 +48,7 @@
        
         <!-- begin:: Page -->
         <!-- begin:: Header Mobile -->
-        <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " >
+        <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed " style="background-color: #DF3338" >
             <div class="kt-header-mobile__logo">
                 <a href="<?php echo base_url()?>">
                     <img alt="Logo" src="<?php echo base_url(); ?>template/assets2/media/logos/logo-light.png"/>
@@ -68,9 +68,9 @@
                         <!-- begin:: Aside -->
                 <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 
-                <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+                <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside" style="background-color: #DF3338" >
                 <!-- begin:: Aside -->
-                <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+                <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand" style="background-color: #DF3338">
                 <div class="kt-aside__brand-logo">
                 <a href="<?php echo base_url()?>">
                 <img alt="Logo" src="<?php echo base_url(); ?>template/assets2/media/logos/logo-light.png"/>

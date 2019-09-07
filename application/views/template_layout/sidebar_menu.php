@@ -1,16 +1,16 @@
   <!-- begin:: Aside Menu -->
-                <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+                <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper" style="background-color: #DF3338">
 
                 <div 
                 id="kt_aside_menu"
                 class="kt-aside-menu "
                 data-ktmenu-vertical="1"
                 data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500"  
-                >       
+                style="background-color: #DF3338">       
 
-                <ul class="kt-menu__nav ">
+                <ul class="kt-menu__nav " style="background-color: #DF3338">
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true" >
-                    <a  href="<?php echo base_url() ?>" class="kt-menu__link ">
+                    <a  href="<?php echo base_url() ?>" class="kt-menu__link " style="background-color: #ac3335">
                         <span class="kt-menu__link-text">Dashboard</span>
                     </a>
                 </li>

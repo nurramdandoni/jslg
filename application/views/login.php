@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <head>
         <meta charset="utf-8"/>
 
-        <title>Metronic | Dashboard</title>
+        <title>JIMLY SCHOOL LAW AND GOVERNMENT | Login</title>
         <meta name="description" content="Updates and statistics">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -54,7 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="<?php echo base_url(); ?>template/assets2/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />       
         <!--end::Layout Skins -->
 
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/favicon.ico" />
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/icon.ico" />
     </head>
     <!-- end::Head -->
 
@@ -70,10 +70,10 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="kt-login__wrapper">
 				<div class="kt-login__content">
 					<a class="kt-login__logo" href="#">
-						<img src="<?php echo base_url(); ?>template/assets2/media/logos/logo-5.png">  	
+						<img src="<?php echo base_url(); ?>template/assets2/media/logos/logo-light.png">  	
 					</a>					 
 					
-					<h3 class="kt-login__title">JSLG</h3>
+					<h3 class="kt-login__title">JIMLY SCHOOL LAW AND GOVERNMENT</h3>
 					
 					<span class="kt-login__desc">
 						<h6>Saya Sudah Memiliki Akun</h6>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8"/>
 
-        <title>Metronic | Dashboard</title>
+        <title>JIMLY SCHOOL LAW AND GOVERNMENT | Dashboard</title>
         <meta name="description" content="Updates and statistics">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -38,7 +38,7 @@
         <link href="<?php echo base_url(); ?>template/assets2/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />       
         <!--end::Layout Skins -->
 
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/favicon.ico" />
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/icon.ico" />
     </head>
     <!-- end::Head -->
 

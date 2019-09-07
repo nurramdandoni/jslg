@@ -20,7 +20,7 @@
                 </li>
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
                     <a  href="#" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-text">Management Produk (Diklat)</span>
+                        <span class="kt-menu__link-text">My Account</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                 <div class="kt-menu__submenu ">
@@ -29,7 +29,7 @@
                             <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
                                 <span class="kt-menu__link">
                                     <span class="kt-menu__link-text">
-                                        Management Produk (Diklat)
+                                        My Account
                                     </span>
                                 </span>
                             </li>
@@ -41,7 +41,7 @@
                                         </span>
                                     </i>
                                     <span class="kt-menu__link-text">
-                                        Create Produk
+                                        Profile
                                     </span>
 
                                     </i>
@@ -55,7 +55,7 @@
                                         </span>
                                     </i>
                                     <span class="kt-menu__link-text">
-                                        Create Diklat
+                                        Change Password
                                     </span>
 
                                     </i>
@@ -69,18 +69,19 @@
                                         </span>
                                     </i>
                                     <span class="kt-menu__link-text">
-                                        All Diklat
+                                        Notif Workshop
                                     </span>
 
                                     </i>
                                 </a>
                             </li>
+                            
                         </ul>
                     </div>
                 </li>
                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
                     <a  href="#" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-text">Template</span>
+                        <span class="kt-menu__link-text">Pengajaran</span>
                         <i class="kt-menu__ver-arrow la la-angle-right"></i>
                     </a>
                 <div class="kt-menu__submenu ">
@@ -89,7 +90,7 @@
                             <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
                                 <span class="kt-menu__link">
                                     <span class="kt-menu__link-text">
-                                        Template
+                                        Pengajaran
                                     </span>
                                 </span>
                             </li>
@@ -101,423 +102,16 @@
                                         </span>
                                     </i>
                                     <span class="kt-menu__link-text">
-                                        Blast Mailchimps
+                                        All Pengajaran
                                     </span>
 
                                     </i>
                                 </a>
                             </li>
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/create_sertificate" class="kt-menu__link kt-menu__toggle">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                        <span>
-
-                                        </span>
-                                    </i>
-                                    <span class="kt-menu__link-text">
-                                        Create Sertificate
-                                    </span>
-
-                                    </i>
-                                </a>
-                            </li>
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/printing_monitor" class="kt-menu__link kt-menu__toggle">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                        <span>
-
-                                        </span>
-                                    </i>
-                                    <span class="kt-menu__link-text">
-                                        Printing Monitor
-                                    </span>
-
-                                    </i>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </li>
-                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                    <a  href="#" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-text">Tempat & Jadwal</span>
-                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                    </a>
-                <div class="kt-menu__submenu ">
-                    <span class="kt-menu__arrow"></span>
-                        <ul class="kt-menu__subnav">
-                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
-                                <span class="kt-menu__link">
-                                    <span class="kt-menu__link-text">
-                                        Tempat & Jadwal
-                                    </span>
-                                </span>
-                            </li>
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/create_date" class="kt-menu__link kt-menu__toggle">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                        <span>
-
-                                        </span>
-                                    </i>
-                                    <span class="kt-menu__link-text">
-                                        Create Date
-                                    </span>
-
-                                    </i>
-                                </a>
-                            </li>
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/all_list_jadwal" class="kt-menu__link kt-menu__toggle">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                        <span>
-
-                                        </span>
-                                    </i>
-                                    <span class="kt-menu__link-text">
-                                        All List
-                                    </span>
-
-                                    </i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                        <a  href="#" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-text">Silabus</span>
-                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                        </a>
-                    <div class="kt-menu__submenu ">
-                        <span class="kt-menu__arrow"></span>
-                            <ul class="kt-menu__subnav">
-                                <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
-                                    <span class="kt-menu__link">
-                                        <span class="kt-menu__link-text">
-                                            Silabus
-                                        </span>
-                                    </span>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/create_silabus" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Create Silabus
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/all_list_silabus" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            All List
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                        <a  href="#" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-text">Alumni</span>
-                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                        </a>
-                    <div class="kt-menu__submenu ">
-                        <span class="kt-menu__arrow"></span>
-                            <ul class="kt-menu__subnav">
-                                <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
-                                    <span class="kt-menu__link">
-                                        <span class="kt-menu__link-text">
-                                            Alumni
-                                        </span>
-                                    </span>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/create_batch" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Create Batch
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/all_list_alumni" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            All Alumni
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/upload_dokumentasi" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Dokumentasi
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/in_house_training" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            In House Training
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                    <a  href="#" class="kt-menu__link kt-menu__toggle">
-                        <span class="kt-menu__link-text">Narasumber</span>
-                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                    </a>
-                <div class="kt-menu__submenu ">
-                    <span class="kt-menu__arrow"></span>
-                        <ul class="kt-menu__subnav">
-                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
-                                <span class="kt-menu__link">
-                                    <span class="kt-menu__link-text">
-                                        Narasumber
-                                    </span>
-                                </span>
-                            </li>
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/all_list_narasumber" class="kt-menu__link kt-menu__toggle">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                        <span>
-
-                                        </span>
-                                    </i>
-                                    <span class="kt-menu__link-text">
-                                        All Narasumber
-                                    </span>
-
-                                    </i>
-                                </a>
-                            </li>
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/permohonan_narasumber" class="kt-menu__link kt-menu__toggle">
-                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                        <span>
-
-                                        </span>
-                                    </i>
-                                    <span class="kt-menu__link-text">
-                                        Permohonan Narasumber
-                                    </span>
-
-                                    </i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                        <a  href="#" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-text">Peserta</span>
-                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                        </a>
-                    <div class="kt-menu__submenu ">
-                        <span class="kt-menu__arrow"></span>
-                            <ul class="kt-menu__subnav">
-                                <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
-                                    <span class="kt-menu__link">
-                                        <span class="kt-menu__link-text">
-                                            Peserta
-                                        </span>
-                                    </span>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/calon_peserta" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Calon Peserta
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Peserta
-                                        </span>
-                                        <i class="kt-menu__ver-arrow la la-angle-right">
-
-                                        </i>
-
-                                        </i>
-                                    </a>
-                                    <div class="kt-menu__submenu ">
-                                            <span class="kt-menu__arrow">
-                                
-                                            </span>
-                                            <ul class="kt-menu__subnav">
-                                                <li class="kt-menu__item " aria-haspopup="true" >
-                                                    <a  href="<?php echo base_url() ?>admin/peserta" class="kt-menu__link ">
-                                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                                            <span>
-                                
-                                                            </span>
-                                                        </i>
-                                                        <span class="kt-menu__link-text">
-                                                            Peserta
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="kt-menu__item " aria-haspopup="true" >
-                                                    <a  href="<?php echo base_url() ?>admin/instansi" class="kt-menu__link ">
-                                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
-                                                            <span>
-                                
-                                                            </span>
-                                                        </i>
-                                                        <span class="kt-menu__link-text">
-                                                            Instansi
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                        <a  href="#" class="kt-menu__link kt-menu__toggle">
-                            <span class="kt-menu__link-text">Report</span>
-                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                        </a>
-                    <div class="kt-menu__submenu ">
-                        <span class="kt-menu__arrow"></span>
-                            <ul class="kt-menu__subnav">
-                                <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true" >
-                                    <span class="kt-menu__link">
-                                        <span class="kt-menu__link-text">
-                                            Report
-                                        </span>
-                                    </span>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/report_peserta" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Peserta
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/report_alumni" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Alumni
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/report_vidcart" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Ekstens Vidcart
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/report_penilaian_narasumber" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Report Matriks
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                    <a  href="<?php echo base_url() ?>admin/report_pengeluaran" class="kt-menu__link kt-menu__toggle">
-                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
-                                            <span>
-
-                                            </span>
-                                        </i>
-                                        <span class="kt-menu__link-text">
-                                            Pengeluaran dan Pemasukan
-                                        </span>
-
-                                        </i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
                 </ul>
                 </div>
                 </div>
@@ -542,10 +136,10 @@
                 <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                 <div class="kt-header__topbar-user">
                 <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-                <span class="kt-header__topbar-username kt-hidden-mobile">Admin</span>
+                <span class="kt-header__topbar-username kt-hidden-mobile">Peserta 1</span>
                 <img class="kt-hidden" alt="Pic" src="<?php echo base_url(); ?>template/assets2/media/users/300_25.jpg" />
                 <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>
+                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">P</span>
                 </div>
                 </div>
 
@@ -555,13 +149,13 @@
                 <div class="kt-user-card__avatar">
                 <img class="kt-hidden" alt="Pic" src="<?php echo base_url(); ?>template/assets2/media/users/300_25.jpg" />
                 <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">A</span>
+                <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">P</span>
                 </div>
                 <div class="kt-user-card__name">
-                Administrator
-                </div>
+                Peserta
+                </div> 1
                 <div class="kt-user-card__badge">
-                <span class="">Hi, Admin</span>
+                <span class="">Hi, Peserta 1</span>
                 </div>
                 </div>
                 <!--end: Head -->

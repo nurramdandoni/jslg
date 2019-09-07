@@ -70,16 +70,16 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="kt-login__wrapper">
 				<div class="kt-login__content">
 					<a class="kt-login__logo" href="#">
-						<img src="<?php echo base_url(); ?>template/assets2/media/logos/logo-light.png">  	
+						<img src="<?php echo base_url(); ?>template/assets2/media/logos/jimly.png" width="50%">  	
 					</a>					 
 					
 					<h3 class="kt-login__title">JIMLY SCHOOL LAW AND GOVERNMENT</h3>
 					
 					<span class="kt-login__desc">
-						<h6>Saya Sudah Memiliki Akun</h6>
+						<h6>Saya Belum Mempunyai Account</h6>
 					</span>	
 					<span class="kt-login__desc">
-						<h6>Buat Akun barumu dengan mudah dalam 2 menit</h6>
+						<h6>Buat Account barumu dengan mudah dalam 2 menit</h6>
 					</span>	
 					
 					<div class="kt-login__actions">
@@ -100,7 +100,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					</div>				
 					<div class="kt-login__form">
 					<span class="kt-login__desc">
-						<h6>Saya Sudah Memiliki Akun</h6>
+						<h6>Saya Sudah Memiliki Account</h6>
 					</span>	
 						<form class="kt-form" action="">
 							<div class="form-group">

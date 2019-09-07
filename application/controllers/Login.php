@@ -46,9 +46,9 @@ class Login extends CI_Controller {
 		if($username=='admin' && $password=='jslg2019'){
 			redirect('admin');
 		}else if($username=='peserta' && $password=='jslg2019'){
-			redirect('login/register_peserta');
+			redirect('peserta');
 		}else if($username=='narasumber' && $password=='jslg2019'){
-			redirect('login/register_narasumber');
+			redirect('narasumber');
 		}else{
 			echo "<script>alert('Username atau Password Salah!');javascript:history.go(-1);</script>";
 		}

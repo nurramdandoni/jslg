@@ -36,5 +36,11 @@ class Peserta extends CI_Controller {
 		$data['submenu'] = 'Change Password';
 		$this->load->view('peserta/myaccount@change_password',$data);
 	}
+	public function confirm_payment()
+	{
+		$data['menu'] = 'My Account';
+		$data['submenu'] = 'Confirm Payment';
+		$this->load->view('peserta/myaccount@confirm_payment',$data);
+	}
 
 }

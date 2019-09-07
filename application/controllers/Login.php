@@ -25,5 +25,12 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 	}
 
+	public function register_peserta()
+	{
+		// $data['menu'] = 'Dashboard';
+		// $data['submenu'] = '';
+		$this->load->view('register@peserta');
+	}
+
 	
 }

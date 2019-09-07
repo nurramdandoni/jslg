@@ -76,67 +76,87 @@ License: You must have a valid license purchased only from themeforest(the above
 					<h3 class="kt-login__title">JIMLY SCHOOL LAW AND GOVERNMENT</h3>
 					
 					<span class="kt-login__desc">
-						<h6>Saya Belum Mempunyai Account</h6>
+						<h6>Saya Peserta Baru</h6>
 					</span>	
 					<span class="kt-login__desc">
 						<h6>Buat Account barumu dengan mudah dalam 2 menit</h6>
 					</span>	
-					
-					<div class="kt-login__actions">
-						<a href="<?php echo base_url() ?>login/register_peserta" class="btn btn-outline-brand btn-pill">Peserta</a>
-						<button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">Narasumber</button>
+
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Nama Lengkap & Gelar" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="NIK" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Tempat Lahir" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Alamat Sesuai KTP" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
+						<select class="form-control" id="prov">
+							<option value="0">-Pilih Provinsi-</option>
+							<option value="1">Jawa Barat</option>
+							<option value="2">DKI Jakarta</option>
+							<option value="3">Jawa Tengah</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select class="form-control" id="kabkot">
+							<option value="0">-Pilih Kab/Kota-</option>
+							<option value="1">Bandung</option>
+							<option value="2">Jakarta</option>
+							<option value="3">Surabaya</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Jabatan Pekerjaan" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Pendidikan Terakhir" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="No Telp/ Whatsapps" required="">
+						<span class="form-text text-muted"></span>
 					</div>
 				</div>	
 			</div>
 		</div>
 		
-		<div class="kt-login__divider"><div></div></div>
-		
-		<div class="kt-login__right">
+		<div class="kt-login__right" style="margin-top: 90px;">
 			<div class="kt-login__wrapper">
-				<div class="kt-login__signin">
-					<div class="kt-login__head">
-						<h3 class="kt-login__title">Login</h3>
-					</div>				
-					<div class="kt-login__form">
-					<span class="kt-login__desc">
-						<h6>Saya Sudah Memiliki Account</h6>
-					</span>	
-						<form class="kt-form" action="">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Username" name="username" autocomplete="off">
-							</div>
-							<div class="form-group">
-								<input class="form-control form-control-last" type="Password" placeholder="Password" name="password">
-							</div>
-							<div class="row kt-login__extra">
-								<div class="col kt-align-right">
-									<a href="javascript:;" id="kt_login_forgot" class="kt-link">Forget Password ?</a>
-								</div>
-							</div>
-							<div class="kt-login__actions">
-								<button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Sign In</button>
-							</div>
-						</form>			
+				<div class="kt-login__content">
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Nomor Handphone" required="">
+						<span class="form-text text-muted"></span>
 					</div>
-				</div>		
-				<div class="kt-login__forgot">
-					<div class="kt-login__head">
-						<h3 class="kt-login__title">Forgotten Password ?</h3>
-						<div class="kt-login__desc">Enter your email to reset your password:</div>
+					<div class="form-group">
+						<input type="email" class="form-control"  placeholder="Email" required="">
+						<span class="form-text text-muted"></span>
 					</div>
-					<div class="kt-login__form">
-						<form class="kt-form" action="">
-							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
-							</div>
-							<div class="kt-login__actions">
-								<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Request</button>
-								<button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">Cancel</button>
-							</div>
-						</form>
+					<div class="form-group">
+						<select class="form-control" id="kabkot">
+							<option value="0">-Pilih Jenis Kelamin-</option>
+							<option value="1">Laki - Laki</option>
+							<option value="2">Perempuan</option>
+						</select>
 					</div>
-				</div>			 
+					<div class="col-md-6">
+						<div class="card" style="height: 170px; margin-bottom:20px;padding:10px;">
+							Foto
+						</div>
+					</div>
+					<div class="kt-login__actions">
+						<button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Register</button>
+					</div>
+				</div>	 
 			</div>
 		</div> 
 	</div>

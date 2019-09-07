@@ -42,11 +42,17 @@ class Peserta extends CI_Controller {
 		$data['submenu'] = 'Confirm Payment';
 		$this->load->view('peserta/myaccount@confirm_payment',$data);
 	}
-	public function Barcode_base()
+	public function barcode_base()
 	{
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Barcode Base';
 		$this->load->view('peserta/myaccount@barcode_base',$data);
+	}
+	public function all_workshop()
+	{
+		$data['menu'] = 'Workshop & Pendidikan';
+		$data['submenu'] = 'All Workshop & Pendidikan';
+		$this->load->view('peserta/workshop@all_workshop',$data);
 	}
 
 }

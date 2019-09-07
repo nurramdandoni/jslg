@@ -30,5 +30,11 @@ class Peserta extends CI_Controller {
 		$data['submenu'] = 'Profile';
 		$this->load->view('peserta/myaccount@profile',$data);
 	}
+	public function change_password()
+	{
+		$data['menu'] = 'My Account';
+		$data['submenu'] = 'Change Password';
+		$this->load->view('peserta/myaccount@change_password',$data);
+	}
 
 }

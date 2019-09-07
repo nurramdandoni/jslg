@@ -111,7 +111,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div>
 		
-		<div class="kt-login__right" style="margin-top: 200px;">
+		<div class="kt-login__right" style="margin-top: 120px;">
 			<div class="kt-login__wrapper">
 				<div class="kt-login__content">
 					<h4><?php echo $menu.' - '.$submenu; ?></h4>

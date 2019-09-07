@@ -54,5 +54,11 @@ class Peserta extends CI_Controller {
 		$data['submenu'] = 'All Workshop & Pendidikan';
 		$this->load->view('peserta/workshop@all_workshop',$data);
 	}
+	public function detail_workshop()
+	{
+		$data['menu'] = 'Workshop & Pendidikan';
+		$data['submenu'] = 'Detail';
+		$this->load->view('peserta/workshop@detail',$data);
+	}
 
 }

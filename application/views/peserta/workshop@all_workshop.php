@@ -34,7 +34,7 @@ $this->load->view('template_layout/sidebar_menu_peserta');
 								<span>Nama Pemateri 1</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -58,7 +58,7 @@ $this->load->view('template_layout/sidebar_menu_peserta');
 								<span>Nama Pemateri 2</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -82,7 +82,7 @@ $this->load->view('template_layout/sidebar_menu_peserta');
 								<span>Nama Pemateri 3</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -106,7 +106,7 @@ $this->load->view('template_layout/sidebar_menu_peserta');
 								<span>Nama Pemateri 4</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -130,7 +130,7 @@ $this->load->view('template_layout/sidebar_menu_peserta');
 								<span>Nama Pemateri 5</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -154,7 +154,7 @@ $this->load->view('template_layout/sidebar_menu_peserta');
 								<span>Nama Pemateri 6</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
 							</div>
 						</div>
 					</div>

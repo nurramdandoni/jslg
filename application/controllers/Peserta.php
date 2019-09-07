@@ -24,5 +24,11 @@ class Peserta extends CI_Controller {
 		$data['submenu'] = '';
 		$this->load->view('peserta/dashboard',$data);
 	}
+	public function profile()
+	{
+		$data['menu'] = 'My Account';
+		$data['submenu'] = 'Profile';
+		$this->load->view('peserta/myaccount@profile',$data);
+	}
 
 }

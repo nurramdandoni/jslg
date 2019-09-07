@@ -87,57 +87,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="NIK" required="">
-						<span class="form-text text-muted"></span>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Tempat Lahir" required="">
-						<span class="form-text text-muted"></span>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Alamat Sesuai KTP" required="">
-						<span class="form-text text-muted"></span>
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="prov">
-							<option value="0">-Pilih Provinsi-</option>
-							<option value="1">Jawa Barat</option>
-							<option value="2">DKI Jakarta</option>
-							<option value="3">Jawa Tengah</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="kabkot">
-							<option value="0">-Pilih Kab/Kota-</option>
-							<option value="1">Bandung</option>
-							<option value="2">Jakarta</option>
-							<option value="3">Surabaya</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Jabatan Pekerjaan" required="">
-						<span class="form-text text-muted"></span>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Pendidikan Terakhir" required="">
-						<span class="form-text text-muted"></span>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="No Telp/ Whatsapps" required="">
-						<span class="form-text text-muted"></span>
-					</div>
-				</div>	
-			</div>
-		</div>
-		
-		<div class="kt-login__right" style="margin-top: 90px;">
-			<div class="kt-login__wrapper">
-				<div class="kt-login__content">
-					<h4><?php echo $menu.' - '.$submenu; ?></h4>
-					<br>
-					<br>
-					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Nomor Handphone" required="">
+						<input type="text" class="form-control"  placeholder="Alamat" required="">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
@@ -145,12 +95,29 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="kabkot">
-							<option value="0">-Pilih Jenis Kelamin-</option>
-							<option value="1">Laki - Laki</option>
-							<option value="2">Perempuan</option>
-						</select>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="customFile">
+							<label class="custom-file-label" for="customFile">CV (Upload Document)</label>
+						</div>
 					</div>
+					<div class="form-group">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="customFile">
+							<label class="custom-file-label" for="customFile">Keahlian (Upload Document)</label>
+						</div>
+					</div>
+					<label class="btn btn-brand btn-pill btn-default">Tambah Keahlian</label>
+				</div>	
+			</div>
+		</div>
+		
+		<div class="kt-login__right" style="margin-top: 200px;">
+			<div class="kt-login__wrapper">
+				<div class="kt-login__content">
+					<h4><?php echo $menu.' - '.$submenu; ?></h4>
+					<br>
+					<br>
+					
 					<div class="col-md-6">
 						<div class="card" style="height: 170px; margin-bottom:20px;padding:10px;">
 							Foto

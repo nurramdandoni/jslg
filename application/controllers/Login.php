@@ -27,9 +27,16 @@ class Login extends CI_Controller {
 
 	public function register_peserta()
 	{
-		// $data['menu'] = 'Dashboard';
-		// $data['submenu'] = '';
-		$this->load->view('register@peserta');
+		$data['menu'] = 'Peserta';
+		$data['submenu'] = 'Register';
+		$this->load->view('register@peserta',$data);
+	}
+
+	public function register_narasumber()
+	{
+		$data['menu'] = 'Narasumber';
+		$data['submenu'] = 'Register';
+		$this->load->view('register@narasumber',$data);
 	}
 
 	

@@ -52,56 +52,39 @@
 			
 		</div>
 		<div class="col-md-4" style="padding: 15px;">
-			<div class="kt-form__actions">
-				<a class="btn btn-primary" href="#">Start</a>
-				<a class="btn btn-primary" href="<?php echo base_url() ?>peserta/hasil_essay">Selesai</a>
-				<span style="color: white; margin-left: 30px;">Waktu : 30 : 00</span>
-			</div>
+			
 		</div>
 	</div>
 
 	<div class="kt-portlet">
 		<div class="kt-portlet__head">
     		<div class="kt-portlet__head-label">
-    			<span>Jumlah Soal : 5</span>
-    			<span style="margin-left: 50px;">Skor : 5</span>
-    			<span style="margin-left: 100px;">Pemateri :  Nama Pemateri</span>
+    			<span>Hasil Essay</span>
     		</div>
     	</div>
 
-        <div class="kt-portlet__body">
+        <div class="kt-portlet__body" style="align-items: center;">
             <div>
-                <label>No 1</label>
+                <h4>Essay 1</h4>
             </div>
-            <div style="margin:10px;">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div>
+                <h4>Skor 80</h4>
             </div>
-            <div class="form-group" style="margin:10px;">
-                <div>
-                    <input type="radio" name="">
-                    <label>Pilihan 1</label>
-                </div>
-                <div>
-                    <input type="radio" name="">
-                    <label>Pilihan 1</label>
-                </div>
-                <div>
-                    <input type="radio" name="">
-                    <label>Pilihan 1</label>
-                </div>
-                <div>
-                    <input type="radio" name="">
-                    <label>Pilihan 1</label>
-                </div>
+            <div>
+                <label>Jumlah Soal 5</label>
+            </div>
+            <div>
+                <label>Waktu 30 Menit</label>
+            </div>
+            <div>
+                <label>Benar : 1 |  Salah : 1</label>
+            </div>
+            <div>
+                <label>Pemateri :</label>
+                <label>Nama Pemateri</label>
             </div>
             <div class="kt-form__actions">
-                <a class="btn btn-primary" href="#">Back</a>
-                <a class="btn btn-primary" href="#">Next</a>
+                <a class="btn btn-primary" href="<?php echo base_url() ?>peserta">Selesai</a>
                 
             </div>
         </div>

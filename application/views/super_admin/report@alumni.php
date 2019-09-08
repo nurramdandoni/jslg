@@ -19,7 +19,7 @@ $this->load->view('template_layout/sidebar_menu');
 			<div class="kt-portlet__head-toolbar">
 	            <div class="kt-portlet__head-wrapper">
 				<div class="kt-portlet__head-actions">
-					<a href="<?php echo base_url() ?>admin/create_diklat" class="btn btn-brand btn-elevate btn-icon-sm">
+					<a href="#" class="btn btn-brand btn-elevate btn-icon-sm">
 						<i class="la la-download"></i>
 						Download CSV
 					</a>

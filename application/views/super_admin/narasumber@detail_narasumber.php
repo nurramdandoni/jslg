@@ -95,7 +95,7 @@ $this->load->view('template_layout/sidebar_menu');
 					<div class="col-md-4">
 						<div class="form-group">
 							<center>
-								<div class="card" style="height: 120px; width: 120px;">
+								<div class="card" style="height: 100px; width: 100px;">
 								foto
 								</div>
 							</center>
@@ -104,7 +104,7 @@ $this->load->view('template_layout/sidebar_menu');
 					<div class="col-md-4">
 						<div class="form-group">
 							<center>
-								<div class="card" style="height: 120px; width: 120px;">
+								<div class="card" style="height: 100px; width: 100px;">
 								foto
 								</div>
 							</center>
@@ -113,7 +113,7 @@ $this->load->view('template_layout/sidebar_menu');
 					<div class="col-md-4">
 						<div class="form-group">
 							<center>
-								<div class="card" style="height: 120px; width: 120px;">
+								<div class="card" style="height: 100px; width: 100px;">
 								foto
 								</div>
 							</center>

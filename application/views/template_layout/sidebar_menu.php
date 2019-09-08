@@ -287,7 +287,7 @@
                                         </i>
                                     </a>
                                 </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
+                                <!-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
                                     <a  href="<?php echo base_url() ?>admin/in_house_training" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                             <span>
@@ -300,7 +300,7 @@
 
                                         </i>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>
@@ -473,7 +473,7 @@
                                         </i>
                                     </a>
                                 </li>
-                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
+                                <!-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
                                     <a  href="<?php echo base_url() ?>admin/report_vidcart" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                             <span>
@@ -486,7 +486,7 @@
 
                                         </i>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
                                     <a  href="<?php echo base_url() ?>admin/report_penilaian_narasumber" class="kt-menu__link kt-menu__toggle">
                                         <i class="kt-menu__link-bullet kt-menu__link-bullet--line">

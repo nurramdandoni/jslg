@@ -36,7 +36,7 @@ $this->load->view('template_layout/sidebar_menu');
 				  		<td>dadang@gmail.com</td>
 				  		<td>Individu</td>
 				  		<td>image.jpg</td>
-				  		<td><button class="success">Approve</button></td>
+				  		<td><button class="btn btn-primary">Approve</button></td>
 				  		<td>Approval</td>
 					</tr>
 					<tr>
@@ -45,7 +45,7 @@ $this->load->view('template_layout/sidebar_menu');
 				  		<td>dani@gmail.com</td>
 				  		<td>Instansi</td>
 				  		<td>image.jpg</td>
-				  		<td><button class="success">Approve</button></td>
+				  		<td><button class="btn btn-primary">Approve</button></td>
 				  		<td>Waiting Approval</td>
 					</tr>
 				</tbody>

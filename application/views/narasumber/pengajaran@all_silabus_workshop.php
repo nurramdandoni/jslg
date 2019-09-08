@@ -34,7 +34,7 @@ $this->load->view('template_layout/sidebar_menu_narasumber');
 								<span>Waiting Approved</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>narasumber/detail_silabus_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -58,7 +58,7 @@ $this->load->view('template_layout/sidebar_menu_narasumber');
 								<span>Approved</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>narasumber/detail_silabus_workshop">Detail</a>
 							</div>
 						</div>
 					</div>
@@ -82,7 +82,7 @@ $this->load->view('template_layout/sidebar_menu_narasumber');
 								<span>Approved</span>
 							</div>
 							<div class="kt-form__actions">
-							<a class="btn btn-default" href="<?php echo base_url() ?>peserta/detail_workshop">Detail</a>
+							<a class="btn btn-default" href="<?php echo base_url() ?>narasumber/detail_silabus_workshop">Detail</a>
 							</div>
 						</div>
 					</div>

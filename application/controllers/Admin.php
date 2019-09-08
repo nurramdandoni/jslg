@@ -21,7 +21,7 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		$data['menu'] = 'Dashboard';
-		$data['submenu'] = '';
+		$data['submenu'] = 'Produk';
 		$this->load->view('super_admin/dashboard',$data);
 	}
 

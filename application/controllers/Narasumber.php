@@ -36,5 +36,11 @@ class Narasumber extends CI_Controller {
 		$data['submenu'] = 'Change Password';
 		$this->load->view('narasumber/myaccount@change_password',$data);
 	}
+	public function notifikasi_workshop()
+	{
+		$data['menu'] = 'My Account';
+		$data['submenu'] = 'Notifikasi Workshop';
+		$this->load->view('narasumber/myaccount@notifikasi_workshop',$data);
+	}
 
 }

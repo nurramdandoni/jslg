@@ -21,7 +21,7 @@ class Narasumber extends CI_Controller {
 	public function index()
 	{
 		$data['menu'] = 'Dashboard';
-		$data['submenu'] = '';
+		$data['submenu'] = 'Pengajaran Lates';
 		$this->load->view('narasumber/dashboard',$data);
 	}
 	public function profile()

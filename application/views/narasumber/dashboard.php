@@ -5,7 +5,22 @@ $this->load->view('template_layout/sidebar_menu_narasumber');
 
 ?>
 
-Narasumber
+<div class="kt-portlet">
+		<div class="kt-portlet__body">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="card" style="height: 100px; margin-bottom:20px;padding:10px;">
+						Pengacara Pajak
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="card" style="height: 100px; margin-bottom:20px;padding:10px;">
+						Legal Tech
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
 
 <?php
 

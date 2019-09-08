@@ -21,7 +21,7 @@ class Peserta extends CI_Controller {
 	public function index()
 	{
 		$data['menu'] = 'Dashboard';
-		$data['submenu'] = '';
+		$data['submenu'] = 'Lates ';
 		$this->load->view('peserta/dashboard',$data);
 	}
 	public function profile()

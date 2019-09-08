@@ -35,7 +35,7 @@ $this->load->view('template_layout/sidebar_menu');
 				</div>
 			</div>
 		</div>
-
+</div>
 <?php
 
 $this->load->view('template_layout/footer');

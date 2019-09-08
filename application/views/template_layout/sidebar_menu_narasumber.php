@@ -136,10 +136,10 @@
                 <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                 <div class="kt-header__topbar-user">
                 <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-                <span class="kt-header__topbar-username kt-hidden-mobile">Peserta 1</span>
+                <span class="kt-header__topbar-username kt-hidden-mobile">Narasumber 1</span>
                 <img class="kt-hidden" alt="Pic" src="<?php echo base_url(); ?>template/assets2/media/users/300_25.jpg" />
                 <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">P</span>
+                <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">N</span>
                 </div>
                 </div>
 
@@ -149,13 +149,13 @@
                 <div class="kt-user-card__avatar">
                 <img class="kt-hidden" alt="Pic" src="<?php echo base_url(); ?>template/assets2/media/users/300_25.jpg" />
                 <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">P</span>
+                <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">N</span>
                 </div>
                 <div class="kt-user-card__name">
                 Peserta
                 </div> 1
                 <div class="kt-user-card__badge">
-                <span class="">Hi, Peserta 1</span>
+                <span class="">Hi, Narasumber 1</span>
                 </div>
                 </div>
                 <!--end: Head -->

@@ -60,5 +60,11 @@ class Peserta extends CI_Controller {
 		$data['submenu'] = 'Detail';
 		$this->load->view('peserta/workshop@detail',$data);
 	}
+	public function mulai_essay()
+	{
+		$data['menu'] = 'Essay';
+		$data['submenu'] = 'Soal';
+		$this->load->view('peserta/essay@soal',$data);
+	}
 
 }

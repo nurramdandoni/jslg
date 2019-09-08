@@ -20,8 +20,8 @@ class Narasumber extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['menu'] = 'Dashboard';
-		$data['submenu'] = 'Pengajaran Lates';
+		$data['menu'] = 'Selamat Datang, Fany';
+		$data['submenu'] = '';
 		$this->load->view('narasumber/dashboard',$data);
 	}
 	public function profile()

@@ -11,7 +11,7 @@
                 <ul class="kt-menu__nav " style="background-color: #DF3338">
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true" >
                     <a  href="<?php echo base_url() ?>" class="kt-menu__link " style="background-color: #ac3335">
-                        <span class="kt-menu__link-text">Dashboard Peserta</span>
+                        <span class="kt-menu__link-text">Dashboard</span>
                     </a>
                 </li>
                 <li class="kt-menu__section ">

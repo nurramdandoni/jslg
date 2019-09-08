@@ -30,5 +30,11 @@ class Narasumber extends CI_Controller {
 		$data['submenu'] = 'Profile';
 		$this->load->view('narasumber/myaccount@profile',$data);
 	}
+	public function change_password()
+	{
+		$data['menu'] = 'My Account';
+		$data['submenu'] = 'Change Password';
+		$this->load->view('narasumber/myaccount@change_password',$data);
+	}
 
 }

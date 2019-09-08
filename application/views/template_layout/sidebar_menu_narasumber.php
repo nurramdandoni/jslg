@@ -34,7 +34,7 @@
                                 </span>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/create_produk" class="kt-menu__link kt-menu__toggle">
+                                <a  href="<?php echo base_url() ?>narasumber/profile" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span>
 

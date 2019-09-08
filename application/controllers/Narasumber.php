@@ -24,5 +24,11 @@ class Narasumber extends CI_Controller {
 		$data['submenu'] = '';
 		$this->load->view('narasumber/dashboard',$data);
 	}
+	public function profile()
+	{
+		$data['menu'] = 'My Account';
+		$data['submenu'] = 'Profile';
+		$this->load->view('narasumber/myaccount@profile',$data);
+	}
 
 }

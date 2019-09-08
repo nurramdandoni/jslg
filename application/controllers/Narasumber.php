@@ -38,9 +38,15 @@ class Narasumber extends CI_Controller {
 	}
 	public function notifikasi_workshop()
 	{
-		$data['menu'] = 'My Account';
+		$data['menu'] = 'Pengajaran';
 		$data['submenu'] = 'Notifikasi Workshop';
-		$this->load->view('narasumber/myaccount@notifikasi_workshop',$data);
+		$this->load->view('narasumber/pengajaran@notifikasi_workshop',$data);
+	}
+	public function all_silabus_workshop()
+	{
+		$data['menu'] = 'pengajaran';
+		$data['submenu'] = 'All pengajaran';
+		$this->load->view('narasumber/pengajaran@all_silabus_workshop',$data);
 	}
 
 }

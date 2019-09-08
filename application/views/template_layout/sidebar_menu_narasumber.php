@@ -95,7 +95,7 @@
                                 </span>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"  data-ktmenu-submenu-toggle="hover">
-                                <a  href="<?php echo base_url() ?>admin/blast_mailchimp" class="kt-menu__link kt-menu__toggle">
+                                <a  href="<?php echo base_url() ?>narasumber/all_silabus_workshop" class="kt-menu__link kt-menu__toggle">
                                     <i class="kt-menu__link-bullet kt-menu__link-bullet--line">
                                         <span>
 

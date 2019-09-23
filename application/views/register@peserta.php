@@ -55,6 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Layout Skins -->
 
         <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/icon.ico" />
+        <script src="<?php echo base_url(); ?>asset/jquery/jquery331.min.js" type="text/javascript"></script>
     </head>
     <!-- end::Head -->
 
@@ -95,23 +96,33 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
+						<input type="date" class="form-control"  placeholder="Tanggal Lahir Lahir" required="">
+						<span class="form-text text-muted"></span>
+					</div>
+					<div class="form-group">
 						<input type="text" class="form-control"  placeholder="Alamat Sesuai KTP" required="">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="prov">
+						<select class="form-control" id="provinsi">
 							<option value="0">-Pilih Provinsi-</option>
-							<option value="1">Jawa Barat</option>
-							<option value="2">DKI Jakarta</option>
-							<option value="3">Jawa Tengah</option>
+							<?php 
+								foreach($provinsi->result() as $prov){
+							?>
+							<option value="<?php echo $prov->id_provinsi; ?>"><?php echo $prov->nama_provinsi; ?></option>
+							<?php 
+								}
+							?>
 						</select>
 					</div>
 					<div class="form-group">
 						<select class="form-control" id="kabkot">
 							<option value="0">-Pilih Kab/Kota-</option>
-							<option value="1">Bandung</option>
-							<option value="2">Jakarta</option>
-							<option value="3">Surabaya</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select class="form-control" id="kec">
+							<option value="0">-Pilih Kecamatan-</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -137,7 +148,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<br>
 					<br>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Nomor Handphone" required="">
+						<input type="text" class="form-control"  placeholder="Nama Kantor/ Instansi" required="">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
@@ -145,7 +156,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="kabkot">
+						<select class="form-control" id="jenis_kelamin">
 							<option value="0">-Pilih Jenis Kelamin-</option>
 							<option value="1">Laki - Laki</option>
 							<option value="2">Perempuan</option>
@@ -163,11 +174,42 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div> 
 	</div>
-</div>		 	</div>
+</div>		 	
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#provinsi').change(function(){
+			var provinsi = $('#provinsi').val();
+			$.ajax({
+				url: '<?php base_url() ?>ambilkota',
+				data: 'provinsi='+provinsi,
+				cache: false,
+				success: function(msg){
+					//jika data success diambil dari server kita tampilkan di <select id=kota>
+					$('#kabkot').html(msg);
+					console.log(msg);
+				}
+			});
+		});
+		$('#kabkot').change(function(){
+			var kota = $('#kabkot').val();
+			$.ajax({
+				url: '<?php base_url() ?>ambilkecamatan',
+				data: 'kota='+kota,
+				cache: false,
+				success: function(msg){
+					//jika data success diambil dari server kita tampilkan di <select id=kota>
+					$('#kec').html(msg);
+				}
+			});
+		});
+	});
+</script>
 	
 <!-- end:: Page -->
 
-
+		
        <!--begin:: Global Mandatory Vendors -->
         <script src="<?php echo base_url(); ?>template/assets2/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
 

@@ -66,7 +66,8 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="kt-grid kt-grid--ver kt-grid--root">
 		<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v5 kt-login--signin" id="kt_login">
 	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile" style="background-image: url(<?php echo base_url(); ?>template/assets2/media//bg/bg-3.jpg);">
-	 	<div class="kt-login__left">
+		
+	 	<div class="kt-login__left" style="margin-top: 12%">
 			<div class="kt-login__wrapper">
 				<div class="kt-login__content">
 					<a class="kt-login__logo" href="#">
@@ -90,9 +91,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 		</div>
 		
-		<div class="kt-login__divider"><div></div></div>
+		<!-- <div class="kt-login__divider"> -->
 		
-		<div class="kt-login__right">
+		<div class="kt-login__right" style="margin-top: 5%">
 			<div class="kt-login__wrapper">
 				<div class="kt-login__signin">
 					<div class="kt-login__head">

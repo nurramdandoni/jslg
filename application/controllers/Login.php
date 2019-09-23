@@ -30,7 +30,21 @@ class Login extends CI_Controller {
 
 	public function proses_register_peserta()
 	{
-		
+		$nama = $this->input->post('nama_lengkap');
+		$nik = $this->input->post('nik');
+		$tmpl = $this->input->post('tempat_lahir');
+		$tgl = $this->input->post('tanggal_lahir');
+		$alamat = $this->input->post('alamat');
+		$prov = $this->input->post('provinsi');
+		$kab = $this->input->post('kabkot');
+		$kec = $this->input->post('kec');
+		$pekerjaan = $this->input->post('pekerjaan');
+		$pendidikan = $this->input->post('pendidikan');
+		$wa = $this->input->post('wa');
+		$nkantor = $this->input->post('nama_kantor');
+		$email = $this->input->post('email');
+		$jeniskelamin = $this->input->post('jenis_kelamin');
+		// echo "<script>alert('Berhasil Registrasi');</script>";
 	}
 
 	public function ambilkota(){

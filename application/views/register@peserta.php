@@ -55,7 +55,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Layout Skins -->
 
         <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/icon.ico" />
-        <script src="<?php echo base_url(); ?>asset/jquery/jquery331.min.js" type="text/javascript"></script>
+		<script src="<?php echo base_url(); ?>asset/jquery/jquery331.min.js" type="text/javascript"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     </head>
     <!-- end::Head -->
 
@@ -67,7 +68,8 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="kt-grid kt-grid--ver kt-grid--root">
 		<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v5 kt-login--signin" id="kt_login">
 	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile" style="background-image: url(<?php echo base_url(); ?>template/assets2/media//bg/bg-3.jpg);">
-	 	<div class="kt-login__left">
+		
+	 	<div class="kt-login__left" style="margin-top: 5%;">
 			<div class="kt-login__wrapper">
 				<div class="kt-login__content">
 					<a class="kt-login__logo" href="#">
@@ -82,29 +84,29 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="kt-login__desc">
 						<h6>Buat Account barumu dengan mudah dalam 2 menit</h6>
 					</span>
-
+					<form action="<?php echo base_url() ?>login/proses_register_peserta" method="post">
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Nama Lengkap & Gelar" required="">
+						<input type="text" class="form-control"  placeholder="Nama Lengkap & Gelar" required="" name="nama_lengkap">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="NIK" required="">
+						<input type="number" maxlength="16" class="form-control"  placeholder="NIK" required="" name="nik">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Tempat Lahir" required="">
+						<input type="text" class="form-control"  placeholder="Tempat Lahir" required="" name="tempat_lahir">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="date" class="form-control"  placeholder="Tanggal Lahir Lahir" required="">
+						<input type="date" class="form-control"  placeholder="Tanggal Lahir Lahir" required="" name="tanggal_lahir">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Alamat Sesuai KTP" required="">
+						<input type="text" class="form-control"  placeholder="Alamat Sesuai KTP" required="" name="alamat">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="provinsi">
+						<select class="form-control" id="provinsi" name="provinsi">
 							<option value="0">-Pilih Provinsi-</option>
 							<?php 
 								foreach($provinsi->result() as $prov){
@@ -116,47 +118,47 @@ License: You must have a valid license purchased only from themeforest(the above
 						</select>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="kabkot">
+						<select class="form-control" id="kabkot" name="kabkot">
 							<option value="0">-Pilih Kab/Kota-</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="kec">
+						<select class="form-control" id="kec" name="kec">
 							<option value="0">-Pilih Kecamatan-</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Jabatan Pekerjaan" required="">
+						<input type="text" class="form-control"  placeholder="Jabatan Pekerjaan" required="" name="pekerjaan">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Pendidikan Terakhir" required="">
+						<input type="text" class="form-control"  placeholder="Pendidikan Terakhir" required="" name="pendidikan">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="No Telp/ Whatsapps" required="">
+						<input type="text" maxlength="15" class="form-control"  placeholder="No Telp/ Whatsapps" required="" name="wa">
 						<span class="form-text text-muted"></span>
 					</div>
 				</div>	
 			</div>
 		</div>
 		
-		<div class="kt-login__right" style="margin-top: 90px;">
+		<div class="kt-login__right" style="margin-top: 1%;">
 			<div class="kt-login__wrapper">
 				<div class="kt-login__content">
 					<h4><?php echo $menu.' - '.$submenu; ?></h4>
 					<br>
 					<br>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Nama Kantor/ Instansi" required="">
+						<input type="text" class="form-control"  placeholder="Nama Kantor/ Instansi" required="" name="nama_kantor">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control"  placeholder="Email" required="">
+						<input type="email" class="form-control"  placeholder="Email" required="" name="email">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="jenis_kelamin">
+						<select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
 							<option value="0">-Pilih Jenis Kelamin-</option>
 							<option value="1">Laki - Laki</option>
 							<option value="2">Perempuan</option>
@@ -166,16 +168,22 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="card" style="height: 170px; margin-bottom:20px;padding:10px;">
 							Foto
 						</div>
+						<div class="form-group">
+							<input type="file" class="form-control">
+						</div>
 					</div>
 					<div class="kt-login__actions">
-						<button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Register</button>
+						<!-- <button id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">Register</button> -->
+						<input type="submit" value="Register" id="kt_login_signin_submit" class="btn btn-brand btn-pill btn-elevate">
 					</div>
 				</div>	 
 			</div>
 		</div> 
+	</form>
 	</div>
 </div>		 	
 </div>
+
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -227,15 +235,15 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end:: Global Mandatory Vendors -->
 
         <!--begin::Global Theme Bundle(used by all pages) -->
-        <script src="<?php echo base_url(); ?>template/assets2/js/demo1/scripts.bundle.js" type="text/javascript"></script>
+        <!-- <script src="<?php echo base_url(); ?>template/assets2/js/demo1/scripts.bundle.js" type="text/javascript"></script> -->
         <!--end::Global Theme Bundle -->
 
         <!--begin::Page Vendors(used by this page) -->
-        <script src="<?php echo base_url(); ?>template/assets2/vendors/custom/datatables.bundle.js" type="text/javascript"></script>
+        <!-- <script src="<?php echo base_url(); ?>template/assets2/vendors/custom/datatables.bundle.js" type="text/javascript"></script> -->
         <!--end::Page Vendors -->
 
         <!--begin::Page Scripts(used by this page) -->
-                            <script src="<?php echo base_url(); ?>template/assets2/js/demo1/pages/login/login-general.js" type="text/javascript"></script>
+                            <!-- <script src="<?php echo base_url(); ?>template/assets2/js/demo1/pages/login/login-general.js" type="text/javascript"></script> -->
                         <!--end::Page Scripts -->
 
         <!--end::Page Scripts -->

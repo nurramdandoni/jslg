@@ -44,6 +44,24 @@ class Login extends CI_Controller {
 		$nkantor = $this->input->post('nama_kantor');
 		$email = $this->input->post('email');
 		$jeniskelamin = $this->input->post('jenis_kelamin');
+		$data = array(
+			'nik_peserta' => $nama,
+			'nama_peserta' => $nik,
+			'tempat_lahir_peserta' => $tmpl,
+			'tanggal_lahir_peserta' => $tgl,
+			'jenis_kelamin_peserta' => $alamat,
+			'alamat_peserta' => $alamat,
+			'id_provinsi' => $prov,
+			'id_kabkot' => $kab,
+			'id_kec' => $kec,
+			'email_peserta' => $email,
+			'nama_kantor' => $nkantor,
+			'jabatan_peserta' => $pekerjaan,
+			'pendidikan_peserta' => $pendidikan,
+			'telp_peserta' => $wa
+		);
+		$this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
+
 		// echo "<script>alert('Berhasil Registrasi');</script>";
 	}
 

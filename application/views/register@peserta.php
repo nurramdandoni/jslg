@@ -165,11 +165,15 @@ License: You must have a valid license purchased only from themeforest(the above
 						</select>
 					</div>
 					<div class="col-md-6">
-						<div class="card" style="height: 170px; margin-bottom:20px;padding:10px;">
-							Foto
+						<div class="card" style="min-height: 70px; margin-bottom:20px;padding:10px; min-width: 70px;">
+							<img src="" alt="" id="img-prev" class="img-thumbnail">
 						</div>
 						<div class="form-group">
-							<input type="file" class="form-control">
+							<!-- <input type="file" class="form-control" id="img-load" name="foto" onchange="previewimg();"> -->
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="img-load" name="foto" onchange="previewimg();">
+								<label class="custom-file-label" for="customFile">Foto</label>
+							</div>
 						</div>
 					</div>
 					<div class="kt-login__actions">
@@ -186,7 +190,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 <script type="text/javascript">
+	function previewimg(){
+		document.getElementById('img-prev').style.display = "block";
+		var oFread = new FileReader();
+		oFread.readAsDataURL(document.getElementById('img-load').files[0]);
+
+		oFread.onload = function(ofevent){
+			document.getElementById('img-prev').src = ofevent.target.result;
+		}
+	}
 	$(document).ready(function(){
+
 		$('#provinsi').change(function(){
 			var provinsi = $('#provinsi').val();
 			$.ajax({
@@ -212,6 +226,8 @@ License: You must have a valid license purchased only from themeforest(the above
 				}
 			});
 		});
+
+
 	});
 </script>
 	

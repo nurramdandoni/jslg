@@ -84,13 +84,13 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="kt-login__desc">
 						<h6>Buat Account barumu dengan mudah dalam 2 menit</h6>
 					</span>
-					<form action="<?php echo base_url() ?>login/proses_register_peserta" method="post">
+					<form action="<?php echo base_url() ?>login/proses_register_peserta" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<input type="text" class="form-control"  placeholder="Nama Lengkap & Gelar" required="" name="nama_lengkap">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<input type="number" maxlength="16" class="form-control"  placeholder="NIK" required="" name="nik">
+						<input type="text" maxlength="16" class="form-control"  placeholder="NIK" required="" name="nik">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
@@ -174,6 +174,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<input type="file" class="custom-file-input" id="img-load" name="foto" onchange="previewimg();">
 								<label class="custom-file-label" for="customFile">Foto</label>
 							</div>
+							<label>Max. 2Mb png | jpg | jpeg</label>
 						</div>
 					</div>
 					<div class="kt-login__actions">

@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->library('session');
-
+		$this->load->library('upload');
 		$this->load->model('Model_jslg');
 
 	}
@@ -44,6 +44,21 @@ class Login extends CI_Controller {
 		$nkantor = $this->input->post('nama_kantor');
 		$email = $this->input->post('email');
 		$jeniskelamin = $this->input->post('jenis_kelamin');
+
+		//upload photo
+		$config['max_size']=2048;
+		$config['allowed_types']="png|jpg|jpeg";
+		$config['remove_spaces']=TRUE;
+		$config['overwrite']=TRUE;
+		$config['upload_path']=FCPATH.'image';
+		// inisialisasi konfigurasi upload
+		$this->upload->initialize($config);
+		//ambil data image
+		$this->upload->do_upload('foto');
+		$data_image=$this->upload->data('file_name');
+		$location=base_url().'image/';
+		$pict=$location.$data_image;
+
 		$data = array(
 			'nik_peserta' => $nama,
 			'nama_peserta' => $nik,
@@ -58,11 +73,39 @@ class Login extends CI_Controller {
 			'nama_kantor' => $nkantor,
 			'jabatan_peserta' => $pekerjaan,
 			'pendidikan_peserta' => $pendidikan,
-			'telp_peserta' => $wa
+			'telp_peserta' => $wa,
+			'foto' => $pict
 		);
-		$this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
+		$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
+		if($datainsert){
+			
+		$config = Array(  
+			'protocol' => 'smtp',  
+			'smtp_host' => 'ssl://smtp.googlemail.com',  
+			'smtp_port' => 465,  
+			'smtp_user' => 'schooljimly@gmail.com',   
+			'smtp_pass' => 'schooljimly@@@',
+			'mailtype' => 'html',   
+			'charset' => 'iso-8859-1'  
+		   );  
 
-		// echo "<script>alert('Berhasil Registrasi');</script>";
+		$this->load->library('email', $config);  
+		$this->email->set_newline("\r\n");  
+		$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');   
+		$this->email->to($email);   
+		$this->email->subject('Registration Account');   
+		$this->email->message('Ini adalah email percobaan untuk Tutorial CodeIgniter: Mengirim Email via Gmail SMTP menggunakan Email Library CodeIgniter @ recodeku.blogspot.com');
+		if (!$this->email->send()) {  
+			show_error($this->email->print_debugger());   
+		   }else{  
+			echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');javascript:history.go(-1);</script>";
+		   } 
+			
+		}else{
+			echo "<script>alert('Registrasi Gagal');javascript:history.go(-1);</script>";
+		}
+
+		
 	}
 
 	public function ambilkota(){

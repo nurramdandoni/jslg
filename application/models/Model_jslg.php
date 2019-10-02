@@ -27,6 +27,10 @@ class Model_jslg extends CI_Model
 		return $this->db->insert($table, $data); 
 	}
 
+	public function cek_biodata($nik){
+		return $this->db->query("SELECT * FROM ms_biodata_peserta WHERE nik_peserta='$nik'"); 
+	}
+
 	
 }
 ?>

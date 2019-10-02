@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 		$nkantor = $this->input->post('nama_kantor');
 		$email = $this->input->post('email');
 		$jeniskelamin = $this->input->post('jenis_kelamin');
-		$password = 123;
+		$password = $this->randomPassword();
 
 		//upload photo
 		$config['max_size']=2048;
@@ -61,8 +61,8 @@ class Login extends CI_Controller {
 		$pict=$location.$data_image;
 
 		$data = array(
-			'nik_peserta' => $nama,
-			'nama_peserta' => $nik,
+			'nik_peserta' => $nik,
+			'nama_peserta' => $nama,
 			'tempat_lahir_peserta' => $tmpl,
 			'tanggal_lahir_peserta' => $tgl,
 			'jenis_kelamin_peserta' => $alamat,
@@ -77,43 +77,56 @@ class Login extends CI_Controller {
 			'telp_peserta' => $wa,
 			'foto' => $pict
 		);
-		$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
-		if($datainsert){
 
-		$email_config = Array(
-            'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'schooljimly@gmail.com',
-            'smtp_pass' => 'schooljimly@@@',
-            'mailtype'  => 'html',
-            'starttls'  => true,
-			'newline'   => "\r\n",
-			'charset'	=> 'utf-8',
+		$data_user = array(
+			'username' => $email,
+			'password' => sha1($password),
+			'level' => 'peserta'
 		);
-		$email_message['login'] = 'Login Akun';
-		$email_message['login_url'] = '192.168.1.163/jslg/login';
-		$email_message['title'] = 'Registrasi Akun Jimly School';
-		$email_message['message'] = 'Selamat '.$nama.' anda berhasil melakukan registrasi, berikut adalah detail akun anda :';
-		$email_message['username'] = $email;
-		$email_message['password'] = $password;
-		$this->load->library('email');
-		$this->email->initialize($email_config);
-		$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
-		$this->email->to($email);
-
-		$this->email->subject('Registrasi!');
-		$this->email->message($this->load->view('email_registrasi',$email_message, TRUE));
-
-		if (!$this->email->send()) {  
-			show_error($this->email->print_debugger());   
-		   }else{  
-			echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');javascript:history.go(-1);</script>";
-		   } 
-			
+		$cek_biodata = $this->Model_jslg->cek_biodata($nik);
+		if($cek_biodata->num_rows()>0){
+			echo "<script>alert('Anda Sudah Terdaftar, Silahkan Login!');javascript:history.go(-1);</script>";
 		}else{
-			echo "<script>alert('Registrasi Gagal');javascript:history.go(-1);</script>";
+			$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
+			$datainsert_user = $this->Model_jslg->insertdatajslg($data_user,'ms_user');
+			if($datainsert && $datainsert_user){
+	
+				$email_config = Array(
+					'protocol'  => 'smtp',
+					'smtp_host' => 'ssl://smtp.googlemail.com',
+					'smtp_port' => 465,
+					'smtp_user' => 'schooljimly@gmail.com',
+					'smtp_pass' => 'schooljimly@@@',
+					'mailtype'  => 'html',
+					'starttls'  => true,
+					'newline'   => "\r\n",
+					'charset'	=> 'utf-8',
+				);
+				$email_message['login'] = 'Login Akun';
+				$email_message['login_url'] = '192.168.1.163/jslg/login';
+				$email_message['title'] = 'Registrasi Akun Jimly School';
+				$email_message['message'] = 'Selamat '.$nama.' anda berhasil melakukan registrasi, berikut adalah detail akun anda :';
+				$email_message['username'] = $email;
+				$email_message['password'] = $password;
+				$this->load->library('email');
+				$this->email->initialize($email_config);
+				$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
+				$this->email->to($email);
+	
+				$this->email->subject('Registrasi!');
+				$this->email->message($this->load->view('email_registrasi',$email_message, TRUE));
+	
+				if (!$this->email->send()) {  
+					show_error($this->email->print_debugger());   
+				}else{  
+					echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');javascript:history.go(-1);</script>";
+				} 
+				
+			}else{
+				echo "<script>alert('Registrasi Gagal');javascript:history.go(-1);</script>";
+			}
 		}
+
 
 		
 	}
@@ -159,6 +172,17 @@ class Login extends CI_Controller {
 		// 	echo "<script>alert('Username atau Password Salah!');javascript:history.go(-1);</script>";
 		// }
 
+	}
+
+	function randomPassword() {
+		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$pass = array(); //remember to declare $pass as an array
+		$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+		for ($i = 0; $i < 8; $i++) {
+			$n = rand(0, $alphaLength);
+			$pass[] = $alphabet[$n];
+		}
+		return implode($pass); //turn the array into a string
 	}
 
 	

@@ -44,6 +44,7 @@ class Login extends CI_Controller {
 		$nkantor = $this->input->post('nama_kantor');
 		$email = $this->input->post('email');
 		$jeniskelamin = $this->input->post('jenis_kelamin');
+		$password = 123;
 
 		//upload photo
 		$config['max_size']=2048;
@@ -88,15 +89,21 @@ class Login extends CI_Controller {
             'mailtype'  => 'html',
             'starttls'  => true,
 			'newline'   => "\r\n",
-			'charset'	=> 'utf-8'
-        );
+			'charset'	=> 'utf-8',
+		);
+		$email_message['login'] = 'Login Akun';
+		$email_message['login_url'] = '192.168.1.163/jslg/login';
+		$email_message['title'] = 'Registrasi Akun Jimly School';
+		$email_message['message'] = 'Selamat '.$nama.' anda berhasil melakukan registrasi, berikut adalah detail akun anda :';
+		$email_message['username'] = $email;
+		$email_message['password'] = $password;
 		$this->load->library('email');
 		$this->email->initialize($email_config);
 		$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
 		$this->email->to($email);
 
 		$this->email->subject('Registrasi!');
-		$this->email->message('Testing the email class.');
+		$this->email->message($this->load->view('email_registrasi',$email_message, TRUE));
 
 		if (!$this->email->send()) {  
 			show_error($this->email->print_debugger());   

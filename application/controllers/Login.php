@@ -78,23 +78,26 @@ class Login extends CI_Controller {
 		);
 		$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
 		if($datainsert){
-			
-		$config = Array(  
-			'protocol' => 'smtp',  
-			'smtp_host' => 'ssl://smtp.googlemail.com',  
-			'smtp_port' => 465,  
-			'smtp_user' => 'schooljimly@gmail.com',   
-			'smtp_pass' => 'schooljimly@@@',
-			'mailtype' => 'html',   
-			'charset' => 'iso-8859-1'  
-		   );  
 
-		$this->load->library('email', $config);  
-		$this->email->set_newline("\r\n");  
-		$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');   
-		$this->email->to($email);   
-		$this->email->subject('Registration Account');   
-		$this->email->message('Ini adalah email percobaan untuk Tutorial CodeIgniter: Mengirim Email via Gmail SMTP menggunakan Email Library CodeIgniter @ recodeku.blogspot.com');
+		$email_config = Array(
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'schooljimly@gmail.com',
+            'smtp_pass' => 'schooljimly@@@',
+            'mailtype'  => 'html',
+            'starttls'  => true,
+			'newline'   => "\r\n",
+			'charset'	=> 'utf-8'
+        );
+		$this->load->library('email');
+		$this->email->initialize($email_config);
+		$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
+		$this->email->to($email);
+
+		$this->email->subject('Registrasi!');
+		$this->email->message('Testing the email class.');
+
 		if (!$this->email->send()) {  
 			show_error($this->email->print_debugger());   
 		   }else{  

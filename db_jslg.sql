@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Sep 2019 pada 08.09
--- Versi Server: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Oct 03, 2019 at 12:30 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kabkot`
+-- Table structure for table `kabkot`
 --
 
 CREATE TABLE `kabkot` (
@@ -33,7 +35,7 @@ CREATE TABLE `kabkot` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kabkot`
+-- Dumping data for table `kabkot`
 --
 
 INSERT INTO `kabkot` (`id_provinsi`, `id_kabkot`, `nama_kabkot`) VALUES
@@ -538,7 +540,7 @@ INSERT INTO `kabkot` (`id_provinsi`, `id_kabkot`, `nama_kabkot`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kecamatan`
+-- Table structure for table `kecamatan`
 --
 
 CREATE TABLE `kecamatan` (
@@ -549,7 +551,7 @@ CREATE TABLE `kecamatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kecamatan`
+-- Dumping data for table `kecamatan`
 --
 
 INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecamatan`) VALUES
@@ -1095,7 +1097,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (12, 1214, 1214062, 'Mazo\r'),
 (12, 1214, 1214063, 'Umbunasi\r'),
 (12, 1214, 1214070, 'Lolomatua\r'),
-(12, 1214, 1214080, 'Lolowa''U\r'),
+(12, 1214, 1214080, 'Lolowa\'U\r'),
 (12, 1214, 1214081, 'Hilimegai\r'),
 (12, 1215, 1215010, 'Pakkat\r'),
 (12, 1215, 1215020, 'Onan Ganjang\r'),
@@ -4650,7 +4652,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (52, 5204, 5204132, 'Maronge\r'),
 (52, 5204, 5204140, 'Empang\r'),
 (52, 5204, 5204141, 'Tarano\r'),
-(52, 5205, 5205010, 'Hu''U\r'),
+(52, 5205, 5205010, 'Hu\'U\r'),
 (52, 5205, 5205011, 'Pajo\r'),
 (52, 5205, 5205020, 'Dompu\r'),
 (52, 5205, 5205030, 'Woja\r'),
@@ -4775,7 +4777,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (53, 5304, 5304081, 'Fautmolo\r'),
 (53, 5304, 5304082, 'Fatukopa\r'),
 (53, 5304, 5304090, 'Kie\r'),
-(53, 5304, 5304091, 'Kot''Olin\r'),
+(53, 5304, 5304091, 'Kot\'Olin\r'),
 (53, 5304, 5304100, 'Amanatun Selatan\r'),
 (53, 5304, 5304101, 'Boking\r'),
 (53, 5304, 5304102, 'Nunkolo\r'),
@@ -5149,7 +5151,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (61, 6112, 6112010, 'Batu Ampar\r'),
 (61, 6112, 6112020, 'Terentang\r'),
 (61, 6112, 6112030, 'Kubu\r'),
-(61, 6112, 6112040, 'Telok Pa''Kedai\r'),
+(61, 6112, 6112040, 'Telok Pa\'Kedai\r'),
 (61, 6112, 6112050, 'Sungai Kakap\r'),
 (61, 6112, 6112060, 'Rasau Jaya\r'),
 (61, 6112, 6112070, 'Sungai Raya\r'),
@@ -5648,7 +5650,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (71, 7104, 7104041, 'Beo Utara\r'),
 (71, 7104, 7104042, 'Beo Selatan\r'),
 (71, 7104, 7104050, 'Rainis\r'),
-(71, 7104, 7104051, 'Tampa Na''Mma\r'),
+(71, 7104, 7104051, 'Tampa Na\'Mma\r'),
 (71, 7104, 7104052, 'Pulutan\r'),
 (71, 7104, 7104060, 'Essang\r'),
 (71, 7104, 7104061, 'Essang Selatan\r'),
@@ -5928,7 +5930,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (73, 7303, 7303020, 'Bantaeng\r'),
 (73, 7303, 7303021, 'Eremerasa\r'),
 (73, 7303, 7303030, 'Tompobulu\r'),
-(73, 7303, 7303031, 'Pa''Jukukang\r'),
+(73, 7303, 7303031, 'Pa\'Jukukang\r'),
 (73, 7303, 7303032, 'Gantarangkeke\r'),
 (73, 7304, 7304010, 'Bangkala\r'),
 (73, 7304, 7304011, 'Bangkala Barat\r'),
@@ -6001,7 +6003,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (73, 7309, 7309051, 'Tondong Tallasa\r'),
 (73, 7309, 7309060, 'Bungoro\r'),
 (73, 7309, 7309070, 'Labakkang\r'),
-(73, 7309, 7309080, 'Ma''Rang\r'),
+(73, 7309, 7309080, 'Ma\'Rang\r'),
 (73, 7309, 7309091, 'Segeri\r'),
 (73, 7309, 7309092, 'Mandalle\r'),
 (73, 7310, 7310010, 'Tanete Riaja\r'),
@@ -6169,7 +6171,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 (73, 7326, 7326100, 'Tikala\r'),
 (73, 7326, 7326110, 'Sesean\r'),
 (73, 7326, 7326120, 'Balusu\r'),
-(73, 7326, 7326130, 'Sa''Dan\r'),
+(73, 7326, 7326130, 'Sa\'Dan\r'),
 (73, 7326, 7326140, 'Bengkelekila\r'),
 (73, 7326, 7326150, 'Sesean Suloara\r'),
 (73, 7326, 7326160, 'Kapala Pitu\r'),
@@ -7313,7 +7315,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_alumni`
+-- Table structure for table `ms_alumni`
 --
 
 CREATE TABLE `ms_alumni` (
@@ -7328,7 +7330,7 @@ CREATE TABLE `ms_alumni` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_batch`
+-- Table structure for table `ms_batch`
 --
 
 CREATE TABLE `ms_batch` (
@@ -7342,14 +7344,14 @@ CREATE TABLE `ms_batch` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_biodata_peserta`
+-- Table structure for table `ms_biodata_peserta`
 --
 
 CREATE TABLE `ms_biodata_peserta` (
   `id_biodata` int(11) NOT NULL,
   `nik_peserta` varchar(16) NOT NULL,
   `nama_peserta` varchar(255) NOT NULL,
-  `tempat lahir_peserta` varchar(60) NOT NULL,
+  `tempat_lahir_peserta` varchar(60) NOT NULL,
   `tanggal_lahir_peserta` date NOT NULL,
   `jenis_kelamin_peserta` enum('L','P') NOT NULL,
   `alamat_peserta` text NOT NULL,
@@ -7360,13 +7362,21 @@ CREATE TABLE `ms_biodata_peserta` (
   `nama_kantor` varchar(255) NOT NULL,
   `jabatan_peserta` varchar(255) NOT NULL,
   `pendidikan_peserta` varchar(255) NOT NULL,
-  `telp_peserta` varchar(20) NOT NULL
+  `telp_peserta` varchar(20) NOT NULL,
+  `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ms_biodata_peserta`
+--
+
+INSERT INTO `ms_biodata_peserta` (`id_biodata`, `nik_peserta`, `nama_peserta`, `tempat_lahir_peserta`, `tanggal_lahir_peserta`, `jenis_kelamin_peserta`, `alamat_peserta`, `id_provinsi`, `id_kabkot`, `id_kec`, `email_peserta`, `nama_kantor`, `jabatan_peserta`, `pendidikan_peserta`, `telp_peserta`, `foto`) VALUES
+(26, '3207100703920001', 'Doni Nurramdan', 'Ciamis', '2019-10-03', '', 'Jagara', 32, 3208, 3208010, 'nurramdandoni@gmail.com', 'STT Bandung', 'Programmer', 'D3', '0895330802566', 'http://localhost/jslg/image/5149@16-08-2019@8db152fe24c06b846853d4cbd5204464.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_diklat`
+-- Table structure for table `ms_diklat`
 --
 
 CREATE TABLE `ms_diklat` (
@@ -7382,7 +7392,7 @@ CREATE TABLE `ms_diklat` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_kategori_produk`
+-- Table structure for table `ms_kategori_produk`
 --
 
 CREATE TABLE `ms_kategori_produk` (
@@ -7391,7 +7401,7 @@ CREATE TABLE `ms_kategori_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ms_kategori_produk`
+-- Dumping data for table `ms_kategori_produk`
 --
 
 INSERT INTO `ms_kategori_produk` (`id_kategori_produk`, `nama_kategori_produk`) VALUES
@@ -7400,7 +7410,7 @@ INSERT INTO `ms_kategori_produk` (`id_kategori_produk`, `nama_kategori_produk`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_narasumber`
+-- Table structure for table `ms_narasumber`
 --
 
 CREATE TABLE `ms_narasumber` (
@@ -7424,7 +7434,7 @@ CREATE TABLE `ms_narasumber` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_penyelenggara`
+-- Table structure for table `ms_penyelenggara`
 --
 
 CREATE TABLE `ms_penyelenggara` (
@@ -7439,7 +7449,7 @@ CREATE TABLE `ms_penyelenggara` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_permohonan_narasumber`
+-- Table structure for table `ms_permohonan_narasumber`
 --
 
 CREATE TABLE `ms_permohonan_narasumber` (
@@ -7453,7 +7463,7 @@ CREATE TABLE `ms_permohonan_narasumber` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_peserta`
+-- Table structure for table `ms_peserta`
 --
 
 CREATE TABLE `ms_peserta` (
@@ -7467,7 +7477,7 @@ CREATE TABLE `ms_peserta` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_produk`
+-- Table structure for table `ms_produk`
 --
 
 CREATE TABLE `ms_produk` (
@@ -7479,7 +7489,7 @@ CREATE TABLE `ms_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ms_produk`
+-- Dumping data for table `ms_produk`
 --
 
 INSERT INTO `ms_produk` (`id_produk`, `id_kategori_produk`, `nama_produk`, `img_produk`, `harga_diskon`) VALUES
@@ -7488,7 +7498,7 @@ INSERT INTO `ms_produk` (`id_produk`, `id_kategori_produk`, `nama_produk`, `img_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_sertificate`
+-- Table structure for table `ms_sertificate`
 --
 
 CREATE TABLE `ms_sertificate` (
@@ -7500,7 +7510,7 @@ CREATE TABLE `ms_sertificate` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_silabus`
+-- Table structure for table `ms_silabus`
 --
 
 CREATE TABLE `ms_silabus` (
@@ -7514,7 +7524,7 @@ CREATE TABLE `ms_silabus` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_tempat`
+-- Table structure for table `ms_tempat`
 --
 
 CREATE TABLE `ms_tempat` (
@@ -7529,20 +7539,28 @@ CREATE TABLE `ms_tempat` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ms_user`
+-- Table structure for table `ms_user`
 --
 
 CREATE TABLE `ms_user` (
   `id_user` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `level` enum('super_admin','narasumber','peserta') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ms_user`
+--
+
+INSERT INTO `ms_user` (`id_user`, `username`, `password`, `level`) VALUES
+(1, 'schooljimly@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'super_admin'),
+(3, 'nurramdandoni@gmail.com', 'd005a45205145da09eea667ce7dcab77e7be1f8b', 'peserta');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `provinsi`
+-- Table structure for table `provinsi`
 --
 
 CREATE TABLE `provinsi` (
@@ -7551,7 +7569,7 @@ CREATE TABLE `provinsi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `provinsi`
+-- Dumping data for table `provinsi`
 --
 
 INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
@@ -7700,89 +7718,103 @@ ALTER TABLE `ms_user`
 --
 ALTER TABLE `ms_alumni`
   MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_batch`
 --
 ALTER TABLE `ms_batch`
   MODIFY `id_batch` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_biodata_peserta`
 --
 ALTER TABLE `ms_biodata_peserta`
-  MODIFY `id_biodata` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_biodata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 --
 -- AUTO_INCREMENT for table `ms_diklat`
 --
 ALTER TABLE `ms_diklat`
   MODIFY `id_diklat` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_kategori_produk`
 --
 ALTER TABLE `ms_kategori_produk`
   MODIFY `id_kategori_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `ms_narasumber`
 --
 ALTER TABLE `ms_narasumber`
   MODIFY `id_narasumber` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_penyelenggara`
 --
 ALTER TABLE `ms_penyelenggara`
   MODIFY `id_penyelenggara` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_permohonan_narasumber`
 --
 ALTER TABLE `ms_permohonan_narasumber`
   MODIFY `id_permohonan_ns` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_peserta`
 --
 ALTER TABLE `ms_peserta`
   MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_produk`
 --
 ALTER TABLE `ms_produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `ms_sertificate`
 --
 ALTER TABLE `ms_sertificate`
   MODIFY `id_sertificate` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_silabus`
 --
 ALTER TABLE `ms_silabus`
   MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_tempat`
 --
 ALTER TABLE `ms_tempat`
   MODIFY `id_tempat` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `ms_user`
 --
 ALTER TABLE `ms_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `ms_alumni`
+-- Constraints for table `ms_alumni`
 --
 ALTER TABLE `ms_alumni`
   ADD CONSTRAINT `ms_alumni_ibfk_1` FOREIGN KEY (`id_batch`) REFERENCES `ms_batch` (`id_batch`);
 
 --
--- Ketidakleluasaan untuk tabel `ms_batch`
+-- Constraints for table `ms_batch`
 --
 ALTER TABLE `ms_batch`
   ADD CONSTRAINT `ms_batch_ibfk_1` FOREIGN KEY (`id_diklat`) REFERENCES `ms_diklat` (`id_diklat`);
 
 --
--- Ketidakleluasaan untuk tabel `ms_diklat`
+-- Constraints for table `ms_diklat`
 --
 ALTER TABLE `ms_diklat`
   ADD CONSTRAINT `ms_diklat_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `ms_produk` (`id_produk`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -7791,13 +7823,13 @@ ALTER TABLE `ms_diklat`
   ADD CONSTRAINT `ms_diklat_ibfk_4` FOREIGN KEY (`id_silabus`) REFERENCES `ms_silabus` (`id_silabus`);
 
 --
--- Ketidakleluasaan untuk tabel `ms_permohonan_narasumber`
+-- Constraints for table `ms_permohonan_narasumber`
 --
 ALTER TABLE `ms_permohonan_narasumber`
   ADD CONSTRAINT `ms_permohonan_narasumber_ibfk_1` FOREIGN KEY (`id_narasumber`) REFERENCES `ms_narasumber` (`id_narasumber`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `ms_peserta`
+-- Constraints for table `ms_peserta`
 --
 ALTER TABLE `ms_peserta`
   ADD CONSTRAINT `ms_peserta_ibfk_1` FOREIGN KEY (`id_diklat`) REFERENCES `ms_diklat` (`id_diklat`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -7805,22 +7837,23 @@ ALTER TABLE `ms_peserta`
   ADD CONSTRAINT `ms_peserta_ibfk_3` FOREIGN KEY (`id_biodata_peserta`) REFERENCES `ms_biodata_peserta` (`id_biodata`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `ms_produk`
+-- Constraints for table `ms_produk`
 --
 ALTER TABLE `ms_produk`
   ADD CONSTRAINT `ms_produk_ibfk_1` FOREIGN KEY (`id_kategori_produk`) REFERENCES `ms_kategori_produk` (`id_kategori_produk`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `ms_sertificate`
+-- Constraints for table `ms_sertificate`
 --
 ALTER TABLE `ms_sertificate`
   ADD CONSTRAINT `ms_sertificate_ibfk_1` FOREIGN KEY (`id_peserta`) REFERENCES `ms_peserta` (`id_peserta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `ms_tempat`
+-- Constraints for table `ms_tempat`
 --
 ALTER TABLE `ms_tempat`
   ADD CONSTRAINT `ms_tempat_ibfk_1` FOREIGN KEY (`id_diklat`) REFERENCES `ms_diklat` (`id_diklat`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

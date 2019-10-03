@@ -85,7 +85,8 @@ class Login extends CI_Controller {
 		);
 		$cek_biodata = $this->Model_jslg->cek_biodata($nik);
 		if($cek_biodata->num_rows()>0){
-			echo "<script>alert('Anda Sudah Terdaftar, Silahkan Login!');javascript:history.go(-1);</script>";
+			echo "<script>alert('Anda Sudah Terdaftar, Silahkan Login!');window.location.href='".base_url('login')."';</script>";
+			
 		}else{
 			$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_biodata_peserta');
 			$datainsert_user = $this->Model_jslg->insertdatajslg($data_user,'ms_user');
@@ -119,7 +120,8 @@ class Login extends CI_Controller {
 				if (!$this->email->send()) {  
 					show_error($this->email->print_debugger());   
 				}else{  
-					echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');javascript:history.go(-1);</script>";
+					echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');</script>";
+					redirect('login');
 				} 
 				
 			}else{

@@ -38,7 +38,7 @@
         <link href="<?php echo base_url(); ?>template/assets2/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />       
         <!--end::Layout Skins -->
 
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>template/assets2/media/logos/icon.ico" />
+        <link rel="shortcut icon" type="image/ico" href="<?php echo base_url(); ?>template/assets2/media/logos/A7eUV8OZt8H93930i90E.png" />
     </head>
     <!-- end::Head -->
 
@@ -57,7 +57,7 @@
             <div class="kt-header-mobile__toolbar">
                             <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
                 
-                            <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
+                            <!-- <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button> -->
                         
                 <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
             </div>

@@ -163,6 +163,17 @@ class Login extends CI_Controller {
 	public function process_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
+		$user = $this->Model_jslg->cek_user($username,sha1($password));
+		if($user->num_rows()>0){
+			echo "<script>alert('User ditemukan!');</script>";
+			foreach($user->result() as $data_user){
+				$level = $data_user->level;
+			}
+
+			echo "Anda Login Sebagai : ".$level;
+		}else{
+			echo "<script>alert('User tidak ditemukan!');</script>";
+		}
 
 		// if($username=='admin' && $password=='jslg2019'){
 		// 	redirect('admin');

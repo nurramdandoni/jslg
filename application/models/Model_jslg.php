@@ -31,6 +31,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_biodata_peserta WHERE nik_peserta='$nik'"); 
 	}
 
+	public function cek_user($username,$password){
+		return $this->db->query("SELECT * FROM ms_user WHERE username='$username' AND password='$password'"); 
+	}
+
 	
 }
 ?>

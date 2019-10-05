@@ -34,6 +34,9 @@ class Model_jslg extends CI_Model
 	public function cek_user($username,$password){
 		return $this->db->query("SELECT * FROM ms_user WHERE username='$username' AND password='$password'"); 
 	}
+	public function cek_user_avail($username){
+		return $this->db->query("SELECT * FROM ms_user WHERE username='$username'"); 
+	}
 
 	
 }

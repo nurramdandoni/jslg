@@ -80,6 +80,7 @@ class Login extends CI_Controller {
 
 		$data_user = array(
 			'username' => $email,
+			'nik' => $nik,
 			'password' => sha1($password),
 			'level' => 'peserta'
 		);
@@ -120,8 +121,7 @@ class Login extends CI_Controller {
 				if (!$this->email->send()) {  
 					show_error($this->email->print_debugger());   
 				}else{  
-					echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');</script>";
-					redirect('login');
+					echo "<script>alert('Registrasi Berhasil, silahkan cek Email!');window.location.href='".base_url()."login'</script>";
 				} 
 				
 			}else{
@@ -163,15 +163,52 @@ class Login extends CI_Controller {
 	public function process_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
+		$user_avail = $this->Model_jslg->cek_user_avail($username);
 		$user = $this->Model_jslg->cek_user($username,sha1($password));
+
 		foreach($user->result() as $data_user){
 			$level = $data_user->level;
+			$username_db = $data_user->username;
+			$nik_db = $data_user->nik;
 		}
-		if($user->num_rows()>0){
-			echo "<script>alert('Anda Berhasil Login!');</script>";
-			// echo "Anda Login Sebagai : ".$level;
+
+		if($user_avail->num_rows()>0){
+			if($user->num_rows()>0){
+				$name = '';
+				$status_log = '';
+				echo "<script>alert('Anda Berhasil Login!');</script>";
+
+				if($level=='admin'){
+					// login sebagai admin
+					
+				}elseif($level=='narasumber'){
+					// login sebagai narasumber
+				}elseif($level=='peserta'){
+					// login sebagai peserta
+					$ms_biodata_peserta = $this->Model_jslg->cek_biodata($nik_db);
+					foreach($ms_biodata_peserta->result() as $bio){
+						$name = $bio->nama_peserta;
+					}
+				}else{
+					// login sebagai penyelenggara
+				}
+				
+				$this->session->set_userdata('u_level',$level);
+				$this->session->set_userdata('u_username',$username_db);
+				$this->session->set_userdata('u_name',$name);
+				$this->session->set_userdata('u_status_log','ok');
+
+				echo "u_level : ".$this->session->userdata('u_level')."<br>";
+				echo "u_username : ".$this->session->userdata('u_username')."<br>";
+				echo "u_name : ".$this->session->userdata('u_name')."<br>";
+				echo "u_status_log : ".$this->session->userdata('u_status_log')."<br>";
+
+
+			}else{
+				echo "<script>alert('Username/ Password Salah, silahkan login kembali!');javascript:history.go(-1);</script>";
+			}
 		}else{
-			echo "<script>alert('User tidak ditemukan, silahkan login kembali!');javascript:history.go(-1);</script>";
+			echo "<script>alert('User tidak ditemukan, silahkan lakukan Registrasi!');javascript:history.go(-1);</script>";
 		}
 
 		// if($username=='admin' && $password=='jslg2019'){
@@ -184,6 +221,13 @@ class Login extends CI_Controller {
 		// 	echo "<script>alert('Username atau Password Salah!');javascript:history.go(-1);</script>";
 		// }
 
+	}
+
+	public function logout(){
+
+		$this->session->sess_destroy();
+
+		redirect(base_url().'Login');
 	}
 
 	function randomPassword() {

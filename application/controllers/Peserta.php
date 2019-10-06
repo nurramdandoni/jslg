@@ -20,54 +20,63 @@ class Peserta extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['menu'] = 'Selamat Datang, Desi';
+		$data['nama_user'] = $this->session->userdata('u_name');
+		$data['menu'] = 'Selamat Datang, '.$data['nama_user'];
 		$data['submenu'] = '';
 		$this->load->view('peserta/dashboard',$data);
 	}
 	public function profile()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Profile';
 		$this->load->view('peserta/myaccount@profile',$data);
 	}
 	public function change_password()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Change Password';
 		$this->load->view('peserta/myaccount@change_password',$data);
 	}
 	public function confirm_payment()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Confirm Payment';
 		$this->load->view('peserta/myaccount@confirm_payment',$data);
 	}
 	public function barcode_base()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Barcode Base';
 		$this->load->view('peserta/myaccount@barcode_base',$data);
 	}
 	public function all_workshop()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'Workshop & Pendidikan';
 		$data['submenu'] = 'All Workshop & Pendidikan';
 		$this->load->view('peserta/workshop@all_workshop',$data);
 	}
 	public function detail_workshop()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'Workshop & Pendidikan';
 		$data['submenu'] = 'Detail';
 		$this->load->view('peserta/workshop@detail',$data);
 	}
 	public function mulai_essay()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'Essay';
 		$data['submenu'] = 'Soal';
 		$this->load->view('peserta/essay@soal',$data);
 	}
 	public function hasil_essay()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'Essay';
 		$data['submenu'] = 'Hasil';
 		$this->load->view('peserta/essay@hasil',$data);

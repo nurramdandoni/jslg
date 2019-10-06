@@ -20,36 +20,42 @@ class Narasumber extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['menu'] = 'Selamat Datang, Fany';
+		$data['nama_user'] = $this->session->userdata('u_name');
+		$data['menu'] = 'Selamat Datang, '.$data['nama_user'];
 		$data['submenu'] = '';
 		$this->load->view('narasumber/dashboard',$data);
 	}
 	public function profile()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Profile';
 		$this->load->view('narasumber/myaccount@profile',$data);
 	}
 	public function change_password()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'My Account';
 		$data['submenu'] = 'Change Password';
 		$this->load->view('narasumber/myaccount@change_password',$data);
 	}
 	public function notifikasi_workshop()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'Pengajaran';
 		$data['submenu'] = 'Notifikasi Workshop';
 		$this->load->view('narasumber/pengajaran@notifikasi_workshop',$data);
 	}
 	public function all_silabus_workshop()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'pengajaran';
 		$data['submenu'] = 'All Pengajaran';
 		$this->load->view('narasumber/pengajaran@all_silabus_workshop',$data);
 	}
 	public function detail_silabus_workshop()
 	{
+		$data['nama_user'] = $this->session->userdata('u_name');
 		$data['menu'] = 'pengajaran';
 		$data['submenu'] = 'Detail Silabus Workshop';
 		$this->load->view('narasumber/pengajaran@detail_silabus_workshop',$data);

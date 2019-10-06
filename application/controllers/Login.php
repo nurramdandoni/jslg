@@ -105,7 +105,7 @@ class Login extends CI_Controller {
 					'charset'	=> 'utf-8',
 				);
 				$email_message['login'] = 'Login Akun';
-				$email_message['login_url'] = '192.168.1.163/jslg/login';
+				$email_message['login_url'] = '192.168.43.46/jslg/login';
 				$email_message['title'] = 'Registrasi Akun Jimly School';
 				$email_message['message'] = 'Selamat '.$nama.' anda berhasil melakukan registrasi, berikut adalah detail akun anda :';
 				$email_message['username'] = $email;
@@ -178,19 +178,21 @@ class Login extends CI_Controller {
 				$status_log = '';
 				echo "<script>alert('Anda Berhasil Login!');</script>";
 
-				if($level=='admin'){
+				if($level=='super_admin'){
 					// login sebagai admin
-					
+					$name = 'Super Admin';
 				}elseif($level=='narasumber'){
 					// login sebagai narasumber
-				}elseif($level=='peserta'){
+					$ms_biodata_narasumber = $this->Model_jslg->cek_biodata_narsum($nik_db);
+					foreach($ms_biodata_narasumber->result() as $bio_nara){
+						$name = $bio_nara->nama_narasumber;
+					}
+				}else{
 					// login sebagai peserta
 					$ms_biodata_peserta = $this->Model_jslg->cek_biodata($nik_db);
 					foreach($ms_biodata_peserta->result() as $bio){
 						$name = $bio->nama_peserta;
 					}
-				}else{
-					// login sebagai penyelenggara
 				}
 				
 				$this->session->set_userdata('u_level',$level);
@@ -198,10 +200,13 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('u_name',$name);
 				$this->session->set_userdata('u_status_log','ok');
 
-				echo "u_level : ".$this->session->userdata('u_level')."<br>";
-				echo "u_username : ".$this->session->userdata('u_username')."<br>";
-				echo "u_name : ".$this->session->userdata('u_name')."<br>";
-				echo "u_status_log : ".$this->session->userdata('u_status_log')."<br>";
+				if($level=='super_admin'){
+					redirect('admin');
+				}elseif($level=='narasumber'){
+					redirect('narasumber');
+				}else{
+					redirect('peserta');
+				}
 
 
 			}else{
@@ -228,6 +233,67 @@ class Login extends CI_Controller {
 		$this->session->sess_destroy();
 
 		redirect(base_url().'Login');
+	}
+	public function forgot_password(){
+
+		$email_forgot = $this->input->post('email_forgot');
+		$new_pass = $this->randomPassword();
+
+		$user_avail = $this->Model_jslg->cek_user_avail($email_forgot);
+		if($user_avail->num_rows()>0){
+			
+			$update_pass = $this->Model_jslg->update_pass($email_forgot,sha1($new_pass));
+			if($update_pass){
+
+				foreach($user_avail->result() as $data_user){
+					$level = $data_user->level;
+					$username_db = $data_user->username;
+					$nik_db = $data_user->nik;
+				}
+				$ms_biodata_peserta = $this->Model_jslg->cek_biodata($nik_db);
+					foreach($ms_biodata_peserta->result() as $bio){
+						$name = $bio->nama_peserta;
+					}
+				$email_config = Array(
+					'protocol'  => 'smtp',
+					'smtp_host' => 'ssl://smtp.googlemail.com',
+					'smtp_port' => 465,
+					'smtp_user' => 'schooljimly@gmail.com',
+					'smtp_pass' => 'schooljimly@@@',
+					'mailtype'  => 'html',
+					'starttls'  => true,
+					'newline'   => "\r\n",
+					'charset'	=> 'utf-8',
+				);
+				$email_message['login'] = 'Login Akun';
+				$email_message['login_url'] = '192.168.43.46/jslg/login';
+				$email_message['title'] = 'Perubahan Password Akun Jimly School';
+				$email_message['message'] = 'Selamat '.$name.' anda berhasil melakukan request perubahan password, berikut adalah detail password baru akun anda :';
+				$email_message['username'] = $email_forgot;
+				$email_message['password'] = $new_pass;
+				$this->load->library('email');
+				$this->email->initialize($email_config);
+				$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
+				$this->email->to($email_forgot);
+	
+				$this->email->subject('Request Password!');
+				$this->email->message($this->load->view('email_registrasi',$email_message, TRUE));
+
+				if (!$this->email->send()) {  
+					show_error($this->email->print_debugger());   
+				}else{  
+					echo "<script>alert('Perubahan Password telah dikirim ke ".$email_forgot." Silahkan cek email!');window.location.href='".base_url()."login'</script>";
+				} 
+				
+			}else{
+				echo "<script>alert('Perubahan password Gagal');window.location.href='".base_url()."login'</script>";
+			}
+			
+		}else{
+			echo "<script>alert('Email Tidak Terdaftar, silahkan lakukan Registrasi!');window.location.href='".base_url()."login'</script>";
+
+		}
+		
 	}
 
 	function randomPassword() {

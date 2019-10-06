@@ -20,171 +20,311 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['menu'] = 'Selamat Datang, Fauzi';
-		$data['submenu'] = '';
-		$this->load->view('super_admin/dashboard',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Selamat Datang, '.$data['nama_user'];
+			$data['submenu'] = '';
+			$this->load->view('super_admin/dashboard',$data);
+		}else{
+			redirect('login');
+		}
 	}
 
 	public function create_produk()
-	{
-		$data['menu'] = 'Management Produk ( Diklat )';
-		$data['submenu'] = 'Create Produk';
-		$this->load->view('super_admin/manajemen_produk@create_produk',$data);
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Management Produk ( Diklat )';
+			$data['submenu'] = 'Create Produk';
+			$this->load->view('super_admin/manajemen_produk@create_produk',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function create_diklat()
-	{
-		$data['menu'] = 'Management Produk ( Diklat )';
-		$data['submenu'] = 'Create Diklat';
-		$this->load->view('super_admin/manajemen_produk@create_diklat',$data);
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Management Produk ( Diklat )';
+			$data['submenu'] = 'Create Diklat';
+			$this->load->view('super_admin/manajemen_produk@create_diklat',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function all_diklat()
-	{
-		$data['menu'] = 'Management Produk ( Diklat )';
-		$data['submenu'] = 'All Diklat';
-		$this->load->view('super_admin/manajemen_produk@all_diklat',$data);
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Management Produk ( Diklat )';
+			$data['submenu'] = 'All Diklat';
+			$this->load->view('super_admin/manajemen_produk@all_diklat',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function blast_mailchimp()
-	{
-		$data['menu'] = 'Template';
-		$data['submenu'] = 'Blast Mailchimp';
-		$this->load->view('super_admin/template@blast_mailchimp',$data);
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Template';
+			$data['submenu'] = 'Blast Mailchimp';
+			$this->load->view('super_admin/template@blast_mailchimp',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function create_sertificate()
-	{
-		$data['menu'] = 'Template';
-		$data['submenu'] = 'Create Sertificate';
-		$this->load->view('super_admin/template@create_sertificate',$data);
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Template';
+			$data['submenu'] = 'Create Sertificate';
+			$this->load->view('super_admin/template@create_sertificate',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function printing_monitor()
-	{
-		$data['menu'] = 'Template';
-		$data['submenu'] = 'Printing Monitor';
-		$this->load->view('super_admin/template@printing_monitor',$data);
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Template';
+			$data['submenu'] = 'Printing Monitor';
+			$this->load->view('super_admin/template@printing_monitor',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function create_date()
 	{
-		$data['menu'] = 'Tempat & Jadwal';
-		$data['submenu'] = 'Create date';
-		$this->load->view('super_admin/tempat@create_date',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Tempat & Jadwal';
+			$data['submenu'] = 'Create date';
+			$this->load->view('super_admin/tempat@create_date',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function all_list_jadwal()
 	{
-		$data['menu'] = 'Tempat & Jadwal';
-		$data['submenu'] = 'All List';
-		$this->load->view('super_admin/tempat@all_list',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Tempat & Jadwal';
+			$data['submenu'] = 'All List';
+			$this->load->view('super_admin/tempat@all_list',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function create_silabus()
 	{
-		$data['menu'] = 'Silabus';
-		$data['submenu'] = 'Create Silabus';
-		$this->load->view('super_admin/silabus@create_silabus',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Silabus';
+			$data['submenu'] = 'Create Silabus';
+			$this->load->view('super_admin/silabus@create_silabus',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function all_list_silabus()
 	{
-		$data['menu'] = 'Silabus';
-		$data['submenu'] = 'All List';
-		$this->load->view('super_admin/silabus@all_list',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Silabus';
+			$data['submenu'] = 'All List';
+			$this->load->view('super_admin/silabus@all_list',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function create_batch()
 	{
-		$data['menu'] = 'Alumni';
-		$data['submenu'] = 'Create Batch';
-		$this->load->view('super_admin/alumni@create_batch',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Alumni';
+			$data['submenu'] = 'Create Batch';
+			$this->load->view('super_admin/alumni@create_batch',$data);
+		}else{
+			redirect('login');
+		}
 	}	
 	public function all_list_alumni()
 	{
-		$data['menu'] = 'Alumni';
-		$data['submenu'] = 'All Alumni';
-		$this->load->view('super_admin/alumni@all_list',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Alumni';
+			$data['submenu'] = 'All Alumni';
+			$this->load->view('super_admin/alumni@all_list',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function upload_dokumentasi()
 	{
-		$data['menu'] = 'Alumni';
-		$data['submenu'] = 'Dokumentasi';
-		$this->load->view('super_admin/alumni@upload_dokumentasi',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Alumni';
+			$data['submenu'] = 'Dokumentasi';
+			$this->load->view('super_admin/alumni@upload_dokumentasi',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function in_house_training()
 	{
-		$data['menu'] = 'Alumni';
-		$data['submenu'] = 'In House Training';
-		$this->load->view('super_admin/alumni@in_house_training',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Alumni';
+			$data['submenu'] = 'In House Training';
+			$this->load->view('super_admin/alumni@in_house_training',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function all_list_narasumber()
 	{
-		$data['menu'] = 'Narasumber';
-		$data['submenu'] = 'All Narasumber';
-		$this->load->view('super_admin/narasumber@all_list',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Narasumber';
+			$data['submenu'] = 'All Narasumber';
+			$this->load->view('super_admin/narasumber@all_list',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function permohonan_narasumber()
 	{
-		$data['menu'] = 'Narasumber';
-		$data['submenu'] = 'Permohonan Narasumber';
-		$this->load->view('super_admin/narasumber@permohonan_narasumber',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Narasumber';
+			$data['submenu'] = 'Permohonan Narasumber';
+			$this->load->view('super_admin/narasumber@permohonan_narasumber',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function detail_narasumber()
 	{
-		$data['menu'] = 'Narasumber';
-		$data['submenu'] = 'Detail Narasumber';
-		$this->load->view('super_admin/narasumber@detail_narasumber',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Narasumber';
+			$data['submenu'] = 'Detail Narasumber';
+			$this->load->view('super_admin/narasumber@detail_narasumber',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function calon_peserta()
 	{
-		$data['menu'] = 'Peserta';
-		$data['submenu'] = 'Calon Peserta';
-		$this->load->view('super_admin/peserta@calon_peserta',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Peserta';
+			$data['submenu'] = 'Calon Peserta';
+			$this->load->view('super_admin/peserta@calon_peserta',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function peserta()
 	{
-		$data['menu'] = 'Peserta';
-		$data['submenu'] = 'Peserta';
-		$this->load->view('super_admin/peserta@peserta',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Peserta';
+			$data['submenu'] = 'Peserta';
+			$this->load->view('super_admin/peserta@peserta',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function detail_peserta()
 	{
-		$data['menu'] = 'Peserta';
-		$data['submenu'] = 'Detail Peserta';
-		$this->load->view('super_admin/peserta@detail_peserta',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Peserta';
+			$data['submenu'] = 'Detail Peserta';
+			$this->load->view('super_admin/peserta@detail_peserta',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function instansi()
 	{
-		$data['menu'] = 'Peserta';
-		$data['submenu'] = 'Instansi';
-		$this->load->view('super_admin/peserta@instansi',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Peserta';
+			$data['submenu'] = 'Instansi';
+			$this->load->view('super_admin/peserta@instansi',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function detail_instansi()
 	{
-		$data['menu'] = 'Peserta';
-		$data['submenu'] = 'Detail Instansi';
-		$this->load->view('super_admin/peserta@detail_instansi',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Peserta';
+			$data['submenu'] = 'Detail Instansi';
+			$this->load->view('super_admin/peserta@detail_instansi',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function report_peserta()
 	{
-		$data['menu'] = 'Report';
-		$data['submenu'] = 'Report Peserta';
-		$this->load->view('super_admin/report@peserta',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Report';
+			$data['submenu'] = 'Report Peserta';
+			$this->load->view('super_admin/report@peserta',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function report_alumni()
 	{
-		$data['menu'] = 'Report';
-		$data['submenu'] = 'Report Alumni';
-		$this->load->view('super_admin/report@alumni',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Report';
+			$data['submenu'] = 'Report Alumni';
+			$this->load->view('super_admin/report@alumni',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function report_vidcart()
 	{
-		$data['menu'] = 'Report';
-		$data['submenu'] = 'Ekstens Vidcart';
-		$this->load->view('super_admin/report@vidcart',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Report';
+			$data['submenu'] = 'Ekstens Vidcart';
+			$this->load->view('super_admin/report@vidcart',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function report_penilaian_narasumber()
 	{
-		$data['menu'] = 'Report';
-		$data['submenu'] = 'Penilaian Narasumber';
-		$this->load->view('super_admin/report@penilaian_narasumber',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Report';
+			$data['submenu'] = 'Penilaian Narasumber';
+			$this->load->view('super_admin/report@penilaian_narasumber',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function report_pengeluaran()
 	{
-		$data['menu'] = 'Report';
-		$data['submenu'] = 'Pengeluaran';
-		$this->load->view('super_admin/report@pengeluaran',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Report';
+			$data['submenu'] = 'Pengeluaran';
+			$this->load->view('super_admin/report@pengeluaran',$data);
+		}else{
+			redirect('login');
+		}
 	}
 }

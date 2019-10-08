@@ -46,6 +46,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("UPDATE ms_user SET password='$new_pass' WHERE username='$username'"); 
 	}
 
+	public function select_kategori(){
+		return $this->db->query("SELECT * FROM ms_kategori_produk"); 
+	}
+
 	
 }
 ?>

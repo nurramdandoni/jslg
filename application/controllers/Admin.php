@@ -30,6 +30,7 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Management Produk ( Diklat )';
 			$data['submenu'] = 'Create Produk';
+			$data['kategori_produk'] = $this->Model_jslg->select_kategori();
 			$this->load->view('super_admin/manajemen_produk@create_produk',$data);
 		}else{
 			redirect('login');
@@ -39,33 +40,51 @@ class Admin extends CI_Controller {
 	public function save_create_produk()
 	{	
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
 			$nama_diklat = $this->input->post('NamaDiklat');
 			$kategori = $this->input->post('KategoriDiklat');
 			$diskon = $this->input->post('HargaDiskon');
+			// if ($kategori == "0") {
+			// 	echo "bener";
+			// }else{
+			// 	echo "salah";
+			// }
+			// die;
+			if($kategori=="0"){
+				
+				echo "<script>alert('Kategori Belum Dipilih!');javascript:history.go(-1);</script>";
+				
+			}else{
+				//upload photo
+				$config['max_size']=2048;
+				$config['allowed_types']="png|jpg|jpeg";
+				$config['remove_spaces']=TRUE;
+				$config['overwrite']=TRUE;
+				$config['upload_path']=FCPATH.'image';
+				$config['encrypt_name']=TRUE;
+				// inisialisasi konfigurasi upload
+				$this->upload->initialize($config);
+				//ambil data image
+				$this->upload->do_upload('img');
+				$data_image=$this->upload->data('file_name');
+				$location=base_url().'image/';
+				$pict=$location.$data_image;
 
-			//upload photo
-			$config['max_size']=2048;
-			$config['allowed_types']="png|jpg|jpeg";
-			$config['remove_spaces']=TRUE;
-			$config['overwrite']=TRUE;
-			$config['upload_path']=FCPATH.'image';
-			$config['encrypt_name']=TRUE;
-			// inisialisasi konfigurasi upload
-			$this->upload->initialize($config);
-			//ambil data image
-			$this->upload->do_upload('img');
-			$data_image=$this->upload->data('file_name');
-			$location=base_url().'image/';
-			$pict=$location.$data_image;
+				$data = array(
+					'id_kategori_produk' => $kategori,
+					'nama_produk' => $nama_diklat,
+					'img_produk' => $pict,
+					'harga_diskon' => $diskon
+				);
 
-			$data = array(
-				'id_kategori_produk' => $kategori,
-				'nama_produk' => $nama_diklat,
-				'img_produk' => $pict,
-				'harga_diskon' => $diskon
-			);
+				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_produk');
 
-			$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_produk');
+				if($datainsert){
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_produk')."';</script>";
+				}else{
+					echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_produk')."';</script>";
+				}
+			}
 
 		}else{
 			redirect('login');

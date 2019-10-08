@@ -17,12 +17,12 @@ $this->load->view('template_layout/sidebar_menu');
 	<form action="<?php echo base_url()?>admin/save_create_produk" method="post" enctype="multipart/form-data">
 		<div class="kt-portlet__body">
 			<div class="form-group form-group-last">
-				<div class="alert alert-secondary" role="alert">
+				<!-- <div class="alert alert-secondary" role="alert">
 					<div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
 						<div class="alert-text">Info sukses!
 						</div>
 					</div>
-				</div>
+				</div> -->
 			<div class="form-group">
 			<input type="text" class="form-control" name="NamaDiklat"  placeholder="Nama Diklat" required="">
 			<span class="form-text text-muted"></span>
@@ -30,11 +30,9 @@ $this->load->view('template_layout/sidebar_menu');
 			<div class="form-group">
 				<select class="form-control" id="kategori_diklat" name="KategoriDiklat">
 					<option value="0">-Pilih Kategori Diklat-</option>
-					<option value="1">Legal Drafting</option>
-					<option value="2">Auditor Hukum</option>
-					<option value="3">Legislative Drafting</option>
-					<option value="4">Pengacara Pajak</option>
-					<option value="5">Legal Tech</option>
+					<?php foreach($kategori_produk->result() as $kategori){ ?>
+						<option value="<?php echo $kategori->id_kategori_produk; ?>"><?php echo $kategori->nama_kategori_produk; ?></option>
+					<?php } ?>
 				</select>
 			</div>
 			<div class="form-group">

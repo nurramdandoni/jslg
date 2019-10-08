@@ -3,21 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	function __construct(){
+		parent::__construct();
+		$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->library('session');
+		$this->load->library('upload');
+		$this->load->model('Model_jslg');
+
+	}
 	public function index()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
@@ -37,6 +31,42 @@ class Admin extends CI_Controller {
 			$data['menu'] = 'Management Produk ( Diklat )';
 			$data['submenu'] = 'Create Produk';
 			$this->load->view('super_admin/manajemen_produk@create_produk',$data);
+		}else{
+			redirect('login');
+		}
+	}	
+
+	public function save_create_produk()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$nama_diklat = $this->input->post('NamaDiklat');
+			$kategori = $this->input->post('KategoriDiklat');
+			$diskon = $this->input->post('HargaDiskon');
+
+			//upload photo
+			$config['max_size']=2048;
+			$config['allowed_types']="png|jpg|jpeg";
+			$config['remove_spaces']=TRUE;
+			$config['overwrite']=TRUE;
+			$config['upload_path']=FCPATH.'image';
+			$config['encrypt_name']=TRUE;
+			// inisialisasi konfigurasi upload
+			$this->upload->initialize($config);
+			//ambil data image
+			$this->upload->do_upload('img');
+			$data_image=$this->upload->data('file_name');
+			$location=base_url().'image/';
+			$pict=$location.$data_image;
+
+			$data = array(
+				'id_kategori_produk' => $kategori,
+				'nama_produk' => $nama_diklat,
+				'img_produk' => $pict,
+				'harga_diskon' => $diskon
+			);
+
+			$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_produk');
+
 		}else{
 			redirect('login');
 		}

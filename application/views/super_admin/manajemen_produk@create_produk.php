@@ -14,7 +14,7 @@ $this->load->view('template_layout/sidebar_menu');
 		</div>
 	</div>
 	<!--begin::Form-->
-	<form class="kt-form">
+	<form action="<?php echo base_url()?>admin/save_create_produk" method="post" enctype="multipart/form-data">
 		<div class="kt-portlet__body">
 			<div class="form-group form-group-last">
 				<div class="alert alert-secondary" role="alert">
@@ -24,11 +24,11 @@ $this->load->view('template_layout/sidebar_menu');
 					</div>
 				</div>
 			<div class="form-group">
-			<input type="text" class="form-control"  placeholder="Nama Diklat" required="">
+			<input type="text" class="form-control" name="NamaDiklat"  placeholder="Nama Diklat" required="">
 			<span class="form-text text-muted"></span>
 			</div>
 			<div class="form-group">
-				<select class="form-control" id="kategori_diklat">
+				<select class="form-control" id="kategori_diklat" name="KategoriDiklat">
 					<option value="0">-Pilih Kategori Diklat-</option>
 					<option value="1">Legal Drafting</option>
 					<option value="2">Auditor Hukum</option>
@@ -39,12 +39,17 @@ $this->load->view('template_layout/sidebar_menu');
 			</div>
 			<div class="form-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="customFile">
+					<input type="file" class="custom-file-input" name="img" id="img-load" onchange="previewimg();">
 					<label class="custom-file-label" for="customFile">Upload Image</label>
 				</div>
 			</div>
+			<label>Max. 2Mb png | jpg | jpeg</label>
+			<div class="card" style="min-height: 70px; margin-bottom:20px;padding:10px; min-width: 70px;">
+				<img src="" alt="" id="img-prev" class="img-thumbnail">
+			</div>
+			
 			<div class="form-group">
-				<input type="text" class="form-control"  placeholder="Harga Diskon" required="">
+				<input type="text" class="form-control" name="HargaDiskon"  placeholder="Harga Diskon" required="">
 				<span class="form-text text-muted"></span>
 			</div>
 			<div class="kt-portlet__foot">
@@ -55,6 +60,18 @@ $this->load->view('template_layout/sidebar_menu');
 	</form>
 	<!--end::Form-->			
 </div>
+
+<script>
+	function previewimg(){
+			document.getElementById('img-prev').style.display = "block";
+			var oFread = new FileReader();
+			oFread.readAsDataURL(document.getElementById('img-load').files[0]);
+
+			oFread.onload = function(ofevent){
+				document.getElementById('img-prev').src = ofevent.target.result;
+			}
+		}
+</script>
 
 <?php
 

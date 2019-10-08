@@ -35,7 +35,7 @@ class Model_jslg extends CI_Model
 	}
 
 	public function cek_user($username,$password){
-		return $this->db->query("SELECT * FROM ms_user a join ms_biodata_peserta b on a.nik=b.nik_peserta WHERE a.username='$username' AND a.password='$password'"); 
+		return $this->db->query("SELECT * FROM ms_user a left join ms_biodata_peserta b on a.nik=b.nik_peserta WHERE a.username='$username' AND a.password='$password'"); 
 	}
 
 	public function cek_user_avail($username){

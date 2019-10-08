@@ -80,6 +80,7 @@ class Login extends CI_Controller {
 
 		$data_user = array(
 			'username' => $email,
+			'nik' => $nik,
 			'password' => sha1($password),
 			'level' => 'peserta'
 		);
@@ -169,7 +170,10 @@ class Login extends CI_Controller {
 		}
 		if($user->num_rows()>0){
 			echo "<script>alert('Anda Berhasil Login!');</script>";
+			$this->session->set_userdata('username',$username);
+			$this->session->set_userdata('level',$level);
 			// echo "Anda Login Sebagai : ".$level;
+			echo $this->session->userdata('user_login');
 		}else{
 			echo "<script>alert('User tidak ditemukan, silahkan login kembali!');javascript:history.go(-1);</script>";
 		}

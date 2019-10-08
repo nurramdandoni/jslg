@@ -30,9 +30,20 @@ class Model_jslg extends CI_Model
 	public function cek_biodata($nik){
 		return $this->db->query("SELECT * FROM ms_biodata_peserta WHERE nik_peserta='$nik'"); 
 	}
+	public function cek_biodata_narsum($nik){
+		return $this->db->query("SELECT * FROM ms_narasumber WHERE nik_narasumber='$nik'"); 
+	}
 
 	public function cek_user($username,$password){
 		return $this->db->query("SELECT * FROM ms_user a join ms_biodata_peserta b on a.nik=b.nik_peserta WHERE a.username='$username' AND a.password='$password'"); 
+	}
+
+	public function cek_user_avail($username){
+		return $this->db->query("SELECT * FROM ms_user WHERE username='$username'"); 
+	}
+
+	public function update_pass($username,$new_pass){
+		return $this->db->query("UPDATE ms_user SET password='$new_pass' WHERE username='$username'"); 
 	}
 
 	

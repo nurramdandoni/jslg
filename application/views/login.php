@@ -126,12 +126,13 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="kt-login__desc">Enter your email to reset your password:</div>
 					</div>
 					<div class="kt-login__form">
-						<form class="kt-form" action="">
+						<form class="kt-form" action="<?php echo base_url() ?>login/forgot_password" method="post">
 							<div class="form-group">
-								<input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+								<input class="form-control" type="text" placeholder="Email" name="email_forgot" id="kt_email" autocomplete="off" type="text">
 							</div>
 							<div class="kt-login__actions">
-								<button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Request</button>
+								<!-- <input id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate" type="submit" value="Request" name=""> -->
+								<input type="submit" name="" class="btn btn-brand btn-pill btn-elevate" value="Request">
 								<button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">Cancel</button>
 							</div>
 						</form>

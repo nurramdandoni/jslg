@@ -20,66 +20,102 @@ class Peserta extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'Selamat Datang, '.$data['nama_user'];
-		$data['submenu'] = '';
-		$this->load->view('peserta/dashboard',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Selamat Datang, '.$data['nama_user'];
+			$data['submenu'] = '';
+			$this->load->view('peserta/dashboard',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function profile()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'My Account';
-		$data['submenu'] = 'Profile';
-		$this->load->view('peserta/myaccount@profile',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'My Account';
+			$data['submenu'] = 'Profile';
+			$this->load->view('peserta/myaccount@profile',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function change_password()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'My Account';
-		$data['submenu'] = 'Change Password';
-		$this->load->view('peserta/myaccount@change_password',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'My Account';
+			$data['submenu'] = 'Change Password';
+			$this->load->view('peserta/myaccount@change_password',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function confirm_payment()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'My Account';
-		$data['submenu'] = 'Confirm Payment';
-		$this->load->view('peserta/myaccount@confirm_payment',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'My Account';
+			$data['submenu'] = 'Confirm Payment';
+			$this->load->view('peserta/myaccount@confirm_payment',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function barcode_base()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'My Account';
-		$data['submenu'] = 'Barcode Base';
-		$this->load->view('peserta/myaccount@barcode_base',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'My Account';
+			$data['submenu'] = 'Barcode Base';
+			$this->load->view('peserta/myaccount@barcode_base',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function all_workshop()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'Workshop & Pendidikan';
-		$data['submenu'] = 'All Workshop & Pendidikan';
-		$this->load->view('peserta/workshop@all_workshop',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Workshop & Pendidikan';
+			$data['submenu'] = 'All Workshop & Pendidikan';
+			$this->load->view('peserta/workshop@all_workshop',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function detail_workshop()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'Workshop & Pendidikan';
-		$data['submenu'] = 'Detail';
-		$this->load->view('peserta/workshop@detail',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Workshop & Pendidikan';
+			$data['submenu'] = 'Detail';
+			$this->load->view('peserta/workshop@detail',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function mulai_essay()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'Essay';
-		$data['submenu'] = 'Soal';
-		$this->load->view('peserta/essay@soal',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Essay';
+			$data['submenu'] = 'Soal';
+			$this->load->view('peserta/essay@soal',$data);
+		}else{
+			redirect('login');
+		}
 	}
 	public function hasil_essay()
 	{
-		$data['nama_user'] = $this->session->userdata('u_name');
-		$data['menu'] = 'Essay';
-		$data['submenu'] = 'Hasil';
-		$this->load->view('peserta/essay@hasil',$data);
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='peserta'){
+			$data['nama_user'] = $this->session->userdata('u_name');
+			$data['menu'] = 'Essay';
+			$data['submenu'] = 'Hasil';
+			$this->load->view('peserta/essay@hasil',$data);
+		}else{
+			redirect('login');
+		}
 	}
 
 }

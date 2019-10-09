@@ -50,6 +50,26 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_kategori_produk"); 
 	}
 
+	public function select_produk(){
+		return $this->db->query("SELECT * FROM ms_produk"); 
+	}
+
+	public function select_narasumber(){
+		return $this->db->query("SELECT * FROM ms_narasumber"); 
+	}
+
+	public function select_narasumber_id($id_narsum){
+		return $this->db->query("SELECT * FROM ms_narasumber WHERE id_narasumber='$id_narsum'"); 
+	}
+
+	public function select_penyelenggara(){
+		return $this->db->query("SELECT * FROM ms_penyelenggara"); 
+	}
+
+	public function select_silabus(){
+		return $this->db->query("SELECT * FROM ms_silabus a join ms_narasumber b on a.id_narasumber=b.id_narasumber"); 
+	}
+
 	
 }
 ?>

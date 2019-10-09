@@ -36,6 +36,10 @@
         <!-- <link href="<?php echo base_url(); ?>template/assets2/css/demo1/skins/header/menu/light.css" rel="stylesheet" type="text/css" /> -->
         <link href="<?php echo base_url(); ?>template/assets2/css/demo1/skins/brand/dark.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>template/assets2/css/demo1/skins/aside/dark.css" rel="stylesheet" type="text/css" />       
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
         <!--end::Layout Skins -->
 
         <link rel="shortcut icon" type="image/ico" href="<?php echo base_url(); ?>template/assets2/media/logos/A7eUV8OZt8H93930i90E.png" />

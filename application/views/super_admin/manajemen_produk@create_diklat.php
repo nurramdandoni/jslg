@@ -17,43 +17,58 @@ $this->load->view('template_layout/sidebar_menu');
 	<div class="row">
 		<div class="col-md-6">
 			<div class="kt-portlet__body">
-				<form class="kt-form">
-					<div class="alert alert-secondary" role="alert">
+				<form method="post" action="<?php echo base_url()?>admin/save_create_diklat">
+					<!-- <div class="alert alert-secondary" role="alert">
 						<div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
 						<div class="alert-text">Info sukses!</div>
-					</div>
+					</div> -->
 					<div class="form-group">
-						<select class="form-control" id="pilih_diklat">
-							<option value="0">-Pilih Diklat-</option>
-							<option value="1">nama diklat 1</option>
-							<option value="2">nama diklat 2</option>
-							<option value="3">nama diklat 3</option>
-							<option value="4">nama diklat 4</option>
-							<option value="5">nama diklat 5</option>
+						<select class="form-control" id="pilih_diklat" name="id_produk">
+							<option value="0">-Pilih Produk-</option>
+							<?php foreach($list_produk->result() as $produk){ ?>
+								<option value="<?php echo $produk->id_produk; ?>">
+									<?php echo $produk->nama_produk; ?>
+								</option>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="narasumber_diklat">
+						<select class="form-control" id="narasumber_diklat" name="id_narsum">
 							<option value="0">-Pilih Narasumber-</option>
-							<option value="1">narasumber 1</option>
-							<option value="2">narasumber 2</option>
+							<?php foreach($list_narasumber->result() as $narasumber){ ?>
+								<option value="<?php echo $narasumber->id_narasumber; ?>">
+									<?php echo $narasumber->nama_narasumber; ?>
+								</option>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="form-group">
-						<input type="date" class="form-control"  placeholder="tanggal" required="">
+						<input type="datetime-local" class="form-control"  placeholder="tanggal" required="" name="tanggal">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="penyelenggara_diklat">
+						<select class="form-control" id="penyelenggara_diklat" name="id_penyelenggara">
 							<option value="0">-Pilih Penyelenggara-</option>
-							<option value="1">Penyelenggara</option>
+							<?php foreach($list_penyelenggara->result() as $penyelenggara){ ?>
+								<option value="<?php echo $penyelenggara->id_penyelenggara; ?>">
+									<?php echo $penyelenggara->nama_penyelenggara; ?>
+								</option>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="form-group">
-						<select class="form-control" id="silabus_diklat">
+						<select class="form-control" id="silabus_diklat" name="id_silabus">
 							<option value="0">-Pilih Silabus-</option>
-							<option value="1">silabus 1</option>
+							<?php foreach($list_silabus->result() as $silabus){ ?>
+								<option value="<?php echo $silabus->id_silabus; ?>">
+									<?php echo $silabus->nama_narasumber." - ".$silabus->nama_silabus; ?>
+								</option>
+							<?php } ?>
 						</select>
+					</div>
+					<div class="form-group">
+						<input type="number" class="form-control"  placeholder="Jumlah Sesi" required="" name="jumlah_sesi">
+						<span class="form-text text-muted"></span>
 					</div>
 					<div class="kt-portlet__foot">
 						<div class="kt-form__actions">
@@ -68,32 +83,57 @@ $this->load->view('template_layout/sidebar_menu');
 			<div class="kt-portlet__body">
 				<div>
 					<label>Nama Narasumber :</label>
-					<span>Namanya</span>
+					<span id="namanya"></span>
 				</div>
 				<div>
 					<label>Alamat :</label>
-					<span>Bandung, Jabar</span>
+					<span id="alamat"></span>
 				</div>
 				<div>
 					<label>Email :</label>
-					<span>jslg@gmail.com</span>
+					<span id="email"></span>
 				</div>
 				<div>
 					<label>Keahlian :</label>
-					<span>SQL, Design</span>
+					<span id="skill"></span>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-3">
 			<div class="kt-portlet__body">
-				<div class="card" style="height: 100px; width: 100px;">
-					foto
-				</div>
+			<div class="card" style="min-height: 70px; margin-bottom:20px;padding:10px; min-width: 70px;" id="img_narsum">
+				
+			</div>
 			</div>
 		</div>
 	</div>
 		
 </div>
+
+<script>
+$(document).ready(function(){
+	$('#narasumber_diklat').change(function(){
+		var id_narsum_v = $('#narasumber_diklat').val();
+		$.ajax({
+				url: '<?php base_url() ?>view_image_narasumber',
+				data: 'id='+id_narsum_v,
+				cache: false,
+				dataType: 'JSON',
+				success: function(msg){
+					console.log(msg);
+					$('#img_narsum').html("<img src='"+msg.foto+"' alt='' id='img-prev' class='img-thumbnail'>");
+					$('#namanya').html(msg.nama_narasumber);
+					$('#alamat').html(msg.alamat_narasumber);
+					$('#email').html(msg.email_narasumber);
+					$('#skill').html(msg.keahlian_narasumber);
+					
+				}
+			});
+		
+	});
+	
+});
+</script>
 
 <?php
 

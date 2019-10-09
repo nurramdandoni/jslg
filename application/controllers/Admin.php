@@ -96,11 +96,69 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Management Produk ( Diklat )';
 			$data['submenu'] = 'Create Diklat';
+			$data['list_produk'] = $this->Model_jslg->select_produk();
+			$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
+			$data['list_penyelenggara'] = $this->Model_jslg->select_penyelenggara();
+			$data['list_silabus'] = $this->Model_jslg->select_silabus();
 			$this->load->view('super_admin/manajemen_produk@create_diklat',$data);
 		}else{
 			redirect('login');
 		}
 	}	
+
+	public function view_image_narasumber(){
+		$id_narsum = $this->input->get('id');
+		$im = $this->Model_jslg->select_narasumber_id($id_narsum);
+		foreach($im->result() as $data_narsum){
+			echo json_encode($data_narsum);
+		}
+	}
+
+	public function save_create_diklat(){
+		$id_produk = $this->input->post('id_produk');
+		$id_narsum = $this->input->post('id_narsum');
+		$tanggal = $this->input->post('tanggal');
+		$id_penyelenggara = $this->input->post('id_penyelenggara');
+		$id_silabus = $this->input->post('id_silabus');
+		$jumlah_sesi = $this->input->post('jumlah_sesi');
+
+		$biday = new DateTime($tanggal);
+		$today = new DateTime();
+		
+		$diff = $today->diff($biday);
+
+		$umur = $diff->y;
+
+		if($id_produk==0){
+			echo "<script>alert('Produk Belum dipilih!');javascript:history.go(-1);</script>";
+		}elseif($id_narsum==0){
+			echo "<script>alert('Narasumber Belum dipilih!');javascript:history.go(-1);</script>";
+		}elseif($id_penyelenggara==0){
+			echo "<script>alert('Penyelenggara Belum dipilih!');javascript:history.go(-1);</script>";
+		}elseif($id_silabus==0){
+			echo "<script>alert('Silabus Belum dipilih!');javascript:history.go(-1);</script>";
+		}else{
+			
+			$data = array(
+				'id_produk' => $id_produk,
+				'id_narasumber' => $id_narsum,
+				'tanggal_diklat' => $tanggal,
+				'id_penyelenggara' => $id_penyelenggara,
+				'id_silabus' => $id_silabus,
+				'jumlah_sesi' => $jumlah_sesi
+			);
+
+			$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_diklat');
+
+			if($datainsert){
+				echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_diklat')."';</script>";
+			}else{
+				echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_diklat')."';</script>";
+			}
+
+		}
+	}
+
 	public function all_diklat()
 	{	
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

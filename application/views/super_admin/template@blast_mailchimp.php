@@ -46,7 +46,7 @@ $this->load->view('template_layout/sidebar_menu');
 		<div class="kt-portlet__body">
 			<!--begin: Datatable -->
 			<div class="checkbox">
-			  <label><input type="checkbox" value="">Check All</label>
+			  <label><input type="checkbox" value="0" id="check">Check All</label>
 			</div>
 			<table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
 				<thead>
@@ -60,7 +60,12 @@ $this->load->view('template_layout/sidebar_menu');
 					<tr>
 						<td>Irpan Setaiana</td>
 						<td>Setiana@gmail.com</td>
-						<td><input type="checkbox" value=""></td>
+						<td><input type="checkbox" value="" name="list_email[]" class="check_all"></td>
+					</tr>
+					<tr>
+						<td>Sania</td>
+						<td>Sania@gmail.com</td>
+						<td><input type="checkbox" value="" name="list_email[]" class="check_all"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -84,6 +89,27 @@ $this->load->view('template_layout/sidebar_menu');
 		<!-- akhir -->
 		
 </div>
+
+<script>
+$(document).ready(function(){
+	$('#check').click(function(){
+
+		var nilai = $('#check').val();
+		var jml_cek = $('#list_email').length;
+		if(nilai==0){
+			$('#check').val(1);
+			$('.check_all').prop('checked', this.checked);
+			console.log(jml_cek);
+		}else{
+			$('#check').val(0);
+			$('.check_all').prop('checked', false);
+			console.log(jml_cek);
+			
+		}
+
+	});
+});
+</script>
 
 <?php
 

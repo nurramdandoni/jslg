@@ -44,6 +44,7 @@ $this->load->view('template_layout/sidebar_menu');
 			</div>
 		</div>
 		<div class="kt-portlet__body">
+			<form action="<?php echo base_url() ?>admin/send_email_blast" method="post">
 			<!--begin: Datatable -->
 			<div class="checkbox">
 			  <label><input type="checkbox" value="0" id="check">Check All</label>
@@ -57,27 +58,24 @@ $this->load->view('template_layout/sidebar_menu');
 				  	</tr>
 				</thead>
 				<tbody>
+					<?php foreach($list_user->result() as $data_user){ ?>
 					<tr>
-						<td>Irpan Setaiana</td>
-						<td>Setiana@gmail.com</td>
-						<td><input type="checkbox" value="" name="list_email[]" class="check_all"></td>
+						<td><?php echo $data_user->nama_peserta ?></td>
+						<td><?php echo $data_user->email_peserta ?></td>
+						<td><input type="checkbox" value="<?php echo $data_user->email_peserta ?>" name="list_email[]" class="check_all"></td>
 					</tr>
-					<tr>
-						<td>Sania</td>
-						<td>Sania@gmail.com</td>
-						<td><input type="checkbox" value="" name="list_email[]" class="check_all"></td>
-					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 			<!--end: Datatable -->
-			<form>
+			
 				<div class="form-group">
-				<input type="text" class="form-control"  placeholder="Subject Email" required="">
+				<input type="text" class="form-control"  placeholder="Subject Email" required="" name="subject">
 				<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group form-group-last">
 							<label for="exampleTextarea">Detail Email</label>
-							<textarea class="form-control" id="exampleTextarea" rows="3" required=""></textarea>
+							<textarea class="form-control" id="exampleTextarea" rows="3" required="" name="isi_email"></textarea>
 						</div>
 				<div class="kt-portlet__foot">
 					<div class="kt-form__actions">

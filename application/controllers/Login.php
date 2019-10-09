@@ -105,7 +105,7 @@ class Login extends CI_Controller {
 					'charset'	=> 'utf-8',
 				);
 				$email_message['login'] = 'Login Akun';
-				$email_message['login_url'] = '192.168.43.46/jslg/login';
+				$email_message['login_url'] = '<?php echo base_url()?>login';
 				$email_message['title'] = 'Registrasi Akun Jimly School';
 				$email_message['message'] = 'Selamat '.$nama.' anda berhasil melakukan registrasi, berikut adalah detail akun anda :';
 				$email_message['username'] = $email;
@@ -266,7 +266,7 @@ class Login extends CI_Controller {
 					'charset'	=> 'utf-8',
 				);
 				$email_message['login'] = 'Login Akun';
-				$email_message['login_url'] = '192.168.43.46/jslg/login';
+				$email_message['login_url'] = '<?php echo base_url()?>login';
 				$email_message['title'] = 'Perubahan Password Akun Jimly School';
 				$email_message['message'] = 'Selamat '.$name.' anda berhasil melakukan request perubahan password, berikut adalah detail password baru akun anda :';
 				$email_message['username'] = $email_forgot;

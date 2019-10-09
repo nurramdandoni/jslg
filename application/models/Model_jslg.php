@@ -74,6 +74,14 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_diklat a join ms_produk b on a.id_produk=b.id_produk join ms_penyelenggara c on a.id_penyelenggara=c.id_penyelenggara join ms_narasumber d on a.id_narasumber=d.id_narasumber join ms_kategori_produk e on b.id_kategori_produk=e.id_kategori_produk join ms_silabus f on a.id_silabus=f.id_silabus"); 
 	}
 
+	public function select_user(){
+		return $this->db->query("SELECT * FROM ms_user a join ms_biodata_peserta b on a.nik=b.nik_peserta"); 
+	}
+
+	public function select_user_email($email_send){
+		return $this->db->query("SELECT * FROM ms_user a join ms_biodata_peserta b on a.nik=b.nik_peserta WHERE b.email_peserta='$email_send'"); 
+	}
+
 	public function updatedatajslg($table,$where,$data){
 		return $this->db->where($where)->update($table,$data);
 	}

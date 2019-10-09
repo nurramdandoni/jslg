@@ -228,11 +228,63 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Template';
 			$data['submenu'] = 'Blast Mailchimp';
+			$data['list_user'] = $this->Model_jslg->select_user();
 			$this->load->view('super_admin/template@blast_mailchimp',$data);
 		}else{
 			redirect('login');
 		}
 	}	
+
+	public function send_email_blast(){
+
+		$list_email = $this->input->post('list_email');
+		$subject_email = $this->input->post('subject');
+		$isi_email = $this->input->post('isi_email');
+		if($list_email==NULL){
+			echo "<script>alert('Penerima Belum dipilih!');javascript:history.go(-1);</script>";
+		}else{
+			$jml = count($list_email);
+			$email_config = Array(
+				'protocol'  => 'smtp',
+				'smtp_host' => 'ssl://smtp.googlemail.com',
+				'smtp_port' => 465,
+				'smtp_user' => 'schooljimly@gmail.com',
+				'smtp_pass' => 'schooljimly@@@',
+				'mailtype'  => 'html',
+				'starttls'  => true,
+				'newline'   => "\r\n",
+				'charset'	=> 'utf-8',
+			);
+
+			$url = '<?php echo base_url()?>login';
+			for($i=0;$i<$jml;$i++){
+				$email_send = $list_email[$i];
+
+				$email_message['login'] = 'Login Akun';
+				$email_message['login_url'] = $url;
+				$email_message['title'] = $subject_email;
+				$email_message['message'] = $isi_email;
+				$email_message['username'] = '';
+				$email_message['password'] = '';
+				$this->load->library('email');
+				$this->email->initialize($email_config);
+				$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
+				$this->email->to($email_send);
+				$this->email->subject($subject_email);
+				$this->email->message($this->load->view('email_registrasi',$email_message, TRUE));
+				$this->email->send();
+
+				// echo $email_send."=".$subject_email."=".$isi_email;
+
+			}
+
+		}
+// die();
+		echo "<script>alert('Email berhasil dikirim!');window.location.href='".base_url('admin/blast_mailchimp')."';</script>";
+
+		
+
+	}
 	public function create_sertificate()
 	{	
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

@@ -27,7 +27,7 @@ $this->load->view('template_layout/sidebar_menu');
 							<option value="0">-Pilih Produk-</option>
 							<?php foreach($list_produk->result() as $produk){ ?>
 								<option value="<?php echo $produk->id_produk; ?>">
-									<?php echo $produk->nama_produk; ?>
+									<?php echo $produk->nama_kategori_produk." - ".$produk->nama_produk; ?>
 								</option>
 							<?php } ?>
 						</select>

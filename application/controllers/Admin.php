@@ -165,11 +165,63 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Management Produk ( Diklat )';
 			$data['submenu'] = 'All Diklat';
+			$data['list_diklat'] = $this->Model_jslg->select_diklat();
+			$data['list_produk'] = $this->Model_jslg->select_produk();
+			$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
+			$data['list_penyelenggara'] = $this->Model_jslg->select_penyelenggara();
+			$data['list_silabus'] = $this->Model_jslg->select_silabus();
 			$this->load->view('super_admin/manajemen_produk@all_diklat',$data);
 		}else{
 			redirect('login');
 		}
 	}	
+
+	public function update_create_diklat(){
+		$id_diklat = $this->input->post('id_diklat');
+		$id_produk = $this->input->post('id_produk');
+		$id_narsum = $this->input->post('id_narsum');
+		$tanggal = $this->input->post('tanggal');
+		$id_penyelenggara = $this->input->post('id_penyelenggara');
+		$id_silabus = $this->input->post('id_silabus');
+		$jumlah_sesi = $this->input->post('jumlah_sesi');
+
+		$data = array(
+			'id_produk' => $id_produk,
+			'id_narasumber' => $id_narsum,
+			'tanggal_diklat' => $tanggal,
+			'id_penyelenggara' => $id_penyelenggara,
+			'id_silabus' => $id_silabus,
+			'jumlah_sesi' => $jumlah_sesi
+		);
+
+		$where = array(
+			'id_diklat' => $id_diklat
+		);
+
+		$dataupdate = $this->Model_jslg->updatedatajslg('ms_diklat',$where,$data);
+
+		if($dataupdate){
+			echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_diklat')."';</script>";
+		}else{
+			echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/all_diklat')."';</script>";
+		}
+
+
+
+	}
+
+
+	public function delete_diklat(){
+		$id = $this->uri->segment(3);
+
+		$delete = $this->Model_jslg->delete_diklat($id);
+		if($delete){
+			echo "<script>alert('Data Berhasil Dihapus!');window.location.href='".base_url('admin/all_diklat')."';</script>";
+		}else{
+			echo "<script>alert('Data Gagal Dihapus!');window.location.href='".base_url('admin/all_diklat')."';</script>";
+		}
+	}
+
 	public function blast_mailchimp()
 	{	
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

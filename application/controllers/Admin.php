@@ -289,11 +289,135 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Template';
 			$data['submenu'] = 'Create Sertificate';
+			$data['list_produk'] = $this->Model_jslg->select_produk();
 			$this->load->view('super_admin/template@create_sertificate',$data);
 		}else{
 			redirect('login');
 		}
 	}	
+
+	public function save_create_sertificate()
+	{	
+
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$img = $_FILES['img']['tmp_name'];
+			$id_produk = $this->input->post('id_produk');
+
+			if($id_produk=="0"){
+				
+				echo "0";
+			}elseif($img==NULL){	
+				echo "1";
+			}else{
+				//upload photo
+				$config['max_size']=2048;
+				$config['allowed_types']="png|jpg|jpeg";
+				$config['remove_spaces']=TRUE;
+				$config['overwrite']=TRUE;
+				$config['upload_path']=FCPATH.'temp_sertificate';
+				$config['encrypt_name']=TRUE;
+				// inisialisasi konfigurasi upload
+				$this->upload->initialize($config);
+				//ambil data image
+				$this->upload->do_upload('img');
+				$data_image=$this->upload->data('file_name');
+				$location=base_url().'temp_sertificate/';
+				$pict=$location.$data_image;
+
+				$data = array(
+					'id_diklat_temp' => $id_produk,
+					'template_img' => $pict
+				);
+
+				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_sertificate_temp');
+
+				if($datainsert){
+		// 			echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_produk')."';</script>";
+					echo "2";
+				}else{
+		// 			echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_produk')."';</script>";
+					echo "3";
+				}
+			}
+
+		}else{
+			redirect('login');
+		}
+	}
+
+	public function update_create_sertificate()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$img = $_FILES['img']['tmp_name'];
+			$id_produk = $this->input->post('id_produk');
+
+			if($id_produk=="0"){
+				
+				echo "0";
+			}elseif($img==NULL){	
+				echo "1";
+			}else{
+				$image_old = $this->Model_jslg->update_create_sertificate($id_produk);
+				if($image_old->num_rows()>0){
+					
+					foreach($image_old->result() as $i_o){
+						$old = $i_o->template_img;
+					}
+					$data = parse_url($old);
+					$data_unlink =  $_SERVER['DOCUMENT_ROOT'].$data['path'];
+
+					if(unlink($data_unlink)){
+						// echo $id_produk;
+						// upload photo
+						$config['max_size']=2048;
+						$config['allowed_types']="png|jpg|jpeg";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']=FCPATH.'temp_sertificate';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('img');
+						$data_image=$this->upload->data('file_name');
+						$location=base_url().'temp_sertificate/';
+						$pict=$location.$data_image;
+
+						$data = array(
+							'template_img' => $pict
+						);
+						$where = array(
+							'id_diklat_temp' => $id_produk
+						);
+
+						$dataupdate = $this->Model_jslg->updatedatajslg('ms_sertificate_temp',$where,$data);
+						
+
+						if($dataupdate){
+							echo "2";
+						}else{
+							echo "3";
+						}
+					}else{
+						echo "3";
+					}
+				}else{
+					echo "4";
+				}
+				
+			}
+
+		}else{
+			redirect('login');
+		}
+	}
+	public function un(){
+		// $file = $_SERVER['DOCUMENT_ROOT'].'jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png';
+		// unlink('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png');
+		// var_dump(parse_url('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png'));
+		$data = parse_url('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png');
+		echo $data['path'];
+	}
 	public function printing_monitor()
 	{	
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

@@ -45,33 +45,149 @@ $this->load->view('template_layout/sidebar_menu');
 		</div>
 		<div class="kt-portlet__body">
 			
-			<form>
+			<form action="" method="post" enctype="multipart/form-data" id="frm">
+				<div class="form-group">
+					<select class="form-control" id="pilih_diklat" name="id_produk">
+						<option value="0">-Pilih Produk-</option>
+						<?php foreach($list_produk->result() as $produk){ ?>
+							<option value="<?php echo $produk->id_produk; ?>">
+								<?php echo $produk->nama_kategori_produk." - ".$produk->nama_produk; ?>
+							</option>
+						<?php } ?>
+					</select>
+				</div>
 				<div class="form-group">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="customFile">
+						<input type="file" class="custom-file-input" name="img" id="img-load" onchange="previewimg();">
 						<label class="custom-file-label" for="customFile">Upload Setificate</label>
 					</div>
 				</div>
-				<div class="kt-form__actions">
+				<!-- <div class="kt-form__actions">
 					<a class="btn btn-default">Edit</a>
-				</div>
+				</div> -->
 				<div class="row">
 					<div class="col-md-12">
-						<div class="card" style="height: 350px; margin:20px;padding:10px;">
-						Preview Sertificate
+						<label>Max. 2Mb png | jpg | jpeg</label>
+						<div class="card" style="min-height: 70px; margin-bottom:20px;padding:10px; min-width: 70px;">
+							<img src="" alt="" id="img-prev" class="img-thumbnail">
 						</div>
 					</div>
 				</div>
+				</form>
 				<div class="kt-portlet__foot">
 					<div class="kt-form__actions">
-						<button type="submit" class="btn btn-primary">Simpan</button>
+						<button type="button" class="btn btn-primary" id="id_simpan">Simpan</button>
+						<button type="button" class="btn btn-primary" id="id_update">Update</button>
 					</div>
 				</div>
-			</form>
+			
 		</div>
 		<!-- akhir -->
 		
 </div>
+
+<script>
+
+$(document).ready(function(){
+	$('#id_simpan').click(function(event){
+
+		event.preventDefault();
+		// Get form
+        var form = $('#frm')[0];
+
+		// Create an FormData object 
+        var data = new FormData(form);
+
+		$.ajax({
+			type: "POST",
+            enctype: 'multipart/form-data',
+            url: '<?php echo base_url()?>admin/save_create_sertificate',
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+			success: function (res){
+				// console.log(res);
+				if(res=='0'){
+					// console.log("Produk Belum Dipilih");
+					alert("Produk Belum Dipilih!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else if(res=='1'){
+					// console.log("Template Belum Dipilih");
+					alert("Template Belum Dipilih!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else if(res=='3'){
+					// console.log("Data Gagal Disimpan!");
+					alert("Data Gagal Disimpan!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else{
+					// console.log("Data Berhasil Disimpan!");
+					alert('Data Berhasil Disimpan!');
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}
+			}
+		});
+		
+	});
+
+	$('#id_update').click(function(event){
+		event.preventDefault();
+		// Get form
+        var form = $('#frm')[0];
+
+		// Create an FormData object 
+        var data = new FormData(form);
+
+		$.ajax({
+			type: "POST",
+            enctype: 'multipart/form-data',
+            url: '<?php echo base_url()?>admin/update_create_sertificate',
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+			success: function (res){
+				// console.log(res);
+				if(res=='0'){
+					// console.log("Produk Belum Dipilih");
+					alert("Produk Belum Dipilih!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else if(res=='1'){
+					// console.log("Template Belum Dipilih");
+					alert("Template Belum Dipilih!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else if(res=='3'){
+					// console.log("Data Gagal Disimpan!");
+					alert("Data Gagal Diperbaharui!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else if(res=='4'){
+					// console.log("Data Tidak Ditemukan!");
+					alert("Data Tidak Ditemukan!");
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}else{
+					// console.log("Data Berhasil Disimpan!");
+					alert('Data Berhasil Diperbaharui!');
+					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
+				}
+			}
+		});
+	});
+
+
+});
+
+function previewimg(){
+			document.getElementById('img-prev').style.display = "block";
+			var oFread = new FileReader();
+			oFread.readAsDataURL(document.getElementById('img-load').files[0]);
+
+			oFread.onload = function(ofevent){
+				document.getElementById('img-prev').src = ofevent.target.result;
+			}
+		}
+</script>
 
 <?php
 

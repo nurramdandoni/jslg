@@ -90,6 +90,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("DELETE FROM ms_diklat WHERE id_diklat='$id'");
 	}
 
+	public function update_create_sertificate($id){
+		return $this->db->query("SELECT * FROM ms_sertificate_temp WHERE id_diklat_temp='$id'");
+	}
+
 	
 }
 ?>

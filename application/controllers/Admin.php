@@ -240,6 +240,7 @@ class Admin extends CI_Controller {
 		$list_email = $this->input->post('list_email');
 		$subject_email = $this->input->post('subject');
 		$isi_email = $this->input->post('isi_email');
+		$list = array();
 		if($list_email==NULL){
 			echo "<script>alert('Penerima Belum dipilih!');javascript:history.go(-1);</script>";
 		}else{
@@ -249,38 +250,35 @@ class Admin extends CI_Controller {
 				'smtp_host' => 'ssl://smtp.googlemail.com',
 				'smtp_port' => 465,
 				'smtp_user' => 'schooljimly@gmail.com',
-				'smtp_pass' => 'schooljimly@@@',
+				'smtp_pass' => 'schooljimly@@@1',
 				'mailtype'  => 'html',
-				'starttls'  => true,
 				'newline'   => "\r\n",
 				'charset'	=> 'utf-8',
 			);
-
-			$url = '<?php echo base_url()?>login';
 			for($i=0;$i<$jml;$i++){
-				$email_send = $list_email[$i];
+
+				array_push($list,$list_email[$i]);
+			}
+
 
 				$email_message['login'] = 'Login Akun';
-				$email_message['login_url'] = $url;
+				$email_message['login_url'] = base_url('login');
 				$email_message['title'] = $subject_email;
 				$email_message['message'] = $isi_email;
-				$email_message['username'] = '';
-				$email_message['password'] = '';
 				$this->load->library('email');
 				$this->email->initialize($email_config);
 				$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
-				$this->email->to($email_send);
+				$this->email->to($list);
 				$this->email->subject($subject_email);
-				$this->email->message($this->load->view('email_registrasi',$email_message, TRUE));
-				$this->email->send();
-
-				// echo $email_send."=".$subject_email."=".$isi_email;
-
-			}
+				$this->email->message($this->load->view('email_info',$email_message, TRUE));
+				if($this->email->send()){
+					echo "<script>alert('Email berhasil dikirim!');window.location.href='".base_url('admin/blast_mailchimp')."';</script>";
+				}else{
+					show_error($this->email->print_debugger()); 
+				}
 
 		}
-// die();
-		echo "<script>alert('Email berhasil dikirim!');window.location.href='".base_url('admin/blast_mailchimp')."';</script>";
+		
 
 		
 

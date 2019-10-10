@@ -55,6 +55,8 @@ $this->load->view('template_layout/sidebar_menu');
 					<button type="submit" class="btn btn-primary">Simpan</button>
 				</div>
 			</div>
+			</div>
+		</div>
 	</form>
 	<!--end::Form-->			
 </div>

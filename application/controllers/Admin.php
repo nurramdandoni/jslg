@@ -434,17 +434,54 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Tempat & Jadwal';
 			$data['submenu'] = 'Create date';
+			$data['list_produk'] = $this->Model_jslg->select_produk();
 			$this->load->view('super_admin/tempat@create_date',$data);
 		}else{
 			redirect('login');
 		}
 	}	
+
+	public function save_create_date()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
+			$id_produk = $this->input->post('id_produk');
+			$nama_tempat = $this->input->post('nama_tempat');
+			$tanggal = $this->input->post('tanggal');
+			$kapasitas = $this->input->post('kapasitas');
+			if($id_produk=="0"){
+				
+				echo "<script>alert('Produk Belum Dipilih!');javascript:history.go(-1);</script>";
+				
+			}else{
+				$data = array(
+					'id_diklat' => $id_produk,
+					'nama_tempat' => $nama_tempat,
+					'tanggal' => $tanggal,
+					'kapasitas' => $kapasitas,
+					'lokasi_maps' => ''
+				);
+
+				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_tempat');
+
+				if($datainsert){
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_date')."';</script>";
+				}else{
+					echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_date')."';</script>";
+				}
+			}
+
+		}else{
+			redirect('login');
+		}
+	}
 	public function all_list_jadwal()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Tempat & Jadwal';
 			$data['submenu'] = 'All List';
+			$data['list_jadwal'] = $this->Model_jslg->select_jadwal();
 			$this->load->view('super_admin/tempat@all_list',$data);
 		}else{
 			redirect('login');

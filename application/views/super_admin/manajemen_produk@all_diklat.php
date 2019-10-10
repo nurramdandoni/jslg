@@ -53,7 +53,7 @@ $this->load->view('template_layout/sidebar_menu');
 							<td><?php echo "Jumlah Sesi : ".$data_diklat->jumlah_sesi; ?></td>
 							<td><?php echo $data_diklat->harga_diskon; ?></td>
 							<td>
-							<a href="#" data-toggle="modal" data-target="#edit<?php echo $data_diklat->id_diklat; ?>">Update</a>
+							<a href="#" data-toggle="modal" data-target="#edit<?php echo $data_diklat->id_diklat; ?>">Update</a> | 
 							<a  href="<?php echo base_url()?>admin/delete_diklat/<?php echo $data_diklat->id_diklat; ?>">Delete</a>
 							</td>
 							

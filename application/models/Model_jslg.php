@@ -78,6 +78,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_user a join ms_biodata_peserta b on a.nik=b.nik_peserta"); 
 	}
 
+	public function select_jadwal(){
+		return $this->db->query("SELECT * FROM ms_tempat a join ms_diklat b on a.id_diklat=b.id_diklat join ms_produk c on b.id_produk=c.id_produk"); 
+	}
+
 	public function select_peserta(){
 		return $this->db->query("SELECT * FROM ms_peserta a join ms_diklat b on a.id_diklat=b.id_diklat join ms_user c on a.id_user=c.id_user JOIN ms_biodata_peserta d on a.id_biodata_peserta=d.id_biodata join ms_sertificate e on a.id_peserta=e.id_peserta join ms_sertificate_temp f on e.id_sertificate_temp=f.id_sertificate_temp"); 
 	}

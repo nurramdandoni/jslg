@@ -112,20 +112,16 @@ $(document).ready(function(){
 				if(res=='0'){
 					// console.log("Produk Belum Dipilih");
 					alert("Produk Belum Dipilih!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else if(res=='1'){
+									}else if(res=='1'){
 					// console.log("Template Belum Dipilih");
 					alert("Template Belum Dipilih!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else if(res=='3'){
+									}else if(res=='3'){
 					// console.log("Data Gagal Disimpan!");
 					alert("Data Gagal Disimpan!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else{
+									}else{
 					// console.log("Data Berhasil Disimpan!");
 					alert('Data Berhasil Disimpan!');
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}
+									}
 			}
 		});
 		
@@ -153,24 +149,19 @@ $(document).ready(function(){
 				if(res=='0'){
 					// console.log("Produk Belum Dipilih");
 					alert("Produk Belum Dipilih!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else if(res=='1'){
+									}else if(res=='1'){
 					// console.log("Template Belum Dipilih");
 					alert("Template Belum Dipilih!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else if(res=='3'){
+									}else if(res=='3'){
 					// console.log("Data Gagal Disimpan!");
 					alert("Data Gagal Diperbaharui!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else if(res=='4'){
+									}else if(res=='4'){
 					// console.log("Data Tidak Ditemukan!");
 					alert("Data Tidak Ditemukan!");
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}else{
+									}else{
 					// console.log("Data Berhasil Disimpan!");
 					alert('Data Berhasil Diperbaharui!');
-					window.location.href="<?php echo base_url('admin/create_sertificate'); ?>";
-				}
+									}
 			}
 		});
 	});

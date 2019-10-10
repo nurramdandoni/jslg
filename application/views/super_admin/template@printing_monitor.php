@@ -16,43 +16,20 @@ $this->load->view('template_layout/sidebar_menu');
 	<!-- awal -->
 		<div class="kt-portlet__body">
 			<div class="row">
+			<?php foreach($list_peserta->result() as $data_sertificate){ ?>
 				<div class="col-md-3">
-					<div class="card" style="height: 100px; margin-bottom:20px;padding:10px;">
-						Sertificate Peserta 1
+					<div class="card" style="height: 100px; margin:20px;padding:5px;background-image:url('<?php echo $data_sertificate->template_img; ?>');background-size:100%;background-repeat:no-repeat;">
+					<span style="padding:-3px; border-radius:5px;opacity:0.5;">
+						<?php echo $data_sertificate->nama_peserta; ?>
+					</span>
+						
 					</div>
-					<div class="kt-form__actions">
-					<a class="btn btn-default">Preview</a>
-					<a class="btn btn-default">Print</a>
+					<div class="kt-form__actions" style="margin:20px;">
+					<a class="btn btn-default" onclick="alert('Comming Soon!');">Preview</a>
+					<a class="btn btn-default" onclick="alert('Comming Soon!');">Print</a>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="card" style="height: 100px; margin-bottom:20px;padding:10px;">
-						Sertificate Peserta 2
-					</div>
-					<div class="kt-form__actions">
-					<a class="btn btn-default">Preview</a>
-					<a class="btn btn-default">Print</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card" style="height: 100px; margin-bottom:20px;padding:10px;">
-						Sertificate Peserta 3
-					</div>
-					<div class="kt-form__actions">
-					<a class="btn btn-default">Preview</a>
-					<a class="btn btn-default">Print</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card" style="height: 100px; margin-bottom:20px;padding:10px;">
-						Sertificate Peserta 4
-					</div>
-					<div class="kt-form__actions">
-					<a class="btn btn-default">Preview</a>
-					<a class="btn btn-default">Print</a>
-					</div>
-				</div>
-				
+			<?php } ?>
 			</div>
 		</div>
 		

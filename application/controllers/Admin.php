@@ -332,10 +332,8 @@ class Admin extends CI_Controller {
 				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_sertificate_temp');
 
 				if($datainsert){
-		// 			echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_produk')."';</script>";
 					echo "2";
 				}else{
-		// 			echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_produk')."';</script>";
 					echo "3";
 				}
 			}
@@ -415,8 +413,8 @@ class Admin extends CI_Controller {
 		// $file = $_SERVER['DOCUMENT_ROOT'].'jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png';
 		// unlink('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png');
 		// var_dump(parse_url('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png'));
-		$data = parse_url('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png');
-		echo $data['path'];
+		// $data = parse_url('http://localhost/jslg/temp_sertificate/fbcb9771838d07e55afb7dd1c087486e.png');
+		// echo $data['path'];
 	}
 	public function printing_monitor()
 	{	
@@ -424,6 +422,7 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Template';
 			$data['submenu'] = 'Printing Monitor';
+			$data['list_peserta'] = $this->Model_jslg->select_peserta();
 			$this->load->view('super_admin/template@printing_monitor',$data);
 		}else{
 			redirect('login');

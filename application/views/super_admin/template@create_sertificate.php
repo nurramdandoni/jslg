@@ -130,6 +130,8 @@ $(document).ready(function(){
 	$('#id_update').click(function(event){
 		event.preventDefault();
 		// Get form
+		var id = $('#pilih_diklat').val();
+		console.log(id);
         var form = $('#frm')[0];
 
 		// Create an FormData object 

@@ -79,7 +79,7 @@ class Model_jslg extends CI_Model
 	}
 
 	public function select_jadwal(){
-		return $this->db->query("SELECT * FROM ms_tempat a join ms_diklat b on a.id_diklat=b.id_diklat join ms_produk c on b.id_produk=c.id_produk"); 
+		return $this->db->query("SELECT * FROM ms_tempat a join ms_diklat b on a.id_diklat=b.id_diklat join ms_produk c on b.id_produk=c.id_produk join ms_kategori_produk d on c.id_kategori_produk=d.id_kategori_produk"); 
 	}
 
 	public function select_peserta(){

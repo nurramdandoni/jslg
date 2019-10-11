@@ -60,76 +60,52 @@ $this->load->view('template_layout/sidebar_menu');
 	<!-- akhir -->
 </div>
 
+
 <!-- awal modal -->
 <?php foreach($list_jadwal->result() as $jadwal){ ?>
-	<div id="edit<?php echo $jadwal->id_diklat; ?>" class="modal fade" role="dialog">
+	<div id="edit<?php echo $jadwal->id_tempat; ?>" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
-		<form method="post" action="<?php echo base_url()?>admin/update_create_diklat">
-		<input type="hidden" value="<?php echo $data_diklat->id_diklat; ?>" name="id_diklat">
+		<form method="post" action="<?php echo base_url()?>admin/update_create_date">
+		<input type="hidden" value="<?php echo $jadwal->id_tempat; ?>" name="id_diklat">
 		<div class="modal-header">
 			
 			<h4 class="modal-title">Edit Diklat</h4>
 		</div>
 		<div class="modal-body">
-			<!-- awal form -->
-			
-					<!-- <div class="alert alert-secondary" role="alert">
-						<div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
-						<div class="alert-text">Info sukses!</div>
-					</div> -->
-					<div class="form-group">
-						<select class="form-control" id="pilih_diklat" name="id_produk">
-							<option value="<?php echo $data_diklat->id_produk; ?>"><?php echo "Nama Diklat : ".$data_diklat->nama_produk; ?></option>
-							<?php foreach($list_produk->result() as $produk){ ?>
-								<option value="<?php echo $produk->id_produk; ?>">
-									<?php echo $produk->nama_produk; ?>
-								</option>
-							<?php } ?>
-						</select>
+			<!-- awal -->
+				<div class="form-group">
+					<select class="form-control" id="pilih_diklat" name="id_produk">
+						<option value="<?php echo $jadwal->id_tempat; ?>"><?php echo $jadwal->nama_kategori_produk." - ".$jadwal->nama_produk; ?></option>
+						<?php foreach($list_produk->result() as $produk){ ?>
+							<option value="<?php echo $produk->id_produk; ?>">
+								<?php echo $produk->nama_kategori_produk." - ".$produk->nama_produk; ?>
+							</option>
+						<?php } ?>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" required="" name="tanggal" value="<?php echo $jadwal->tanggal; ?>">
+					<span class="form-text text-muted"></span>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control"  placeholder="Nama Tempat" required="" name="nama_tempat" value="<?php echo $jadwal->nama_tempat; ?>">
+					<span class="form-text text-muted"></span>
+				</div>
+				<div class="form-group">
+					<input type="number" class="form-control"  placeholder="Kapasitas Ruangan" required="" name="kapasitas" value="<?php echo $jadwal->kapasitas; ?>">
+					<span class="form-text text-muted"></span>
+				</div>
+				<div class="row">
+				<div class="col-md-12">
+					<div class="card" style="height: 200px; margin:20px;padding:10px;">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5738365947964!2d106.8217226143099!3d-6.187740562347541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f425e1bb5c07%3A0x557c23d6dc2ef837!2sJimly%20School%20Of%20Law%20And%20Government!5e0!3m2!1sen!2sid!4v1570696856676!5m2!1sen!2sid"  height="200px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 					</div>
-					<div class="form-group">
-						<select class="form-control" id="narasumber_diklat" name="id_narsum">
-							<option value="<?php echo $data_diklat->id_narasumber; ?>"><?php echo "Narasumber : ".$data_diklat->nama_narasumber; ?></option>
-							<?php foreach($list_narasumber->result() as $narasumber){ ?>
-								<option value="<?php echo $narasumber->id_narasumber; ?>">
-									<?php echo $narasumber->nama_narasumber; ?>
-								</option>
-							<?php } ?>
-						</select>
-					</div>
-					<div class="form-group">
-						<input type="datetime-local" class="form-control"  placeholder="tanggal" required="" name="tanggal">
-						<span class="form-text text-muted"></span>
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="penyelenggara_diklat" name="id_penyelenggara">
-							<option value="<?php echo $data_diklat->id_penyelenggara ?>"><?php echo "Penyelenggara : ".$data_diklat->nama_penyelenggara ?></option>
-							<?php foreach($list_penyelenggara->result() as $penyelenggara){ ?>
-								<option value="<?php echo $penyelenggara->id_penyelenggara; ?>">
-									<?php echo $penyelenggara->nama_penyelenggara; ?>
-								</option>
-							<?php } ?>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="silabus_diklat" name="id_silabus">
-							<option value="<?php echo $data_diklat->id_silabus ?>"><?php echo "Silabus : ".$data_diklat->nama_silabus ?></option>
-							<?php foreach($list_silabus->result() as $silabus){ ?>
-								<option value="<?php echo $silabus->id_silabus; ?>">
-									<?php echo $silabus->nama_narasumber." - ".$silabus->nama_silabus; ?>
-								</option>
-							<?php } ?>
-						</select>
-					</div>
-					<div class="form-group">
-						<input type="number" class="form-control"  placeholder="Jumlah Sesi" required="" name="jumlah_sesi" value="<?php echo $data_diklat->jumlah_sesi ?>">
-						<span class="form-text text-muted"></span>
-					</div>
-				
-			<!-- akhir form -->
+				</div>
+			</div>
+			<!-- akhir -->
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

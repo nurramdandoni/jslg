@@ -482,6 +482,7 @@ class Admin extends CI_Controller {
 			$data['menu'] = 'Tempat & Jadwal';
 			$data['submenu'] = 'All List';
 			$data['list_jadwal'] = $this->Model_jslg->select_jadwal();
+			$data['list_produk'] = $this->Model_jslg->select_produk();
 			$this->load->view('super_admin/tempat@all_list',$data);
 		}else{
 			redirect('login');

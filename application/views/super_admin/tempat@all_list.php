@@ -69,16 +69,16 @@ $this->load->view('template_layout/sidebar_menu');
 		<!-- Modal content-->
 		<div class="modal-content">
 		<form method="post" action="<?php echo base_url()?>admin/update_create_date">
-		<input type="hidden" value="<?php echo $jadwal->id_tempat; ?>" name="id_diklat">
+		<input type="hidden" value="<?php echo $jadwal->id_tempat; ?>" name="id_tempat">
 		<div class="modal-header">
 			
-			<h4 class="modal-title">Edit Diklat</h4>
+			<h4 class="modal-title">Edit Tempat & Jadwal</h4>
 		</div>
 		<div class="modal-body">
 			<!-- awal -->
 				<div class="form-group">
-					<select class="form-control" id="pilih_diklat" name="id_produk">
-						<option value="<?php echo $jadwal->id_tempat; ?>"><?php echo $jadwal->nama_kategori_produk." - ".$jadwal->nama_produk; ?></option>
+					<select class="form-control" id="pilih_diklat" name="id_diklat">
+						<option value="<?php echo $jadwal->id_diklat; ?>"><?php echo $jadwal->nama_kategori_produk." - ".$jadwal->nama_produk; ?></option>
 						<?php foreach($list_produk->result() as $produk){ ?>
 							<option value="<?php echo $produk->id_produk; ?>">
 								<?php echo $produk->nama_kategori_produk." - ".$produk->nama_produk; ?>
@@ -87,7 +87,7 @@ $this->load->view('template_layout/sidebar_menu');
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" required="" name="tanggal" value="<?php echo $jadwal->tanggal; ?>">
+					<input type="text" class="form-control" id="tgl_diklat" required="" name="tanggal" value="<?php echo $jadwal->tanggal_diklat; ?>" disabled="">
 					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
@@ -117,6 +117,26 @@ $this->load->view('template_layout/sidebar_menu');
 
 	</div>
 	</div>
+
+	<script>
+	$(document).ready(function(){
+		$('#pilih_diklat').change(function(){
+			var id_diklat = $('#pilih_diklat').val();
+
+			$.ajax({
+				type:'POST',
+				data:{id:id_diklat},
+				url:'<?php echo base_url()?>admin/cek_id_diklat',
+				dataType:'JSON',
+				success:function(response){
+					console.log(response.tanggal_diklat);
+					$('#tgl_diklat').val(response.tanggal_diklat);
+				}
+
+			});
+		});
+	});
+	</script>
 <?php } ?>
 
 <!-- akhir modal -->

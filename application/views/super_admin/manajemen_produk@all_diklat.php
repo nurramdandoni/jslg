@@ -110,7 +110,7 @@ $this->load->view('template_layout/sidebar_menu');
 						</select>
 					</div>
 					<div class="form-group">
-						<input type="datetime-local" class="form-control"  placeholder="tanggal" required="" name="tanggal">
+						<input type="text" class="form-control"  placeholder="tanggal" required="" name="tanggal" value="<?php echo $data_diklat->tanggal_diklat; ?>">
 						<span class="form-text text-muted"></span>
 					</div>
 					<div class="form-group">

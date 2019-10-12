@@ -151,7 +151,7 @@ class Admin extends CI_Controller {
 			$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_diklat');
 
 			if($datainsert){
-				echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_diklat')."';</script>";
+				echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_diklat')."';</script>";
 			}else{
 				echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_diklat')."';</script>";
 			}
@@ -465,7 +465,7 @@ class Admin extends CI_Controller {
 				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_tempat');
 
 				if($datainsert){
-					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_date')."';</script>";
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_list_jadwal')."';</script>";
 				}else{
 					echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_date')."';</script>";
 				}
@@ -473,6 +473,58 @@ class Admin extends CI_Controller {
 
 		}else{
 			redirect('login');
+		}
+	}
+
+	public function update_create_date()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
+			$id_tempat = $this->input->post('id_tempat');
+			$id_diklat = $this->input->post('id_diklat');
+			$nama_tempat = $this->input->post('nama_tempat');
+			$tanggal = $this->input->post('tanggal');
+			$kapasitas = $this->input->post('kapasitas');
+			if($id_diklat=="0"){
+				
+				echo "<script>alert('Produk Belum Dipilih!');javascript:history.go(-1);</script>";
+				
+			}else{
+				$data = array(
+					'id_diklat' => $id_diklat,
+					'nama_tempat' => $nama_tempat,
+					'tanggal' => $tanggal,
+					'kapasitas' => $kapasitas,
+					'lokasi_maps' => ''
+				);
+
+				$where = array(
+					'id_tempat' => $id_tempat
+				);
+
+				$dataupdate = $this->Model_jslg->updatedatajslg('ms_tempat',$where,$data);
+
+				if($dataupdate){
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_list_jadwal')."';</script>";
+				}else{
+					echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/all_list_jadwal')."';</script>";
+				}
+			}
+
+		}else{
+			redirect('login');
+		}
+	}
+
+	
+	public function delete_tempat(){
+		$id = $this->uri->segment(3);
+
+		$delete = $this->Model_jslg->delete_jadwal($id);
+		if($delete){
+			echo "<script>alert('Data Berhasil Dihapus!');window.location.href='".base_url('admin/all_list_jadwal')."';</script>";
+		}else{
+			echo "<script>alert('Data Gagal Dihapus!');window.location.href='".base_url('admin/all_list_jadwal')."';</script>";
 		}
 	}
 	public function all_list_jadwal()
@@ -488,6 +540,19 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}	
+
+	public function cek_id_diklat(){
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$id_diklat = $this->input->post('id');
+			$data = $this->Model_jslg->select_diklat_id($id_diklat);
+			foreach($data->result() as $dt){
+
+			}
+			echo json_encode($dt);
+		}else{
+			redirect('login');
+		}
+	}
 	public function create_silabus()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

@@ -71,7 +71,11 @@ class Model_jslg extends CI_Model
 	}
 
 	public function select_diklat(){
-		return $this->db->query("SELECT * FROM ms_diklat a join ms_produk b on a.id_produk=b.id_produk join ms_penyelenggara c on a.id_penyelenggara=c.id_penyelenggara join ms_narasumber d on a.id_narasumber=d.id_narasumber join ms_kategori_produk e on b.id_kategori_produk=e.id_kategori_produk join ms_silabus f on a.id_silabus=f.id_silabus"); 
+		return $this->db->query("SELECT * FROM ms_diklat a join ms_produk b on a.id_produk=b.id_produk join ms_penyelenggara c on a.id_penyelenggara=c.id_penyelenggara join ms_narasumber d on a.id_narasumber=d.id_narasumber join ms_kategori_produk e on b.id_kategori_produk=e.id_kategori_produk join ms_silabus f on a.id_silabus=f.id_silabus order by a.tanggal_diklat ASC"); 
+	}
+
+	public function select_diklat_id($id){
+		return $this->db->query("SELECT * FROM ms_diklat a join ms_produk b on a.id_produk=b.id_produk join ms_penyelenggara c on a.id_penyelenggara=c.id_penyelenggara join ms_narasumber d on a.id_narasumber=d.id_narasumber join ms_kategori_produk e on b.id_kategori_produk=e.id_kategori_produk join ms_silabus f on a.id_silabus=f.id_silabus WHERE a.id_diklat='$id' order by a.tanggal_diklat ASC"); 
 	}
 
 	public function select_user(){
@@ -79,7 +83,7 @@ class Model_jslg extends CI_Model
 	}
 
 	public function select_jadwal(){
-		return $this->db->query("SELECT * FROM ms_tempat a join ms_diklat b on a.id_diklat=b.id_diklat join ms_produk c on b.id_produk=c.id_produk join ms_kategori_produk d on c.id_kategori_produk=d.id_kategori_produk"); 
+		return $this->db->query("SELECT * FROM ms_tempat a join ms_diklat b on a.id_diklat=b.id_diklat join ms_produk c on b.id_produk=c.id_produk join ms_kategori_produk d on c.id_kategori_produk=d.id_kategori_produk order by a.tanggal ASC"); 
 	}
 
 	public function select_peserta(){
@@ -96,6 +100,10 @@ class Model_jslg extends CI_Model
 
 	public function delete_diklat($id){
 		return $this->db->query("DELETE FROM ms_diklat WHERE id_diklat='$id'");
+	}
+
+	public function delete_jadwal($id){
+		return $this->db->query("DELETE FROM ms_tempat WHERE id_tempat='$id'");
 	}
 
 	public function update_create_sertificate($id){

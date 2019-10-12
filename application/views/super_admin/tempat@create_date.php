@@ -34,7 +34,7 @@ $this->load->view('template_layout/sidebar_menu');
 					</select>
 				</div>
 			<div class="form-group">                                                                                          
-				<input type="date" class="form-control" required="" name="tanggal">
+				<input type="text" class="form-control" id="tgl_diklat" required="" name="tanggal" disabled="">
 				<span class="form-text text-muted"></span>
 			</div>
 			<div class="form-group">
@@ -61,6 +61,25 @@ $this->load->view('template_layout/sidebar_menu');
 	</form>
 	<!--end::Form-->			
 </div>
+	<script>
+	$(document).ready(function(){
+		$('#pilih_diklat').change(function(){
+			var id_diklat = $('#pilih_diklat').val();
+
+			$.ajax({
+				type:'POST',
+				data:{id:id_diklat},
+				url:'<?php echo base_url()?>admin/cek_id_diklat',
+				dataType:'JSON',
+				success:function(response){
+					console.log(response.tanggal_diklat);
+					$('#tgl_diklat').val(response.tanggal_diklat);
+				}
+
+			});
+		});
+	});
+	</script>
 
 <?php
 

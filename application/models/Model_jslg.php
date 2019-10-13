@@ -62,6 +62,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_narasumber WHERE id_narasumber='$id_narsum'"); 
 	}
 
+	public function select_quiz(){
+		return $this->db->query("SELECT * FROM ms_quiz "); 
+	}
+
 	public function select_penyelenggara(){
 		return $this->db->query("SELECT * FROM ms_penyelenggara"); 
 	}

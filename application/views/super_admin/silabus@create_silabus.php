@@ -21,13 +21,14 @@ $this->load->view('template_layout/sidebar_menu');
 				<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
-					<select class="form-control" id="narasumber">
-						<option value="0">-Pilih Narasumber-</option>
-						<option value="1">Narasumber 1</option>
-						<option value="1">Narasumber 2</option>
-						<option value="1">Narasumber 3</option>
-						<option value="1">Narasumber 4</option>
-					</select>
+					<select class="form-control" id="narasumber_diklat" name="id_narsum">
+							<option value="0">-Pilih Narasumber-</option>
+							<?php foreach($list_narasumber->result() as $narasumber){ ?>
+								<option value="<?php echo $narasumber->id_narasumber; ?>">
+									<?php echo $narasumber->nama_narasumber; ?>
+								</option>
+							<?php } ?>
+						</select>
 				</div>
 				<div class="form-group">
 				<div class="custom-file">
@@ -37,13 +38,14 @@ $this->load->view('template_layout/sidebar_menu');
 				</div>
 				<div class="form-group" style="margin-left: 10px;">
 					<div class="row">
-					<select class="form-control col-md-8" id="quiz">
-						<option value="0">-Pilih Quiz-</option>
-						<option value="1">Quiz 1</option>
-						<option value="1">Quiz 2</option>
-						<option value="1">Quiz 3</option>
-						<option value="1">Quiz 4</option>
-					</select>
+						<select class="form-control col-md-8" id="quiz">
+							<option value="0">-Pilih Quiz-</option>
+							<?php foreach($list_quiz->result() as $quiz){ ?>
+								<option value="<?php echo $quiz->id_quiz; ?>">
+									<?php echo $quiz->nama_quiz; ?>
+								</option>
+							<?php } ?>
+						</select>
 					&nbsp<a class="btn btn-default form-control col-md-2">Add</a>
 					</div>
 				</div>
@@ -59,14 +61,17 @@ $this->load->view('template_layout/sidebar_menu');
 				  	</tr>
 				</thead>
 				<tbody>
+				<?php foreach($list_quiz->result() as $quiz){ ?>
 					<tr>
-						<td>Contoh Quiz 1</td>
-						<td>40</td>
-						<td>90</td>
-						<td><a href="#">Delete</a></td>
+						<td><?php echo $quiz->nama_quiz; ?></td>
+						<td><?php echo $quiz->jumlah_soal; ?></td>
+						<td><?php echo $quiz->nilai; ?></td>
+						<td><a href="<?php echo base_url() ?>admin/<?php echo $quiz->id_quiz; ?>">Delete</a></td>
 					</tr>
+				<?php } ?>
 				</tbody>
 			</table>
+			<?php echo var_dump($quiz); ?>
 			<!--end: Datatable -->
 			<div class="kt-portlet__foot">
 				<div class="kt-form__actions">

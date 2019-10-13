@@ -559,6 +559,8 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Silabus';
 			$data['submenu'] = 'Create Silabus';
+			$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
+			$data['list_quiz'] = $this->Model_jslg->select_quiz();
 			$this->load->view('super_admin/silabus@create_silabus',$data);
 		}else{
 			redirect('login');

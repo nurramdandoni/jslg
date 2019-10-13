@@ -15,9 +15,9 @@ $this->load->view('template_layout/sidebar_menu');
 	</div>
 	<!-- awal -->
 		<div class="kt-portlet__body">
-			<form>
+			<form action="<?php echo base_url()?>admin/save_create_silabus" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-				<input type="text" class="form-control"  placeholder="Nama Pendidikan" required="">
+				<input type="text" class="form-control"  placeholder="Nama Pendidikan" required="" name="nama_silabus">
 				<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
@@ -31,15 +31,17 @@ $this->load->view('template_layout/sidebar_menu');
 						</select>
 				</div>
 				<div class="form-group">
-				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="customFile">
-					<label class="custom-file-label" for="customFile">Upload Materi Pelatihan</label>
-				</div>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="customFile" name="file">
+						<label class="custom-file-label" for="customFile">Upload Materi Pelatihan</label>
+					</div>
+					<label>Max. 2Mb pdf | doc | docx | ppt | pptx</label>
 				</div>
 				<div class="form-group" style="margin-left: 10px;">
 					<div class="row">
-						<select class="form-control col-md-8" id="quiz">
-							<option value="0">-Pilih Quiz-</option>
+						<select class="form-control col-md-8" id="id_quiz">
+							<option value="T">-Pilih Quiz-</option>
+							<option value="0">Tidak ada Quiz</option>
 							<?php foreach($list_quiz->result() as $quiz){ ?>
 								<option value="<?php echo $quiz->id_quiz; ?>">
 									<?php echo $quiz->nama_quiz; ?>
@@ -71,7 +73,6 @@ $this->load->view('template_layout/sidebar_menu');
 				<?php } ?>
 				</tbody>
 			</table>
-			<?php echo var_dump($quiz); ?>
 			<!--end: Datatable -->
 			<div class="kt-portlet__foot">
 				<div class="kt-form__actions">

@@ -566,6 +566,63 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}	
+
+	public function save_create_silabus()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
+			$id_narsum = $this->input->post('id_narsum');
+			$nama_silabus = $this->input->post('nama_silabus');
+			$file = $this->input->post('file');
+			$quiz = $this->input->post('id_quiz');
+			$id_quiz = '';
+			if($quiz=='T'){
+				$id_quiz = 0;
+			}else{
+				$id_quiz = 0;
+			}
+			if($id_narsum=="0"){
+				echo "<script>alert('Narasumber Belum Dipilih!');javascript:history.go(-1);</script>";
+			}elseif($id_quiz=="T"){
+				
+				echo "<script>alert('Quiz Belum Dipilih!');javascript:history.go(-1);</script>";
+				
+			}else{
+				//upload photo
+				$config['max_size']=2048;
+				$config['allowed_types']="pdf|doc|docx|ppt|pptx";
+				$config['remove_spaces']=TRUE;
+				$config['overwrite']=TRUE;
+				$config['upload_path']=FCPATH.'image';
+				$config['encrypt_name']=TRUE;
+				// inisialisasi konfigurasi upload
+				$this->upload->initialize($config);
+				//ambil data image
+				$this->upload->do_upload('file');
+				$data_file=$this->upload->data('file_name');
+				$location=base_url().'file_silabus/';
+				$d_file=$location.$data_file;
+
+				$data = array(
+					'id_narasumber' => $id_narsum,
+					'nama_silabus' => $nama_silabus,
+					'file_materi_silabus' => $d_file,
+					'id_quiz' => $quiz
+				);
+
+				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_silabus');
+
+				if($datainsert){
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+				}else{
+					echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+				}
+			}
+
+		}else{
+			redirect('login');
+		}
+	}	
 	public function all_list_silabus()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

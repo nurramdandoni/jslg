@@ -17,8 +17,8 @@ $this->load->view('template_layout/sidebar_menu');
 		<div class="kt-portlet__body">
 			<form action="<?php echo base_url()?>admin/save_create_silabus" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-				<input type="text" class="form-control"  placeholder="Nama Pendidikan" required="" name="nama_silabus">
-				<span class="form-text text-muted"></span>
+					<input type="text" class="form-control"  placeholder="Nama Pendidikan" required="" name="nama_silabus">
+					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
 					<select class="form-control" id="narasumber_diklat" name="id_narsum">
@@ -39,7 +39,7 @@ $this->load->view('template_layout/sidebar_menu');
 				</div>
 				<div class="form-group" style="margin-left: 10px;">
 					<div class="row">
-						<select class="form-control col-md-8" id="id_quiz">
+						<select class="form-control col-md-8" id="id_quiz" name="id_quiz">
 							<option value="T">-Pilih Quiz-</option>
 							<option value="0">Tidak ada Quiz</option>
 							<?php foreach($list_quiz->result() as $quiz){ ?>
@@ -48,7 +48,7 @@ $this->load->view('template_layout/sidebar_menu');
 								</option>
 							<?php } ?>
 						</select>
-					&nbsp<a class="btn btn-default form-control col-md-2">Add</a>
+					&nbsp<a class="btn btn-default form-control col-md-2"  data-toggle="modal" data-target="#input_quiz">Add</a>
 					</div>
 				</div>
 			
@@ -68,7 +68,7 @@ $this->load->view('template_layout/sidebar_menu');
 						<td><?php echo $quiz->nama_quiz; ?></td>
 						<td><?php echo $quiz->jumlah_soal; ?></td>
 						<td><?php echo $quiz->nilai; ?></td>
-						<td><a href="<?php echo base_url() ?>admin/<?php echo $quiz->id_quiz; ?>">Delete</a></td>
+						<td><a href="<?php echo base_url() ?>admin/delete_quiz/<?php echo $quiz->id_quiz; ?>">Delete</a></td>
 					</tr>
 				<?php } ?>
 				</tbody>
@@ -84,7 +84,54 @@ $this->load->view('template_layout/sidebar_menu');
 
 		<!-- akhir -->
 		
+		
 </div>
+
+<div id="input_quiz" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<form method="post" action="<?php echo base_url()?>admin/save_quiz">
+			<!-- <input type="hidden" value="<?php echo $data_diklat->id_diklat; ?>" name="id_diklat"> -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Buat Quiz</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Judul Quiz" required="" name="nama_quiz">
+					</div>
+					<div class="form-group">
+						<input type="number" class="form-control"  placeholder="Jumlah Soal" required="" name="jumlah">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Nilai Lulus" required="" name="n_lulus">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Keterangan" name="keterangan">
+					</div>
+					<hr>
+					<label for="">Soal</label>
+					<div class="form-group">
+							<input type="text" class="form-control"  placeholder="Pertanyaan" required="" name="pertanyaan">
+						</div>
+						<div class="form-group">
+							<div class="row" style="margin-left:1px; margin-right:1px;">
+								<input type="text" class="form-control col-sm-8"   placeholder="Opsi" required="" name="opsi">
+								&nbsp<a class="btn btn-default form-control col-sm-3">Add Opsi</a>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control"  placeholder="Jawaban" required="" name="jawaban">
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
 
 <?php
 

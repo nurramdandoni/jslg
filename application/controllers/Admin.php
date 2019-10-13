@@ -574,13 +574,7 @@ class Admin extends CI_Controller {
 			$id_narsum = $this->input->post('id_narsum');
 			$nama_silabus = $this->input->post('nama_silabus');
 			$file = $this->input->post('file');
-			$quiz = $this->input->post('id_quiz');
-			$id_quiz = '';
-			if($quiz=='T'){
-				$id_quiz = 0;
-			}else{
-				$id_quiz = 0;
-			}
+			$id_quiz = $this->input->post('id_quiz');
 			if($id_narsum=="0"){
 				echo "<script>alert('Narasumber Belum Dipilih!');javascript:history.go(-1);</script>";
 			}elseif($id_quiz=="T"){
@@ -607,13 +601,13 @@ class Admin extends CI_Controller {
 					'id_narasumber' => $id_narsum,
 					'nama_silabus' => $nama_silabus,
 					'file_materi_silabus' => $d_file,
-					'id_quiz' => $quiz
+					'id_quiz' => $id_quiz
 				);
 
 				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_silabus');
 
 				if($datainsert){
-					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_list_silabus')."';</script>";
 				}else{
 					echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
 				}
@@ -623,6 +617,18 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}	
+
+		
+	public function delete_quiz(){
+		$id = $this->uri->segment(3);
+
+		$delete = $this->Model_jslg->delete_quiz($id);
+		if($delete){
+			echo "<script>alert('Data Berhasil Dihapus!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+		}else{
+			echo "<script>alert('Data Gagal Dihapus!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+		}
+	}
 	public function all_list_silabus()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

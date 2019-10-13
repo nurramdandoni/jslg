@@ -110,6 +110,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("DELETE FROM ms_tempat WHERE id_tempat='$id'");
 	}
 
+	public function delete_quiz($id){
+		return $this->db->query("DELETE FROM ms_quiz WHERE id_quiz='$id'");
+	}
+
 	public function update_create_sertificate($id){
 		return $this->db->query("SELECT * FROM ms_sertificate_temp WHERE id_diklat_temp='$id'");
 	}

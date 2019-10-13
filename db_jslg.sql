@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2019 at 04:31 PM
+-- Generation Time: Oct 13, 2019 at 11:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -7385,6 +7385,7 @@ CREATE TABLE `ms_diklat` (
   `id_produk` int(11) NOT NULL,
   `id_penyelenggara` int(11) NOT NULL,
   `id_narasumber` int(11) NOT NULL,
+  `id_kategori_peserta` enum('individu','instansi') NOT NULL,
   `nama_diklat` varchar(255) NOT NULL,
   `tanggal_diklat` datetime NOT NULL,
   `id_silabus` int(11) NOT NULL,
@@ -7395,8 +7396,9 @@ CREATE TABLE `ms_diklat` (
 -- Dumping data for table `ms_diklat`
 --
 
-INSERT INTO `ms_diklat` (`id_diklat`, `id_produk`, `id_penyelenggara`, `id_narasumber`, `nama_diklat`, `tanggal_diklat`, `id_silabus`, `jumlah_sesi`) VALUES
-(6, 6, 1, 1, '', '2019-12-12 12:20:00', 1, 20);
+INSERT INTO `ms_diklat` (`id_diklat`, `id_produk`, `id_penyelenggara`, `id_narasumber`, `id_kategori_peserta`, `nama_diklat`, `tanggal_diklat`, `id_silabus`, `jumlah_sesi`) VALUES
+(6, 6, 1, 1, 'individu', '', '2019-12-12 12:20:00', 1, 20),
+(7, 7, 1, 1, 'individu', '', '2019-09-09 13:00:00', 1, 30);
 
 -- --------------------------------------------------------
 
@@ -7507,7 +7509,7 @@ CREATE TABLE `ms_peserta` (
 --
 
 INSERT INTO `ms_peserta` (`id_peserta`, `id_diklat`, `id_user`, `id_biodata_peserta`, `status_alumni_peserta`) VALUES
-(2, 6, 3, 26, 'InTraining');
+(2, 6, 3, 26, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -7528,7 +7530,22 @@ CREATE TABLE `ms_produk` (
 --
 
 INSERT INTO `ms_produk` (`id_produk`, `id_kategori_produk`, `nama_produk`, `img_produk`, `harga_diskon`) VALUES
-(6, 2, 'Auditor Hukum PPSI', 'http://localhost/jslg/image/0fb61722fa8786b70351b4ec9559c2ea.png', '50000000.00');
+(6, 2, 'Auditor Hukum PPSI', 'http://localhost/jslg/image/0fb61722fa8786b70351b4ec9559c2ea.png', '50000000.00'),
+(7, 1, 'Test Diklat', 'http://localhost/jslg/image/53329378da15fbab3583782c28320983.jpg', '600000.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ms_quiz`
+--
+
+CREATE TABLE `ms_quiz` (
+  `id_quiz` int(11) NOT NULL,
+  `nama_quiz` varchar(255) NOT NULL,
+  `jumlah_soal` int(11) NOT NULL,
+  `nilai` double NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -7587,7 +7604,21 @@ CREATE TABLE `ms_silabus` (
 --
 
 INSERT INTO `ms_silabus` (`id_silabus`, `id_narasumber`, `nama_silabus`, `file_materi_silabus`, `id_quiz`) VALUES
-(1, 1, 'Database Fundamental', 'jimlyschool.com/materi/database_fundamental_2019.pdf', 1);
+(1, 1, 'Silabus 1', 'http://localhost/jslg/file_silabus/model_cargo.php', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ms_soal_quiz`
+--
+
+CREATE TABLE `ms_soal_quiz` (
+  `id_soal_quiz` int(11) NOT NULL,
+  `id_quiz` int(11) NOT NULL,
+  `pertanyaan` text NOT NULL,
+  `opsi` text NOT NULL,
+  `jawaban` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -7609,7 +7640,8 @@ CREATE TABLE `ms_tempat` (
 --
 
 INSERT INTO `ms_tempat` (`id_tempat`, `id_diklat`, `nama_tempat`, `tanggal`, `kapasitas`, `lokasi_maps`) VALUES
-(1, 6, 'STT Bandung', '2019-12-12', 300, '');
+(4, 6, 'STT Bandung', '2019-10-19', 500, ''),
+(5, 7, 'Jimly School', '2019-11-30', 300, '');
 
 -- --------------------------------------------------------
 
@@ -7631,7 +7663,7 @@ CREATE TABLE `ms_user` (
 
 INSERT INTO `ms_user` (`id_user`, `nik`, `username`, `password`, `level`) VALUES
 (1, '0', 'schooljimly@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'super_admin'),
-(3, '3207100703920001', 'nurramdandoni@gmail.com', 'd005a45205145da09eea667ce7dcab77e7be1f8b', 'peserta'),
+(3, '3207100703920001', 'nurramdandoni@gmail.com', '5c43417113e06644852595e9d00b4572c6def2ab', 'peserta'),
 (4, '3209140303960011', 'kotarokurosaki@gmail.com', '7b1a1817136eb37f311da7d3c487d48968d24ed1', 'peserta');
 
 -- --------------------------------------------------------
@@ -7689,6 +7721,21 @@ INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
 --
 
 --
+-- Indexes for table `kabkot`
+--
+ALTER TABLE `kabkot`
+  ADD PRIMARY KEY (`id_kabkot`),
+  ADD KEY `id_provinsi` (`id_provinsi`);
+
+--
+-- Indexes for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD PRIMARY KEY (`id_kecamatan`),
+  ADD KEY `id_provinsi` (`id_provinsi`),
+  ADD KEY `id_kabkot` (`id_kabkot`);
+
+--
 -- Indexes for table `ms_alumni`
 --
 ALTER TABLE `ms_alumni`
@@ -7707,7 +7754,10 @@ ALTER TABLE `ms_batch`
 --
 ALTER TABLE `ms_biodata_peserta`
   ADD PRIMARY KEY (`id_biodata`),
-  ADD UNIQUE KEY `nik_peserta` (`nik_peserta`);
+  ADD UNIQUE KEY `nik_peserta` (`nik_peserta`),
+  ADD KEY `id_provinsi` (`id_provinsi`),
+  ADD KEY `id_kabkot` (`id_kabkot`),
+  ADD KEY `id_kec` (`id_kec`);
 
 --
 -- Indexes for table `ms_diklat`
@@ -7761,6 +7811,12 @@ ALTER TABLE `ms_produk`
   ADD KEY `id_kategori_produk` (`id_kategori_produk`);
 
 --
+-- Indexes for table `ms_quiz`
+--
+ALTER TABLE `ms_quiz`
+  ADD PRIMARY KEY (`id_quiz`);
+
+--
 -- Indexes for table `ms_sertificate`
 --
 ALTER TABLE `ms_sertificate`
@@ -7778,7 +7834,15 @@ ALTER TABLE `ms_sertificate_temp`
 -- Indexes for table `ms_silabus`
 --
 ALTER TABLE `ms_silabus`
-  ADD PRIMARY KEY (`id_silabus`);
+  ADD PRIMARY KEY (`id_silabus`),
+  ADD KEY `id_narasumber` (`id_narasumber`);
+
+--
+-- Indexes for table `ms_soal_quiz`
+--
+ALTER TABLE `ms_soal_quiz`
+  ADD PRIMARY KEY (`id_soal_quiz`),
+  ADD KEY `id_quiz` (`id_quiz`);
 
 --
 -- Indexes for table `ms_tempat`
@@ -7792,6 +7856,12 @@ ALTER TABLE `ms_tempat`
 --
 ALTER TABLE `ms_user`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `provinsi`
+--
+ALTER TABLE `provinsi`
+  ADD PRIMARY KEY (`id_provinsi`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -7819,7 +7889,7 @@ ALTER TABLE `ms_biodata_peserta`
 -- AUTO_INCREMENT for table `ms_diklat`
 --
 ALTER TABLE `ms_diklat`
-  MODIFY `id_diklat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_diklat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `ms_kategori_produk`
@@ -7855,7 +7925,13 @@ ALTER TABLE `ms_peserta`
 -- AUTO_INCREMENT for table `ms_produk`
 --
 ALTER TABLE `ms_produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `ms_quiz`
+--
+ALTER TABLE `ms_quiz`
+  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ms_sertificate`
@@ -7876,10 +7952,16 @@ ALTER TABLE `ms_silabus`
   MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `ms_soal_quiz`
+--
+ALTER TABLE `ms_soal_quiz`
+  MODIFY `id_soal_quiz` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `ms_tempat`
 --
 ALTER TABLE `ms_tempat`
-  MODIFY `id_tempat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tempat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ms_user`
@@ -7892,6 +7974,19 @@ ALTER TABLE `ms_user`
 --
 
 --
+-- Constraints for table `kabkot`
+--
+ALTER TABLE `kabkot`
+  ADD CONSTRAINT `kabkot_ibfk_1` FOREIGN KEY (`id_provinsi`) REFERENCES `provinsi` (`id_provinsi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `kecamatan`
+--
+ALTER TABLE `kecamatan`
+  ADD CONSTRAINT `kecamatan_ibfk_1` FOREIGN KEY (`id_kabkot`) REFERENCES `kabkot` (`id_kabkot`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kecamatan_ibfk_2` FOREIGN KEY (`id_provinsi`) REFERENCES `provinsi` (`id_provinsi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `ms_alumni`
 --
 ALTER TABLE `ms_alumni`
@@ -7902,6 +7997,14 @@ ALTER TABLE `ms_alumni`
 --
 ALTER TABLE `ms_batch`
   ADD CONSTRAINT `ms_batch_ibfk_1` FOREIGN KEY (`id_diklat`) REFERENCES `ms_diklat` (`id_diklat`);
+
+--
+-- Constraints for table `ms_biodata_peserta`
+--
+ALTER TABLE `ms_biodata_peserta`
+  ADD CONSTRAINT `ms_biodata_peserta_ibfk_1` FOREIGN KEY (`id_provinsi`) REFERENCES `provinsi` (`id_provinsi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ms_biodata_peserta_ibfk_2` FOREIGN KEY (`id_kabkot`) REFERENCES `kabkot` (`id_kabkot`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ms_biodata_peserta_ibfk_3` FOREIGN KEY (`id_kec`) REFERENCES `kecamatan` (`id_kecamatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ms_diklat`
@@ -7938,6 +8041,18 @@ ALTER TABLE `ms_produk`
 ALTER TABLE `ms_sertificate`
   ADD CONSTRAINT `ms_sertificate_ibfk_1` FOREIGN KEY (`id_peserta`) REFERENCES `ms_peserta` (`id_peserta`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ms_sertificate_ibfk_2` FOREIGN KEY (`id_sertificate_temp`) REFERENCES `ms_sertificate_temp` (`id_sertificate_temp`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ms_silabus`
+--
+ALTER TABLE `ms_silabus`
+  ADD CONSTRAINT `ms_silabus_ibfk_1` FOREIGN KEY (`id_narasumber`) REFERENCES `ms_narasumber` (`id_narasumber`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ms_soal_quiz`
+--
+ALTER TABLE `ms_soal_quiz`
+  ADD CONSTRAINT `ms_soal_quiz_ibfk_1` FOREIGN KEY (`id_quiz`) REFERENCES `ms_quiz` (`id_quiz`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ms_tempat`

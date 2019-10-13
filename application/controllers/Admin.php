@@ -422,7 +422,8 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Template';
 			$data['submenu'] = 'Printing Monitor';
-			$data['list_peserta'] = $this->Model_jslg->select_peserta();
+			// list peserta yang muncul adalah yang status peserta 'Yes', bukan InTraining/No
+			$data['list_peserta'] = $this->Model_jslg->select_peserta_lulus();
 			$this->load->view('super_admin/template@printing_monitor',$data);
 		}else{
 			redirect('login');

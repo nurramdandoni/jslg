@@ -99,29 +99,33 @@ $this->load->view('template_layout/sidebar_menu');
 					<div class="form-group">
 						<input type="text" class="form-control"  placeholder="Judul Quiz" required="" name="nama_quiz">
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<input type="number" class="form-control"  placeholder="Jumlah Soal" required="" name="jumlah">
-					</div>
+					</div> -->
 					<div class="form-group">
 						<input type="text" class="form-control"  placeholder="Nilai Lulus" required="" name="n_lulus">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control"  placeholder="Keterangan" name="keterangan">
 					</div>
-					<hr>
+					<!-- awal loop -->
+					<!-- <hr>
 					<label for="">Soal</label>
 					<div class="form-group">
-							<input type="text" class="form-control"  placeholder="Pertanyaan" required="" name="pertanyaan">
-						</div>
+						<input type="text" class="form-control"  placeholder="Pertanyaan" required="" name="pertanyaan">
+					</div>
+					<div id="dynamic">
 						<div class="form-group">
 							<div class="row" style="margin-left:1px; margin-right:1px;">
-								<input type="text" class="form-control col-sm-8"   placeholder="Opsi" required="" name="opsi">
-								&nbsp<a class="btn btn-default form-control col-sm-3">Add Opsi</a>
+								<input type="text" class="form-control col-sm-8" id="opsi"  placeholder="Opsi" required="" name="opsi[]">
+								&nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a>
 							</div>
 						</div>
-						<div class="form-group">
-							<input type="text" class="form-control"  placeholder="Jawaban" required="" name="jawaban">
-						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control"  placeholder="Jawaban" required="" name="jawaban">
+					</div> -->
+					<!-- akhir loop -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -131,6 +135,24 @@ $this->load->view('template_layout/sidebar_menu');
 		</form>
 	</div>
 </div>
+
+
+<script>
+$(document).ready(function(){
+	var no =1;
+	$('#tambah').click(function(){
+        no++;
+        $('#dynamic').append('<div><input type="text" name="opsi[]" placeholder="Opsi '+no+'" class="form-control col-sm-8" id="row'+no+'" style="display:inline;"/><a class="btn btn-default btn_remove form-control col-sm-3" id="'+no+'">Hapus</a></div>');
+		
+    });
+
+    $(document).on('click', '.btn_remove', function(){
+        var button_id = $(this).attr("id"); 
+        $('#row'+button_id+'').remove();
+        $('#'+button_id+'').remove();
+    });
+});
+</script>
 
 
 <?php

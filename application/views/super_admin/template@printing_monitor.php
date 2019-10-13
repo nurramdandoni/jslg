@@ -19,10 +19,10 @@ $this->load->view('template_layout/sidebar_menu');
 			<?php foreach($list_peserta->result() as $data_sertificate){ ?>
 				<div class="col-md-3">
 					<div class="card" style="height: 100px; margin:20px;padding:5px;background-image:url('<?php echo $data_sertificate->template_img; ?>');background-size:100%;background-repeat:no-repeat;">
-					<span style="padding:-3px; border-radius:5px;opacity:0.5;">
+					<span style="padding:-3px; border-radius:5px;opacity:0.5; font-size:10px;">
+						<?php echo $data_sertificate->nama_produk."<br>"; ?>
 						<?php echo $data_sertificate->nama_peserta; ?>
 					</span>
-						
 					</div>
 					<div class="kt-form__actions" style="margin:20px;">
 					<a class="btn btn-default" onclick="alert('Comming Soon!');">Preview</a>

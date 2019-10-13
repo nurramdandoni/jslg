@@ -91,7 +91,11 @@ class Model_jslg extends CI_Model
 	}
 
 	public function select_peserta(){
-		return $this->db->query("SELECT * FROM ms_peserta a join ms_diklat b on a.id_diklat=b.id_diklat join ms_user c on a.id_user=c.id_user JOIN ms_biodata_peserta d on a.id_biodata_peserta=d.id_biodata join ms_sertificate e on a.id_peserta=e.id_peserta join ms_sertificate_temp f on e.id_sertificate_temp=f.id_sertificate_temp"); 
+		return $this->db->query("SELECT * FROM ms_peserta a join ms_diklat b on a.id_diklat=b.id_diklat join ms_user c on a.id_user=c.id_user JOIN ms_biodata_peserta d on a.id_biodata_peserta=d.id_biodata join ms_sertificate e on a.id_peserta=e.id_peserta join ms_sertificate_temp f on e.id_sertificate_temp=f.id_sertificate_temp join ms_produk g on b.id_produk=g.id_produk"); 
+	}
+
+	public function select_peserta_lulus(){
+		return $this->db->query("SELECT * FROM ms_peserta a join ms_diklat b on a.id_diklat=b.id_diklat join ms_user c on a.id_user=c.id_user JOIN ms_biodata_peserta d on a.id_biodata_peserta=d.id_biodata join ms_sertificate e on a.id_peserta=e.id_peserta join ms_sertificate_temp f on e.id_sertificate_temp=f.id_sertificate_temp join ms_produk g on b.id_produk=g.id_produk WHERE a.status_alumni_peserta='Yes'"); 
 	}
 
 	public function select_user_email($email_send){

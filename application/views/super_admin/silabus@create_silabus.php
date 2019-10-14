@@ -109,23 +109,63 @@ $this->load->view('template_layout/sidebar_menu');
 						<input type="text" class="form-control"  placeholder="Keterangan" name="keterangan">
 					</div>
 					<!-- awal loop -->
-					<!-- <hr>
-					<label for="">Soal</label>
+					
+					<hr>
+					<div id="in_soal">
+					<label for="" id="soal_no0">Soal 1</label>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Pertanyaan" required="" name="pertanyaan">
+						<input type="text" class="form-control"  placeholder="Pertanyaan" required="" name="pertanyaan[]">
 					</div>
 					<div id="dynamic">
 						<div class="form-group">
 							<div class="row" style="margin-left:1px; margin-right:1px;">
-								<input type="text" class="form-control col-sm-8" id="opsi"  placeholder="Opsi" required="" name="opsi[]">
-								&nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a>
+								<input type="text" class="form-control" id="opsi"  placeholder="Opsi A" required="" name="opsia[]">
+								<!-- &nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a> -->
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row" style="margin-left:1px; margin-right:1px;">
+								<input type="text" class="form-control" id="opsi"  placeholder="Opsi B" required="" name="opsib[]">
+								<!-- &nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a> -->
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row" style="margin-left:1px; margin-right:1px;">
+								<input type="text" class="form-control" id="opsi"  placeholder="Opsi C" required="" name="opsic[]">
+								<!-- &nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a> -->
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row" style="margin-left:1px; margin-right:1px;">
+								<input type="text" class="form-control" id="opsi"  placeholder="Opsi D" required="" name="opsid[]">
+								<!-- &nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a> -->
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row" style="margin-left:1px; margin-right:1px;">
+								<input type="text" class="form-control" id="opsi"  placeholder="Opsi E" required="" name="opsie[]">
+								<!-- &nbsp<a class="btn btn-default form-control col-sm-3" id="tambah">Add Opsi</a> -->
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control"  placeholder="Jawaban" required="" name="jawaban">
-					</div> -->
+						<!-- <input type="text" class="form-control"  placeholder="Jawaban" required="" name="jawaban[]"> -->
+						<select name="jawaban[]" id="jawaban" class="form-control">
+							<option value="0">-- Pilih Jawaban --</option>
+							<option value="A">Opsi A</option>
+							<option value="B">Opsi B</option>
+							<option value="C">Opsi C</option>
+							<option value="D">Opsi D</option>
+							<option value="E">Opsi E</option>
+						</select>
+					</div> 
+					<hr>
+					</div>
 					<!-- akhir loop -->
+					<div id="input0"></div>
+                	<div align="center">
+                   		<a href="javascript:action();" class="btn btn-default"><span>+ Tambah Soal</span></a>
+                	</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -138,20 +178,34 @@ $this->load->view('template_layout/sidebar_menu');
 
 
 <script>
-$(document).ready(function(){
-	var no =1;
-	$('#tambah').click(function(){
-        no++;
-        $('#dynamic').append('<div><input type="text" name="opsi[]" placeholder="Opsi '+no+'" class="form-control col-sm-8" id="row'+no+'" style="display:inline;"/><a class="btn btn-default btn_remove form-control col-sm-3" id="'+no+'">Hapus</a></div>');
-		
-    });
 
-    $(document).on('click', '.btn_remove', function(){
-        var button_id = $(this).attr("id"); 
-        $('#row'+button_id+'').remove();
-        $('#'+button_id+'').remove();
-    });
-});
+counter=0;
+
+function action(){
+
+	counterNext=counter+1;
+
+	document.getElementById("input"+counter).innerHTML = document.getElementById("in_soal").innerHTML+"<div id=\"input"+counterNext+"\"></div>";
+	document.getElementById("")
+
+	counter++;
+
+}
+
+// $(document).ready(function(){
+// 	var no =1;
+// 	$('#tambah').click(function(){
+//         no++;
+//         $('#dynamic').append('<div><input type="text" name="opsi[]" placeholder="Opsi '+no+'" class="form-control col-sm-8" id="row'+no+'" style="display:inline;"/><a class="btn btn-default btn_remove form-control col-sm-3" id="'+no+'">Hapus</a></div>');
+		
+//     });
+
+//     $(document).on('click', '.btn_remove', function(){
+//         var button_id = $(this).attr("id"); 
+//         $('#row'+button_id+'').remove();
+//         $('#'+button_id+'').remove();
+//     });
+// });
 </script>
 
 

@@ -89,7 +89,7 @@ $this->load->view('template_layout/sidebar_menu');
 
 <div id="input_quiz" class="modal fade" role="dialog">
 	<div class="modal-dialog">
-		<form method="post" action="<?php echo base_url()?>admin/save_quiz">
+		<form method="post" action="<?php echo base_url()?>admin/save_create_quiz">
 			<!-- <input type="hidden" value="<?php echo $data_diklat->id_diklat; ?>" name="id_diklat"> -->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -112,7 +112,7 @@ $this->load->view('template_layout/sidebar_menu');
 					
 					<hr>
 					<div id="in_soal">
-					<label for="" id="soal_no0">Soal 1</label>
+					<label for="" id="soal_no">Soal</label>
 					<div class="form-group">
 						<input type="text" class="form-control"  placeholder="Pertanyaan" required="" name="pertanyaan[]">
 					</div>
@@ -151,12 +151,11 @@ $this->load->view('template_layout/sidebar_menu');
 					<div class="form-group">
 						<!-- <input type="text" class="form-control"  placeholder="Jawaban" required="" name="jawaban[]"> -->
 						<select name="jawaban[]" id="jawaban" class="form-control">
-							<option value="0">-- Pilih Jawaban --</option>
-							<option value="A">Opsi A</option>
-							<option value="B">Opsi B</option>
-							<option value="C">Opsi C</option>
-							<option value="D">Opsi D</option>
-							<option value="E">Opsi E</option>
+							<option value="A">Jawaban : Opsi A</option>
+							<option value="B">Jawaban : Opsi B</option>
+							<option value="C">Jawaban : Opsi C</option>
+							<option value="D">Jawaban : Opsi D</option>
+							<option value="E">Jawaban : Opsi E</option>
 						</select>
 					</div> 
 					<hr>
@@ -186,7 +185,6 @@ function action(){
 	counterNext=counter+1;
 
 	document.getElementById("input"+counter).innerHTML = document.getElementById("in_soal").innerHTML+"<div id=\"input"+counterNext+"\"></div>";
-	document.getElementById("")
 
 	counter++;
 

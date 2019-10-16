@@ -619,6 +619,70 @@ class Admin extends CI_Controller {
 		}
 	}	
 
+	public function save_create_quiz()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
+			$nama_quiz = $this->input->post('nama_quiz');
+			$nilai = $this->input->post('n_lulus');
+			$keterangan = $this->input->post('keterangan');
+			$pertanyaan_quiz = $this->input->post('pertanyaan');
+			$opsi_a = $this->input->post('opsia');
+			$opsi_b = $this->input->post('opsib');
+			$opsi_c = $this->input->post('opsic');
+			$opsi_d = $this->input->post('opsid');
+			$opsi_e = $this->input->post('opsie');
+			$jawaban = $this->input->post('jawaban');
+
+			$jml_soal = count($pertanyaan_quiz);
+			// echo $jml_soal;
+			// die();
+
+			$data_quiz = array(
+				'nama_quiz' => $nama_quiz ,
+				'jumlah_soal' => $jml_soal,
+				'nilai' => $nilai,
+				'keterangan' => $keterangan
+			);
+			
+			$insert_data_quiz = $this->db->insert('ms_quiz', $data_quiz); 
+			$last_id = $this->db->insert_id();
+
+			if($insert_data_quiz){
+				for($i=0;$i<$jml_soal;$i++){
+					$data_soal = array(
+						'id_quiz' => $last_id,
+						'pertanyaan' => $pertanyaan_quiz[$i],
+						'opsi_a' => $opsi_a[$i],
+						'opsi_b' => $opsi_b[$i],
+						'opsi_c' => $opsi_c[$i],
+						'opsi_d' => $opsi_d[$i],
+						'opsi_e' => $opsi_e[$i],
+						'jawaban' => $jawaban[$i]
+					);
+					$datainsert = $this->Model_jslg->insertdatajslg($data_soal,'ms_soal_quiz');
+				}
+
+
+				// if($datainsert){
+					echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+				// }else{
+				// 	echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+				// }
+
+			}else{
+
+				echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+
+			}
+			
+
+
+		}else{
+			redirect('login');
+		}
+	}
+
 		
 	public function delete_quiz(){
 		$id = $this->uri->segment(3);

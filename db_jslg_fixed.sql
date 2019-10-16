@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2019 at 11:03 AM
+-- Generation Time: Oct 16, 2019 at 05:06 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -7547,6 +7547,14 @@ CREATE TABLE `ms_quiz` (
   `keterangan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ms_quiz`
+--
+
+INSERT INTO `ms_quiz` (`id_quiz`, `nama_quiz`, `jumlah_soal`, `nilai`, `keterangan`) VALUES
+(1, 'Test Silabus 1', 2, 80, 'test silabus quiz'),
+(2, 'Test 2', 2, 90, 'test 2');
+
 -- --------------------------------------------------------
 
 --
@@ -7604,7 +7612,11 @@ CREATE TABLE `ms_silabus` (
 --
 
 INSERT INTO `ms_silabus` (`id_silabus`, `id_narasumber`, `nama_silabus`, `file_materi_silabus`, `id_quiz`) VALUES
-(1, 1, 'Silabus 1', 'http://localhost/jslg/file_silabus/model_cargo.php', 1);
+(1, 1, 'Silabus 1', 'http://localhost/jslg/file_silabus/model_cargo.php', 1),
+(2, 1, 'cek', 'http://localhost/jslg/file_silabus/model_cargo.php', 0),
+(3, 1, 'cek', 'http://localhost/jslg/file_silabus/model_cargo.php', 0),
+(4, 1, 'cek 3', 'http://localhost/jslg/file_silabus/db_jslg.sql', 1),
+(5, 1, 'cek 4', 'http://localhost/jslg/file_silabus/provinsi.sql', 2);
 
 -- --------------------------------------------------------
 
@@ -7616,9 +7628,22 @@ CREATE TABLE `ms_soal_quiz` (
   `id_soal_quiz` int(11) NOT NULL,
   `id_quiz` int(11) NOT NULL,
   `pertanyaan` text NOT NULL,
-  `opsi` text NOT NULL,
+  `opsi_a` text NOT NULL,
+  `opsi_b` text NOT NULL,
+  `opsi_c` text NOT NULL,
+  `opsi_d` text NOT NULL,
+  `opsi_e` text NOT NULL,
   `jawaban` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ms_soal_quiz`
+--
+
+INSERT INTO `ms_soal_quiz` (`id_soal_quiz`, `id_quiz`, `pertanyaan`, `opsi_a`, `opsi_b`, `opsi_c`, `opsi_d`, `opsi_e`, `jawaban`) VALUES
+(1, 1, '5-1', '1', '2', '3', '4', '5', 'D'),
+(2, 2, '5-1', '1', '2', '3', '4', '5', 'D'),
+(3, 2, '1+5', '3', '4', '5', '6', '7', 'D');
 
 -- --------------------------------------------------------
 
@@ -7931,7 +7956,7 @@ ALTER TABLE `ms_produk`
 -- AUTO_INCREMENT for table `ms_quiz`
 --
 ALTER TABLE `ms_quiz`
-  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ms_sertificate`
@@ -7949,13 +7974,13 @@ ALTER TABLE `ms_sertificate_temp`
 -- AUTO_INCREMENT for table `ms_silabus`
 --
 ALTER TABLE `ms_silabus`
-  MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ms_soal_quiz`
 --
 ALTER TABLE `ms_soal_quiz`
-  MODIFY `id_soal_quiz` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_soal_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ms_tempat`

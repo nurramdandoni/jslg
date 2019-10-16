@@ -38,11 +38,13 @@ $this->load->view('template_layout/sidebar_menu');
 				  	</tr>
 				</thead>
 				<tbody>
+					<?php foreach($list_silabus->result() as $list){ ?>
 					<tr>
-						<td>Silabus 1</td>
-						<td>Budi</td>
+						<td><?php echo $list->nama_silabus ?></td>
+						<td><?php echo $list->nama_narasumber ?></td>
 						<td>Update|Delete</td>
 					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 			<!--end: Datatable -->

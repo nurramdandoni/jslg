@@ -700,6 +700,7 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Silabus';
 			$data['submenu'] = 'All List';
+			$data['list_silabus'] = $this->Model_jslg->select_silabus();
 			$this->load->view('super_admin/silabus@all_list',$data);
 		}else{
 			redirect('login');

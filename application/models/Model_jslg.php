@@ -71,7 +71,7 @@ class Model_jslg extends CI_Model
 	}
 
 	public function select_silabus(){
-		return $this->db->query("SELECT * FROM ms_silabus a join ms_narasumber b on a.id_narasumber=b.id_narasumber"); 
+		return $this->db->query("SELECT * FROM ms_silabus a join ms_narasumber b on a.id_narasumber=b.id_narasumber join ms_quiz c on a.id_quiz=c.id_quiz"); 
 	}
 
 	public function select_diklat(){
@@ -117,6 +117,10 @@ class Model_jslg extends CI_Model
 	public function delete_quiz($id){
 		return $this->db->query("DELETE FROM ms_quiz WHERE id_quiz='$id'");
 	}
+
+	// public function delete_silabus($id){
+	// 	return $this->db->query("DELETE FROM ms_silabus WHERE id_silabus='$id'");
+	// }
 
 	public function update_create_sertificate($id){
 		return $this->db->query("SELECT * FROM ms_sertificate_temp WHERE id_diklat_temp='$id'");

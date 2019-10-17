@@ -17,7 +17,7 @@ $this->load->view('template_layout/sidebar_menu');
 		<div class="kt-portlet__body">
 			<form action="<?php echo base_url()?>admin/save_create_silabus" method="post" enctype="multipart/form-data">
 				<div class="form-group">
-					<input type="text" class="form-control"  placeholder="Nama Pendidikan" required="" name="nama_silabus">
+					<input type="text" class="form-control"  placeholder="Nama Silabus" required="" name="nama_silabus">
 					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">

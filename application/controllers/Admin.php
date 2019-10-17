@@ -60,7 +60,7 @@ class Admin extends CI_Controller {
 				$config['allowed_types']="png|jpg|jpeg";
 				$config['remove_spaces']=TRUE;
 				$config['overwrite']=TRUE;
-				$config['upload_path']=FCPATH.'image';
+				$config['upload_path']='image';
 				$config['encrypt_name']=TRUE;
 				// inisialisasi konfigurasi upload
 				$this->upload->initialize($config);
@@ -309,32 +309,79 @@ class Admin extends CI_Controller {
 			}elseif($img==NULL){	
 				echo "1";
 			}else{
-				//upload photo
-				$config['max_size']=2048;
-				$config['allowed_types']="png|jpg|jpeg";
-				$config['remove_spaces']=TRUE;
-				$config['overwrite']=TRUE;
-				$config['upload_path']=FCPATH.'temp_sertificate';
-				$config['encrypt_name']=TRUE;
-				// inisialisasi konfigurasi upload
-				$this->upload->initialize($config);
-				//ambil data image
-				$this->upload->do_upload('img');
-				$data_image=$this->upload->data('file_name');
-				$location=base_url().'temp_sertificate/';
-				$pict=$location.$data_image;
+				$image_old = $this->Model_jslg->update_create_sertificate($id_produk);
+				if($image_old->num_rows()>0){
 
-				$data = array(
-					'id_diklat_temp' => $id_produk,
-					'template_img' => $pict
-				);
+					foreach($image_old->result() as $i_o){
+						$old = $i_o->template_img;
+					}
+					$data = parse_url($old);
+					$data_unlink =  $_SERVER['DOCUMENT_ROOT'].$data['path'];
 
-				$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_sertificate_temp');
+					if(unlink($data_unlink)){
+						// upload photo
+						$config['max_size']=2048;
+						$config['allowed_types']="png|jpg|jpeg";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']='temp_sertificate';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('img');
+						$data_image=$this->upload->data('file_name');
+						$location=base_url().'temp_sertificate/';
+						$pict=$location.$data_image;
+						
+						$data = array(
+							'template_img' => $pict
+						);
+						$where = array(
+							'id_diklat_temp' => $id_produk
+						);
+						
+						$dataupdate = $this->Model_jslg->updatedatajslg('ms_sertificate_temp',$where,$data);
+												
+						
+						if($dataupdate){
+							echo "2";
+						}else{
+							echo "3";
+						}
 
-				if($datainsert){
-					echo "2";
+					}else{
+						echo "3";
+					}
+
 				}else{
-					echo "3";
+					//upload photo
+					$config['max_size']=2048;
+					$config['allowed_types']="png|jpg|jpeg";
+					$config['remove_spaces']=TRUE;
+					$config['overwrite']=TRUE;
+					$config['upload_path']='temp_sertificate';
+					$config['encrypt_name']=TRUE;
+					// inisialisasi konfigurasi upload
+					$this->upload->initialize($config);
+					//ambil data image
+					$this->upload->do_upload('img');
+					$data_image=$this->upload->data('file_name');
+					$location=base_url().'temp_sertificate/';
+					$pict=$location.$data_image;
+					
+					$data = array(
+						'id_diklat_temp' => $id_produk,
+						'template_img' => $pict
+					);
+					
+					$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_sertificate_temp');
+					
+					if($datainsert){
+						echo "2";
+					}else{
+						echo "3";
+					}
 				}
 			}
 
@@ -371,7 +418,7 @@ class Admin extends CI_Controller {
 						$config['allowed_types']="png|jpg|jpeg";
 						$config['remove_spaces']=TRUE;
 						$config['overwrite']=TRUE;
-						$config['upload_path']=FCPATH.'temp_sertificate';
+						$config['upload_path']='temp_sertificate';
 						$config['encrypt_name']=TRUE;
 						// inisialisasi konfigurasi upload
 						$this->upload->initialize($config);
@@ -574,7 +621,7 @@ class Admin extends CI_Controller {
 			
 			$id_narsum = $this->input->post('id_narsum');
 			$nama_silabus = $this->input->post('nama_silabus');
-			$file = $this->input->post('file');
+			$file = $_FILES['file']['tmp_name'];
 			$id_quiz = $this->input->post('id_quiz');
 			if($id_narsum=="0"){
 				echo "<script>alert('Narasumber Belum Dipilih!');javascript:history.go(-1);</script>";
@@ -582,13 +629,15 @@ class Admin extends CI_Controller {
 				
 				echo "<script>alert('Quiz Belum Dipilih!');javascript:history.go(-1);</script>";
 				
+			}elseif($file==""){
+				echo "<script>alert('File Belum Dipilih!');javascript:history.go(-1);</script>";
 			}else{
 				//upload photo
 				$config['max_size']=2048;
-				$config['allowed_types']="pdf|doc|docx|ppt|pptx";
+				$config['allowed_types']="*";
 				$config['remove_spaces']=TRUE;
 				$config['overwrite']=TRUE;
-				$config['upload_path']=FCPATH.'image';
+				$config['upload_path']='file_silabus';
 				$config['encrypt_name']=TRUE;
 				// inisialisasi konfigurasi upload
 				$this->upload->initialize($config);
@@ -597,6 +646,7 @@ class Admin extends CI_Controller {
 				$data_file=$this->upload->data('file_name');
 				$location=base_url().'file_silabus/';
 				$d_file=$location.$data_file;
+
 
 				$data = array(
 					'id_narasumber' => $id_narsum,
@@ -701,11 +751,104 @@ class Admin extends CI_Controller {
 			$data['menu'] = 'Silabus';
 			$data['submenu'] = 'All List';
 			$data['list_silabus'] = $this->Model_jslg->select_silabus();
+			$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
+			$data['list_quiz'] = $this->Model_jslg->select_quiz();
 			$this->load->view('super_admin/silabus@all_list',$data);
 		}else{
 			redirect('login');
 		}
 	}	
+
+	public function update_create_silabus()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
+			$id_silabus = $this->input->post('id_silabus');
+			$id_narsum = $this->input->post('id_narsum');
+			$nama_silabus = $this->input->post('nama_silabus');
+			$file = $_FILES['file']['tmp_name'];
+			$id_quiz = $this->input->post('id_quiz');
+			if($id_narsum=="0"){
+				echo "<script>alert('Narasumber Belum Dipilih!');javascript:history.go(-1);</script>";
+			}elseif($id_quiz=="T"){
+				
+				echo "<script>alert('Quiz Belum Dipilih!');javascript:history.go(-1);</script>";
+				
+			}else{
+				if($file==""){
+					$data = array(
+						'id_narasumber' => $id_narsum,
+						'nama_silabus' => $nama_silabus,
+						'id_quiz' => $id_quiz
+					);
+
+					$where = array(
+						'id_silabus' => $id_silabus
+					);
+			
+					$dataupdate = $this->Model_jslg->updatedatajslg('ms_silabus',$where,$data);
+
+					if($dataupdate){
+						echo "<script>alert('Data Berhasil Diubah!');window.location.href='".base_url('admin/all_list_silabus')."';</script>";
+					}else{
+						echo "<script>alert('Data Gagal Diubah!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+					}
+				}else{
+					//upload photo
+					$config['max_size']=2048;
+					$config['allowed_types']="*";
+					$config['remove_spaces']=TRUE;
+					$config['overwrite']=TRUE;
+					$config['upload_path']='file_silabus';
+					$config['encrypt_name']=TRUE;
+					// inisialisasi konfigurasi upload
+					$this->upload->initialize($config);
+					//ambil data image
+					$this->upload->do_upload('file');
+					$data_file=$this->upload->data('file_name');
+					$location=base_url().'file_silabus/';
+					$d_file=$location.$data_file;
+
+					
+
+					$data = array(
+						'id_narasumber' => $id_narsum,
+						'nama_silabus' => $nama_silabus,
+						'file_materi_silabus' => $d_file,
+						'id_quiz' => $id_quiz
+					);
+
+					$where = array(
+						'id_silabus' => $id_silabus
+					);
+			
+					$dataupdate = $this->Model_jslg->updatedatajslg('ms_silabus',$where,$data);
+
+					if($dataupdate){
+						echo "<script>alert('Data Berhasil Diubah!');window.location.href='".base_url('admin/all_list_silabus')."';</script>";
+					}else{
+						echo "<script>alert('Data Gagal Diubah!');window.location.href='".base_url('admin/create_silabus')."';</script>";
+					}
+				}
+
+			}
+
+		}else{
+			redirect('login');
+		}
+	}	
+
+	public function delete_silabus(){
+		$id = $this->uri->segment(3);
+
+		$delete = $this->Model_jslg->delete_silabus($id);
+		if($delete){
+			echo "<script>alert('Data Berhasil Dihapus!');window.location.href='".base_url('admin/all_diklat')."';</script>";
+		}else{
+			echo "<script>alert('Data Gagal Dihapus!');window.location.href='".base_url('admin/all_diklat')."';</script>";
+		}
+	}
+
 	public function create_batch()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

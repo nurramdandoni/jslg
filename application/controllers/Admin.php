@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->library('upload');
+		$this->load->library('pdf');
 		$this->load->model('Model_jslg');
 
 	}
@@ -847,6 +848,10 @@ class Admin extends CI_Controller {
 		}else{
 			echo "<script>alert('Data Gagal Dihapus!');window.location.href='".base_url('admin/all_diklat')."';</script>";
 		}
+	}
+
+	public function cetak_sertificate(){
+		$this->load->view('super_admin/silabus@cetak_sertificate');
 	}
 
 	public function create_batch()

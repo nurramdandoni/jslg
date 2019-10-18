@@ -855,6 +855,7 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Alumni';
 			$data['submenu'] = 'Create Batch';
+			$data['list_produk'] = $this->Model_jslg->select_produk();
 			$this->load->view('super_admin/alumni@create_batch',$data);
 		}else{
 			redirect('login');

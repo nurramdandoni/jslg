@@ -21,14 +21,15 @@ $this->load->view('template_layout/sidebar_menu');
 				<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
-					<select class="form-control" id="narasumber">
-						<option value="0">-Pilih Diklat-</option>
-						<option value="1">nama diklat 1</option>
-						<option value="1">nama diklat 2</option>
-						<option value="1">nama diklat 3</option>
-						<option value="1">nama diklat 4</option>
-					</select>
-				</div>
+						<select class="form-control" id="pilih_diklat" name="id_produk">
+							<option value="0">-Pilih Produk-</option>
+							<?php foreach($list_produk->result() as $produk){ ?>
+								<option value="<?php echo $produk->id_produk; ?>">
+									<?php echo $produk->nama_kategori_produk." - ".$produk->nama_produk; ?>
+								</option>
+							<?php } ?>
+						</select>
+					</div>
 				<div class="form-group">
 				<input type="text" class="form-control"  placeholder="Deskripsi" required="">
 				<span class="form-text text-muted"></span>

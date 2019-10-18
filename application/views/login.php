@@ -86,7 +86,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					
 					<div class="kt-login__actions">
 						<a href="<?php echo base_url() ?>login/register_peserta" class="btn btn-outline-brand btn-pill">Peserta</a>
-						<a href="<?php echo base_url() ?>login/register_narasumber" class="btn btn-outline-brand btn-pill">Narasumber</a>
+						<!-- <a href="<?php echo base_url() ?>login/register_narasumber" class="btn btn-outline-brand btn-pill">Narasumber</a> -->
 					</div>
 				</div>	
 			</div>

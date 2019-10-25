@@ -477,6 +477,17 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}	
+
+	
+	public function cetak_sertificate($id){
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$data['list_peserta'] = $this->Model_jslg->select_peserta_lulus_id($id);
+			$this->load->view('super_admin/template@cetak_sertificate',$data);
+		}else{
+			redirect('login');
+		}
+	}
+
 	public function create_date()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
@@ -850,9 +861,6 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function cetak_sertificate(){
-		$this->load->view('super_admin/silabus@cetak_sertificate');
-	}
 
 	public function create_batch()
 	{

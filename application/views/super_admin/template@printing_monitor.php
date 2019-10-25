@@ -25,7 +25,7 @@ $this->load->view('template_layout/sidebar_menu');
 					</span>
 					</div>
 					<div class="kt-form__actions" style="margin:20px;">
-					<a class="btn btn-default" href="<?php echo base_url()?>admin/cetak_sertificate">Print Preview</a>
+					<a class="btn btn-default" href="<?php echo base_url()?>admin/cetak_sertificate/<?php echo $data_sertificate->id_peserta ?>">Print Preview</a>
 					<!-- <a class="btn btn-default" onclick="alert('Comming Soon!');">Print Preview</a> -->
 					<!-- <a class="btn btn-default" onclick="alert('Comming Soon!');">Print</a> -->
 					</div>

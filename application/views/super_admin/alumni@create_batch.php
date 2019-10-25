@@ -15,9 +15,9 @@ $this->load->view('template_layout/sidebar_menu');
 	</div>
 	<!-- awal -->
 		<div class="kt-portlet__body">
-			<form>
+			<form method="post" action="<?php echo base_url()?>admin/save_create_batch" enctype="multipart/form-data">
 				<div class="form-group">
-				<input type="text" class="form-control"  placeholder="Nama Batch" required="">
+				<input type="text" class="form-control"  placeholder="Nama Batch" required="" name="nama_batch">
 				<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
@@ -31,18 +31,19 @@ $this->load->view('template_layout/sidebar_menu');
 						</select>
 					</div>
 				<div class="form-group">
-				<input type="text" class="form-control"  placeholder="Deskripsi" required="">
+				<input type="text" class="form-control"  placeholder="Deskripsi" required="" name="deskripsi">
 				<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
 				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="customFile">
+					<input type="file" class="custom-file-input" id="customFile" name="file">
 					<label class="custom-file-label" for="customFile">Upload Data Alumni</label><span> *.csv</span>
 				</div>
 				</div>
 			<div class="kt-portlet__foot">
 				<div class="kt-form__actions">
 					<button type="submit" class="btn btn-primary">Simpan</button>
+					<a href="<?php echo base_url()?>format_csv/format_alumni.xlsx" class="btn btn-primary">Download Format</a>
 				</div>
 			</div>
 			</form>

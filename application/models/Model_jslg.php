@@ -30,6 +30,10 @@ class Model_jslg extends CI_Model
 	public function cek_biodata($nik){
 		return $this->db->query("SELECT * FROM ms_biodata_peserta WHERE nik_peserta='$nik'"); 
 	}
+
+	public function cek_alumni($nik,$id_diklat){
+		return $this->db->query("SELECT * FROM ms_alumni a join ms_batch b on a.id_batch=b.id_batch WHERE a.nik_peserta='$nik' and b.id_diklat ='$id_diklat'"); 
+	}
 	public function cek_biodata_narsum($nik){
 		return $this->db->query("SELECT * FROM ms_narasumber WHERE nik_narasumber='$nik'"); 
 	}

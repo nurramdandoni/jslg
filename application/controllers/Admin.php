@@ -874,6 +874,83 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}	
+	public function save_create_batch()
+	{
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$nama_batch = $this->input->post('nama_batch');
+			$id_produk = $this->input->post('id_produk');
+			$deskripsi = $this->input->post('deskripsi');
+			$csv_file = $_FILES['file']['tmp_name'];
+
+
+				if($_FILES['file']['type'] == NULL){
+	
+					echo "<script>alert('File belum dipilih!');javascript:history.go(-1);</script>";
+	
+				}else{
+	
+					$extension = $_FILES['file']['type'];
+		
+					if($extension == 'application/vnd.ms-excel'){
+
+						$data1 = array(
+							'nama_batch' => $nama_batch,
+							'id_diklat' => $id_produk,
+							'deskripsi_batch' => $deskripsi
+						);
+			
+						$insert_batch = $this->Model_jslg->insertdatajslg($data1,'ms_batch');
+						$id_batch = $this->db->insert_id();
+
+
+						$datacsv = fopen($csv_file,'r');
+						fgetcsv($datacsv);
+	
+						while($c = fgetcsv($datacsv)){
+
+							$cek = $this->Model_jslg->cek_biodata($c[0])->num_rows();
+							if($cek > 0){
+								$cek1 = $this->Model_jslg->cek_alumni($c[0],$id_produk)->num_rows();
+								if($cek1 > 0){
+;
+										$al1 = $c[1];
+										$al2 = $c[2];
+										$al3 = $c[3];
+
+										$idp = $id_produk;
+										$nikp =  $c[0];
+
+									// $this->Model_jslg->updatedatajslg('ms_alumni',$where,$data2);
+									$this->db->query("UPDATE ms_alumni a join ms_batch b on a.id_batch=b.id_batch SET a.nama_alumni='$al1',a.angkatan_alumni='$al2',a.instansi_alumni='$al3' WHERE a.nik_peserta='$nikp' and b.id_diklat ='$idp'");
+
+								}else{
+
+									$data3 = array(
+										'id_batch' => $id_batch,
+										'nik_peserta' => $c[0],
+										'nama_alumni' => $c[1],
+										'angkatan_alumni' => $c[2],
+										'instansi_alumni' => $c[3],
+									);
+		
+									$this->Model_jslg->insertdatajslg($data3,'ms_alumni');
+								}
+							}
+						}
+
+						echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_list_alumni')."';</script>";
+						
+					}else{
+						echo "<script>alert('Maaf Format tidah didukung, silahkan gunakan format *.csv');javascript:history.go(-1);</script>";
+					}
+	
+				}
+
+
+		}else{
+			redirect('login');
+		}
+	}	
 	public function all_list_alumni()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

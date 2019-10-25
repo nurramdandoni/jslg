@@ -957,6 +957,7 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Alumni';
 			$data['submenu'] = 'All Alumni';
+			$data['list_alumni'] = $this->Model_jslg->select_alumni();
 			$this->load->view('super_admin/alumni@all_list',$data);
 		}else{
 			redirect('login');

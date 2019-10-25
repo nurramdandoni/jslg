@@ -32,6 +32,7 @@ $this->load->view('template_layout/sidebar_menu');
 			<table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
 				<thead>
 					<tr>
+				  		<th>Nama Batch</th>
 				  		<th>Nama Alumni</th>
 				  		<th>Angkatan Tahun</th>
 				  		<th>Instansi</th>
@@ -40,13 +41,16 @@ $this->load->view('template_layout/sidebar_menu');
 				  	</tr>
 				</thead>
 				<tbody>
+				<?php foreach($list_alumni->result() as $alumni){ ?>
 					<tr>
-						<td>Dadang</td>
-						<td>2019</td>
-						<td>BEA CUKAI</td>
-						<td>Legal Tech</td>
-						<td>Update</td>
+						<td><?php echo $alumni->nama_batch ?></td>
+						<td><?php echo $alumni->nama_alumni ?></td>
+						<td><?php echo $alumni->angkatan_alumni ?></td>
+						<td><?php echo $alumni->instansi_alumni ?></td>
+						<td><?php echo $alumni->nama_produk ?></td>
+						<td><a href="#" data-toggle="modal" data-target="#edit<?php echo $alumni->id_alumni; ?>">Update</a></td>
 					</tr>
+				<?php } ?>
 				</tbody>
 			</table>
 			<!--end: Datatable -->
@@ -54,6 +58,56 @@ $this->load->view('template_layout/sidebar_menu');
 	</div>
 	<!-- akhir -->
 </div>
+
+
+
+<!-- awal modal -->
+<?php foreach($list_alumni->result() as $alumni){ ?>
+	<div id="edit<?php echo $alumni->id_alumni; ?>" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		<form method="post" action="<?php echo base_url()?>admin/update_create_date">
+		<input type="hidden" value="<?php echo $alumni->id_alumni ?>" name="id_alumni">
+		<div class="modal-header">
+			
+			<h4 class="modal-title">Edit Alumni</h4>
+		</div>
+		<div class="modal-body">
+			<!-- awal -->
+				<div class="form-group">
+					<select class="form-control" id="pilih_batch" name="id_batch">
+						<option value="<?php echo $alumni->id_batch ?>"><?php echo $alumni->nama_batch ?></option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="nama_alumni" required="" name="nama_alumni" value="<?php echo $alumni->nama_alumni ?>" placeholder="Nama Alumni">
+					<span class="form-text text-muted"></span>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="angkatan_tahun" required="" name="angkatan_tahun" value="<?php echo $alumni->angkatan_alumni ?>" placeholder="Angkatan Tahun">
+					<span class="form-text text-muted"></span>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" id="instansi_alumni" required="" name="instansi_alumni" value="<?php echo $alumni->instansi_alumni ?>" placeholder="Instansi">
+					<span class="form-text text-muted"></span>
+				</div>
+			<!-- akhir -->
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-primary">Update</button>
+		</div>
+	</form>
+		</div>
+	
+
+	</div>
+	</div>
+<?php } ?>
+
+<!-- akhir modal -->
 
 <?php
 

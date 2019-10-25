@@ -951,6 +951,36 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}	
+
+	public function update_create_batch(){
+		$id_alumni = $this->input->post('id_alumni');
+		$id_batch = $this->input->post('id_batch');
+		$nama_alumni = $this->input->post('nama_alumni');
+		$angkatan = $this->input->post('angkatan_tahun');
+		$instansi = $this->input->post('instansi_alumni');
+
+		$data = array(
+			'id_batch' => $id_batch,
+			'nama_alumni' => $nama_alumni,
+			'angkatan_alumni' => $angkatan,
+			'instansi_alumni' => $instansi
+		);
+
+		$where = array(
+			'id_alumni' => $id_alumni
+		);
+
+		$dataupdate = $this->Model_jslg->updatedatajslg('ms_alumni',$where,$data);
+
+		if($dataupdate){
+			echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_list_alumni')."';</script>";
+		}else{
+			echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/all_list_alumni')."';</script>";
+		}
+
+
+
+	}
 	public function all_list_alumni()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

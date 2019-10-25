@@ -68,7 +68,7 @@ $this->load->view('template_layout/sidebar_menu');
 
 		<!-- Modal content-->
 		<div class="modal-content">
-		<form method="post" action="<?php echo base_url()?>admin/update_create_date">
+		<form method="post" action="<?php echo base_url()?>admin/update_create_batch">
 		<input type="hidden" value="<?php echo $alumni->id_alumni ?>" name="id_alumni">
 		<div class="modal-header">
 			

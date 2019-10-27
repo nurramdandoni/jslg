@@ -999,11 +999,64 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Alumni';
 			$data['submenu'] = 'Dokumentasi';
+			$data['list_batch'] = $this->Model_jslg->select_batch();
 			$this->load->view('super_admin/alumni@upload_dokumentasi',$data);
 		}else{
 			redirect('login');
 		}
 	}
+
+	public function save_upload_dokumentasi()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			
+			$nama_dokumentasi = $this->input->post('nama_dokumentasi');
+			$id_batch = $this->input->post('id_batch');
+			$file = $_FILES['file']['size']/1024;
+			if($file <= 2048){
+				if($id_batch=="0"){
+					
+					echo "<script>alert('Batch Belum Dipilih!');javascript:history.go(-1);</script>";
+					
+				}else{
+					//upload photo
+					$config['max_size']=2048;
+					$config['allowed_types']="png|jpg|jpeg";
+					$config['remove_spaces']=TRUE;
+					$config['overwrite']=TRUE;
+					$config['upload_path']='dokumentasi';
+					$config['encrypt_name']=TRUE;
+					// inisialisasi konfigurasi upload
+					$this->upload->initialize($config);
+					//ambil data image
+					$this->upload->do_upload('file');
+					$data_dokumentasi=$this->upload->data('file_name');
+					$location=base_url().'dokumentasi/';
+					$pict=$location.$data_dokumentasi;
+	
+					$data = array(
+						'id_batch' => $id_batch,
+						'nama_dokumentasi' => $nama_dokumentasi,
+						'img_dokumentasi' => $pict
+					);
+	
+					$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_dokumentasi');
+	
+					if($datainsert){
+						echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/upload_dokumentasi')."';</script>";
+					}else{
+						echo "<script>alert('Data Gagal Disimpan!');window.location.href='".base_url('admin/upload_dokumentasi')."';</script>";
+					}
+				}
+			}else{
+				echo "<script>alert('Ukuran File tidak boleh lebih dari 2MB!');javascript:history.go(-1);</script>";
+			}
+
+		}else{
+			redirect('login');
+		}
+	}
+
 	public function in_house_training()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

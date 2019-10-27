@@ -54,6 +54,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_kategori_produk"); 
 	}
 
+	public function select_batch(){
+		return $this->db->query("SELECT * FROM ms_batch b join ms_diklat c on b.id_diklat=c.id_diklat join ms_produk d on c.id_produk=d.id_produk"); 
+	}
+
 	public function select_alumni(){
 		return $this->db->query("SELECT * FROM ms_alumni a join ms_batch b on a.id_batch=b.id_batch join ms_diklat c on b.id_diklat=c.id_diklat join ms_produk d on c.id_produk=d.id_produk"); 
 	}

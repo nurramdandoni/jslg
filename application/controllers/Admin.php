@@ -1068,12 +1068,18 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}
+	public function list_all_narsum(){
+		$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
+		
+		echo json_encode($data['list_narasumber']->result());
+	}
 	public function all_list_narasumber()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Narasumber';
 			$data['submenu'] = 'All Narasumber';
+			$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
 			$this->load->view('super_admin/narasumber@all_list',$data);
 		}else{
 			redirect('login');

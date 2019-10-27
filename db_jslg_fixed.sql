@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2019 at 05:06 PM
+-- Generation Time: Oct 27, 2019 at 10:45 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -7321,11 +7321,19 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kabkot`, `id_kecamatan`, `nama_kecam
 CREATE TABLE `ms_alumni` (
   `id_alumni` int(11) NOT NULL,
   `id_batch` int(11) NOT NULL,
+  `nik_peserta` varchar(255) NOT NULL,
   `nama_alumni` varchar(255) NOT NULL,
   `angkatan_alumni` varchar(4) NOT NULL,
   `instansi_alumni` varchar(255) NOT NULL,
   `foto_alumni` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ms_alumni`
+--
+
+INSERT INTO `ms_alumni` (`id_alumni`, `id_batch`, `nik_peserta`, `nama_alumni`, `angkatan_alumni`, `instansi_alumni`, `foto_alumni`) VALUES
+(1, 1, '3207100703920001', 'Doni Nurramndan', '2019', 'STT Bandung', '');
 
 -- --------------------------------------------------------
 
@@ -7340,6 +7348,13 @@ CREATE TABLE `ms_batch` (
   `deskripsi_batch` varchar(255) NOT NULL,
   `upl_csv` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ms_batch`
+--
+
+INSERT INTO `ms_batch` (`id_batch`, `nama_batch`, `id_diklat`, `deskripsi_batch`, `upl_csv`) VALUES
+(1, 'Auditor Hukum Batch 1', 6, 'auditor hukum 2019', '');
 
 -- --------------------------------------------------------
 
@@ -7403,6 +7418,19 @@ INSERT INTO `ms_diklat` (`id_diklat`, `id_produk`, `id_penyelenggara`, `id_naras
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ms_dokumentasi`
+--
+
+CREATE TABLE `ms_dokumentasi` (
+  `id_dokumentasi` int(11) NOT NULL,
+  `id_batch` int(11) NOT NULL,
+  `nama_dokumentasi` varchar(255) NOT NULL,
+  `img_dokumentasi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ms_kategori_produk`
 --
 
@@ -7443,7 +7471,7 @@ CREATE TABLE `ms_narasumber` (
   `pendidikan_s1_narasumber` varchar(150) NOT NULL,
   `pendidikan_s2_narasumber` varchar(150) NOT NULL,
   `pendidikan_s3_narasumber` varchar(150) NOT NULL,
-  `status_verifikasi_narasumber` int(11) NOT NULL,
+  `status_verifikasi_narasumber` enum('Waiting Verification','Verified') NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -7452,7 +7480,8 @@ CREATE TABLE `ms_narasumber` (
 --
 
 INSERT INTO `ms_narasumber` (`id_narasumber`, `nama_narasumber`, `nik_narasumber`, `npwp_narasumber`, `tempat_lahir_narasumber`, `tanggal_lahir_narasumber`, `jenis_kelamin_narasumber`, `alamat_narasumber`, `email_narasumber`, `keahlian_narasumber`, `portofolio_narasumber`, `pendidikan_s1_narasumber`, `pendidikan_s2_narasumber`, `pendidikan_s3_narasumber`, `status_verifikasi_narasumber`, `foto`) VALUES
-(1, 'DR. Fauzi Firdaus, S.Kom., M. Kom.', 12345678, 123, 'Bandung', '1990-11-06', 'L', 'Bandung Kota', 'firdausfauzi@gmail.com', 'SQL, OOP', 'github.com/firdausfauzi', 'Oxford University', 'Oxford University', 'Berlin University', 1, 'http://localhost/jslg/image/fauzi.jpg');
+(1, 'DR. Fauzi Firdaus, S.Kom., M. Kom.', 12345678, 123, 'Bandung', '1990-11-06', 'L', 'Bandung Kota', 'firdausfauzi@gmail.com', 'SQL, OOP', 'github.com/firdausfauzi', 'Oxford University', 'Oxford University', 'Berlin University', 'Verified', 'http://localhost/jslg/image/fauzi.jpg'),
+(2, 'Doni Nurramdan', 3213213, 1231, 'Ciamis', '1992-03-07', 'L', 'Kuningan', 'nurramdandoni@gmail.com', 'SQL', 'github.com/nurramdandoni', 'STT Bandung', 'mm', 'bb', 'Waiting Verification', '');
 
 -- --------------------------------------------------------
 
@@ -7572,7 +7601,7 @@ CREATE TABLE `ms_sertificate` (
 --
 
 INSERT INTO `ms_sertificate` (`id_sertificate`, `id_peserta`, `id_sertificate_temp`) VALUES
-(2, 2, 4);
+(3, 2, 8);
 
 -- --------------------------------------------------------
 
@@ -7591,7 +7620,7 @@ CREATE TABLE `ms_sertificate_temp` (
 --
 
 INSERT INTO `ms_sertificate_temp` (`id_sertificate_temp`, `id_diklat_temp`, `template_img`) VALUES
-(4, 6, 'http://localhost/jslg/temp_sertificate/662d850b58f8eabf21b6a5ca66acc53a.jpg');
+(8, 6, 'http://localhost/jslg/temp_sertificate/587e4daf20af374cadad4c88348dc4cf.jpg');
 
 -- --------------------------------------------------------
 
@@ -7612,11 +7641,7 @@ CREATE TABLE `ms_silabus` (
 --
 
 INSERT INTO `ms_silabus` (`id_silabus`, `id_narasumber`, `nama_silabus`, `file_materi_silabus`, `id_quiz`) VALUES
-(1, 1, 'Silabus 1', 'http://localhost/jslg/file_silabus/model_cargo.php', 1),
-(2, 1, 'cek', 'http://localhost/jslg/file_silabus/model_cargo.php', 0),
-(3, 1, 'cek', 'http://localhost/jslg/file_silabus/model_cargo.php', 0),
-(4, 1, 'cek 3', 'http://localhost/jslg/file_silabus/db_jslg.sql', 1),
-(5, 1, 'cek 4', 'http://localhost/jslg/file_silabus/provinsi.sql', 2);
+(1, 1, 'Silabus 12', 'http://localhost/jslg/file_silabus/cc14da9d3409e5f9de34a3c399df668b.php', 2);
 
 -- --------------------------------------------------------
 
@@ -7795,6 +7820,13 @@ ALTER TABLE `ms_diklat`
   ADD KEY `id_silabus` (`id_silabus`);
 
 --
+-- Indexes for table `ms_dokumentasi`
+--
+ALTER TABLE `ms_dokumentasi`
+  ADD PRIMARY KEY (`id_dokumentasi`),
+  ADD KEY `id_batch` (`id_batch`);
+
+--
 -- Indexes for table `ms_kategori_produk`
 --
 ALTER TABLE `ms_kategori_produk`
@@ -7896,13 +7928,13 @@ ALTER TABLE `provinsi`
 -- AUTO_INCREMENT for table `ms_alumni`
 --
 ALTER TABLE `ms_alumni`
-  MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ms_batch`
 --
 ALTER TABLE `ms_batch`
-  MODIFY `id_batch` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_batch` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ms_biodata_peserta`
@@ -7917,6 +7949,12 @@ ALTER TABLE `ms_diklat`
   MODIFY `id_diklat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `ms_dokumentasi`
+--
+ALTER TABLE `ms_dokumentasi`
+  MODIFY `id_dokumentasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `ms_kategori_produk`
 --
 ALTER TABLE `ms_kategori_produk`
@@ -7926,7 +7964,7 @@ ALTER TABLE `ms_kategori_produk`
 -- AUTO_INCREMENT for table `ms_narasumber`
 --
 ALTER TABLE `ms_narasumber`
-  MODIFY `id_narasumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_narasumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ms_penyelenggara`
@@ -7962,19 +8000,19 @@ ALTER TABLE `ms_quiz`
 -- AUTO_INCREMENT for table `ms_sertificate`
 --
 ALTER TABLE `ms_sertificate`
-  MODIFY `id_sertificate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_sertificate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ms_sertificate_temp`
 --
 ALTER TABLE `ms_sertificate_temp`
-  MODIFY `id_sertificate_temp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_sertificate_temp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `ms_silabus`
 --
 ALTER TABLE `ms_silabus`
-  MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ms_soal_quiz`
@@ -8039,6 +8077,12 @@ ALTER TABLE `ms_diklat`
   ADD CONSTRAINT `ms_diklat_ibfk_2` FOREIGN KEY (`id_penyelenggara`) REFERENCES `ms_penyelenggara` (`id_penyelenggara`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ms_diklat_ibfk_3` FOREIGN KEY (`id_narasumber`) REFERENCES `ms_narasumber` (`id_narasumber`),
   ADD CONSTRAINT `ms_diklat_ibfk_4` FOREIGN KEY (`id_silabus`) REFERENCES `ms_silabus` (`id_silabus`);
+
+--
+-- Constraints for table `ms_dokumentasi`
+--
+ALTER TABLE `ms_dokumentasi`
+  ADD CONSTRAINT `ms_dokumentasi_ibfk_1` FOREIGN KEY (`id_batch`) REFERENCES `ms_batch` (`id_batch`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ms_permohonan_narasumber`

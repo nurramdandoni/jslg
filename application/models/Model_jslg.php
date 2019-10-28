@@ -70,6 +70,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_narasumber"); 
 	}
 
+	public function select_narasumber_by_stat($stat){
+		return $this->db->query("SELECT * FROM ms_narasumber WHERE status_verifikasi_narasumber='$stat'"); 
+	}
+
 	public function select_narasumber_id($id_narsum){
 		return $this->db->query("SELECT * FROM ms_narasumber WHERE id_narasumber='$id_narsum'"); 
 	}

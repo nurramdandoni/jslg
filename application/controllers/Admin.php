@@ -1068,11 +1068,20 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}
+	
 	public function list_all_narsum(){
 		$data['list_narasumber'] = $this->Model_jslg->select_narasumber();
 		
 		echo json_encode($data['list_narasumber']->result());
 	}
+
+	public function list_all_narsum_stat(){
+		$stat = $this->input->post('sts');
+		$data['list_narasumber'] = $this->Model_jslg->select_narasumber_by_stat($stat);
+		
+		echo json_encode($data['list_narasumber']->result());
+	}
+
 	public function all_list_narasumber()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

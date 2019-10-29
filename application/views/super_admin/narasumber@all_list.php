@@ -82,7 +82,7 @@ $this->load->view('template_layout/sidebar_menu');
 				</div>
 				<div class="form-group">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" name="foto" id="img-load<?php echo $narsum->id_narasumber; ?>" onchange="previewimg(<?php echo $narsum->id_narasumber; ?>);">
+						<input type="file" class="custom-file-input" name="foto" id="img-load<?php echo $narsum->id_narasumber; ?>" onchange="previewimg('<?php echo $narsum->id_narasumber; ?>')">
 						<label class="custom-file-label" for="customFile">Foto Narasumber</label>
 					</div>
 				</div>

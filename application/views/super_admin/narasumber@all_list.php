@@ -63,7 +63,7 @@ $this->load->view('template_layout/sidebar_menu');
 
 		<!-- Modal content-->
 		<div class="modal-content">
-		<form method="post" action="<?php echo base_url()?>admin/">
+		<form method="post" action="<?php echo base_url()?>admin/update_narasumber" enctype="multipart/form-data">
 		<input type="hidden" value="<?php echo $narsum->id_narasumber; ?>" name="id_narasumber">
 		<div class="modal-header">
 			
@@ -71,6 +71,21 @@ $this->load->view('template_layout/sidebar_menu');
 		</div>
 		<div class="modal-body">
 			<!-- awal -->
+				<div class="row">
+					<div class="col-md-4">
+					</div>
+					<div class="card col-md-4" style="min-height: 70px; margin-bottom:20px;padding:10px; min-width: 70px;">
+						<img src="" alt="" id="img-prev<?php echo $narsum->id_narasumber; ?>" class="img-thumbnail">
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="foto" id="img-load<?php echo $narsum->id_narasumber; ?>" onchange="previewimg(<?php echo $narsum->id_narasumber; ?>);">
+						<label class="custom-file-label" for="customFile">Foto Narasumber</label>
+					</div>
+				</div>
 				<div class="form-group">
 					<span class="form-text text-muted">Nama Lengkap & Gelar</span>
 					<input type="text" class="form-control" id="nama_narasumber" required="" name="nama_narasumber" value="<?php echo $narsum->nama_narasumber; ?>" placeholder="Nama Narasumber">
@@ -107,7 +122,7 @@ $this->load->view('template_layout/sidebar_menu');
 				</div>
 				<div class="form-group">
 					<span class="form-text text-muted">Alamat</span>
-					<textarea class="form-control" name="" id="" rows="3" style="text-align: left;">Alamat Narasumber</textarea>
+					<textarea class="form-control" name="alamat_narasumber" id="" rows="3" style="text-align: left;">Alamat Narasumber</textarea>
 				</div>
 				<div class="form-group">
 					<span class="form-text text-muted">Email</span>
@@ -126,12 +141,33 @@ $this->load->view('template_layout/sidebar_menu');
 					<input type="text" class="form-control" id="pendidikan_s1_narasumber" required="" name="pendidikan_s1_narasumber" value="<?php echo $narsum->pendidikan_s1_narasumber; ?>" placeholder="Pendidikan S1 Narasumber">
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Ijazah S1</span>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="ijazah_s1" id="s1">
+						<label class="custom-file-label" for="customFile"></label>
+					</div>
+				</div>
+				<div class="form-group">
 					<span class="form-text text-muted">Pendidikan S2</span>
 					<input type="text" class="form-control" id="pendidikan_s2_narasumber" required="" name="pendidikan_s2_narasumber" value="<?php echo $narsum->pendidikan_s2_narasumber; ?>" placeholder="Pendidikan S2 Narasumber">
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Ijazah S2</span>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="ijazah_s2" id="s2">
+						<label class="custom-file-label" for="customFile"></label>
+					</div>
+				</div>
+				<div class="form-group">
 					<span class="form-text text-muted">Pendidikan S3</span>
 					<input type="text" class="form-control" id="pendidikan_s3_narasumber" required="" name="pendidikan_s3_narasumber" value="<?php echo $narsum->pendidikan_s3_narasumber; ?>" placeholder="Pendidikan S3 Narasumber">
+				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Ijazah S3</span>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="ijazah_s3" id="s3">
+						<label class="custom-file-label" for="customFile"></label>
+					</div>
 				</div>
 				<span class="form-text text-muted">Status Verifikasi</span>
 					<select class="form-control" id="status_verifikasi_narasumber" required="" name="status_verifikasi_narasumber">
@@ -157,11 +193,24 @@ $this->load->view('template_layout/sidebar_menu');
 
 	</div>
 	</div>
+
+	<script>
+		function previewimg(a){
+			document.getElementById('img-prev'+a).style.display = "block";
+			var oFread = new FileReader();
+			oFread.readAsDataURL(document.getElementById('img-load'+a).files[0]);
+
+			oFread.onload = function(ofevent){
+				document.getElementById('img-prev'+a).src = ofevent.target.result;
+			}
+		}
+	</script>
 <?php } ?>
 
 <!-- akhir modal -->
 
 <script>
+
 $(document).ready(function(){
 	var tbl = '';
 	$.ajax({

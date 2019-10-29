@@ -1226,4 +1226,154 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}
+
+	public function update_narasumber()
+	{	
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+
+			$id_narasumber = $this->input->post('id_narasumber');
+			$nama_narasumber = $this->input->post('nama_narasumber');
+			$nik_narasumber = $this->input->post('nik_narasumber');
+			$npwp_narasumber = $this->input->post('npwp_narasumber');
+			$tempat_lahir_narasumber = $this->input->post('tempat_lahir_narasumber');
+			$tanggal_lahir_narasumber = $this->input->post('tanggal_lahir_narasumber');
+			$jenis_kelamin_narasumber = $this->input->post('jenis_kelamin_narasumber');
+			$alamat_narasumber = $this->input->post('alamat_narasumber');
+			$email_narasumber = $this->input->post('email_narasumber');
+			$keahlian_narasumber = $this->input->post('keahlian_narasumber');
+			$portofolio_narasumber = $this->input->post('portofolio_narasumber');
+			$pendidikan_s1_narasumber = $this->input->post('pendidikan_s1_narasumber');
+			$pendidikan_s2_narasumber = $this->input->post('pendidikan_s2_narasumber');
+			$pendidikan_s3_narasumber = $this->input->post('pendidikan_s3_narasumber');
+			$status_verifikasi_narasumber = $this->input->post('status_verifikasi_narasumber');
+			$img = $_FILES['foto']['tmp_name'];
+			$s1 = $_FILES['ijazah_s1']['tmp_name'];
+			$s2 = $_FILES['ijazah_s2']['tmp_name'];
+			$s3 = $_FILES['ijazah_s3']['tmp_name'];
+
+			$where = array(
+				'id_narasumber' => $id_narasumber
+			);
+			
+			if($img != NULL){
+
+				if(($_FILES['foto']['size']/1024) > 2048){
+
+					echo "<script>alert('Ukuran File tidak boleh lebih dari 2MB!');javascript:history.go(-1);</script>";
+					
+				}else{
+
+					$config['max_size']=2048;
+						$config['allowed_types']="*";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']='foto_narasumber';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('foto');
+						$data_file=$this->upload->data('file_name');
+						$location=base_url().'foto_narasumber/';
+						$d_file=$location.$data_file;
+	
+					$data1 = array(
+						'foto' => $d_file
+					);
+	
+					$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data1);
+				}
+
+			}
+			if($s1 != NULL){
+
+				$config['max_size']=2048;
+						$config['allowed_types']="*";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']='ijazah_narasumber';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('ijazah_s1');
+						$data_file=$this->upload->data('file_name');
+						$location=base_url().'ijazah_narasumber/';
+						$d_file=$location.$data_file;
+
+				$data2 = array(
+					'ijazah_s1_narasumber' => $d_file
+				);
+
+				$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data2);
+			}
+			if($s2 != NULL){
+
+				$config['max_size']=2048;
+						$config['allowed_types']="*";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']='ijazah_narasumber';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('ijazah_s1');
+						$data_file=$this->upload->data('file_name');
+						$location=base_url().'ijazah_narasumber/';
+						$d_file=$location.$data_file;
+
+				$data3 = array(
+					'ijazah_s2_narasumber' => $d_file
+				);
+
+				$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data3);
+			}
+			if($s3 != NULL){
+
+				$config['max_size']=2048;
+						$config['allowed_types']="*";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']='ijazah_narasumber';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('ijazah_s1');
+						$data_file=$this->upload->data('file_name');
+						$location=base_url().'ijazah_narasumber/';
+						$d_file=$location.$data_file;
+
+				$data4 = array(
+					'ijazah_s3_narasumber' => $d_file
+				);
+
+				$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data4);
+			}
+			
+			$data = array(
+				'nama_narasumber' => $nama_narasumber,
+				'nik_narasumber' => $nik_narasumber,
+				'npwp_narasumber' => $npwp_narasumber,
+				'tempat_lahir_narasumber' => $tempat_lahir_narasumber,
+				'tanggal_lahir_narasumber' => $tanggal_lahir_narasumber,
+				'jenis_kelamin_narasumber' => $jenis_kelamin_narasumber,
+				'alamat_narasumber' => $alamat_narasumber,
+				'email_narasumber' => $email_narasumber,
+				'keahlian_narasumber' => $keahlian_narasumber,
+				'portofolio_narasumber' => $portofolio_narasumber,
+				'pendidikan_s1_narasumber' => $pendidikan_s1_narasumber,
+				'pendidikan_s2_narasumber' => $pendidikan_s2_narasumber,
+				'pendidikan_s3_narasumber' => $pendidikan_s3_narasumber
+			);
+
+			$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data);
+
+			echo "<script>alert('Data Berhasil Disimpan!');window.location.href='".base_url('admin/all_list_narasumber')."';</script>";
+
+		}else{
+			redirect('login');
+		}
+	}
 }

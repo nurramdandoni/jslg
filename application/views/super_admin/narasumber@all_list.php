@@ -72,33 +72,79 @@ $this->load->view('template_layout/sidebar_menu');
 		<div class="modal-body">
 			<!-- awal -->
 				<div class="form-group">
+					<span class="form-text text-muted">Nama Lengkap & Gelar</span>
 					<input type="text" class="form-control" id="nama_narasumber" required="" name="nama_narasumber" value="<?php echo $narsum->nama_narasumber; ?>" placeholder="Nama Narasumber">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Nomor Induk Kependudukan</span>
 					<input type="text" class="form-control" id="nik_narasumber" required="" name="nik_narasumber" value="<?php echo $narsum->nik_narasumber; ?>" placeholder="NIK Narasumber">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">NPWP</span>
 					<input type="text" class="form-control" id="npwp_narasumber" required="" name="npwp_narasumber" value="<?php echo $narsum->npwp_narasumber; ?>" placeholder="NPWP Narasumber">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Tempat Lahir</span>
 					<input type="text" class="form-control" id="tempat_lahir_narasumber" required="" name="tempat_lahir_narasumber" value="<?php echo $narsum->tempat_lahir_narasumber; ?>" placeholder="Tempat Lahir Narasumber">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Tanggal Lahir</span>
 					<input type="date" class="form-control" id="tanggal_lahir_narasumber" required="" name="tanggal_lahir_narasumber" value="<?php echo $narsum->tanggal_lahir_narasumber; ?>" placeholder="Tanggal Lahir Narasumber">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="jenis_kelamin_narasumber" required="" name="jenis_kelamin_narasumber" value="<?php echo $narsum->jenis_kelamin_narasumber; ?>" placeholder="Jenis Kelamin Narasumber">
-					<span class="form-text text-muted"></span>
+				<span class="form-text text-muted">Jenis Kelamin</span>
+					<select class="form-control" id="jenis_kelamin_narasumber" required="" name="jenis_kelamin_narasumber">
+						<option value="<?php echo $narsum->jenis_kelamin_narasumber; ?>">
+							<?php echo $narsum->jenis_kelamin_narasumber; ?>
+						</option>
+						<option value="L">
+							L
+						</option>
+						<option value="P">
+							P
+						</option>
+					</select>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Alamat</span>
+					<textarea class="form-control" name="" id="" rows="3" style="text-align: left;">Alamat Narasumber</textarea>
+				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Email</span>
+					<input type="text" class="form-control" id="email_narasumber" required="" name="email_narasumber" value="<?php echo $narsum->email_narasumber; ?>" placeholder="Email Narasumber">
+				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Keahlian</span>
 					<input type="text" class="form-control" id="keahlian_narasumber" required="" name="keahlian_narasumber" value="<?php echo $narsum->keahlian_narasumber; ?>" placeholder="Keahlian Narasumber">
-					<span class="form-text text-muted"></span>
 				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Portofolio</span>
+					<input type="text" class="form-control" id="portofolio_narasumber" required="" name="portofolio_narasumber" value="<?php echo $narsum->portofolio_narasumber; ?>" placeholder="Portofolio Narasumber">
+				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Pendidikan S1</span>
+					<input type="text" class="form-control" id="pendidikan_s1_narasumber" required="" name="pendidikan_s1_narasumber" value="<?php echo $narsum->pendidikan_s1_narasumber; ?>" placeholder="Pendidikan S1 Narasumber">
+				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Pendidikan S2</span>
+					<input type="text" class="form-control" id="pendidikan_s2_narasumber" required="" name="pendidikan_s2_narasumber" value="<?php echo $narsum->pendidikan_s2_narasumber; ?>" placeholder="Pendidikan S2 Narasumber">
+				</div>
+				<div class="form-group">
+					<span class="form-text text-muted">Pendidikan S3</span>
+					<input type="text" class="form-control" id="pendidikan_s3_narasumber" required="" name="pendidikan_s3_narasumber" value="<?php echo $narsum->pendidikan_s3_narasumber; ?>" placeholder="Pendidikan S3 Narasumber">
+				</div>
+				<span class="form-text text-muted">Status Verifikasi</span>
+					<select class="form-control" id="status_verifikasi_narasumber" required="" name="status_verifikasi_narasumber">
+						<option value="<?php echo $narsum->status_verifikasi_narasumber; ?>">
+							<?php echo $narsum->status_verifikasi_narasumber; ?>
+						</option>
+						<option value="Verified">
+							Verified
+						</option>
+						<option value="Waiting Verification">
+							Waiting Verification
+						</option>
+					</select>
 			<!-- akhir -->
 		</div>
 		<div class="modal-footer">

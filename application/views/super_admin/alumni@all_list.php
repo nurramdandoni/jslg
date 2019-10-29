@@ -77,21 +77,22 @@ $this->load->view('template_layout/sidebar_menu');
 		<div class="modal-body">
 			<!-- awal -->
 				<div class="form-group">
+					<span class="form-text text-muted">Nama Batch</span>
 					<select class="form-control" id="pilih_batch" name="id_batch">
 						<option value="<?php echo $alumni->id_batch ?>"><?php echo $alumni->nama_batch ?></option>
 					</select>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Nama Alumni</span>
 					<input type="text" class="form-control" id="nama_alumni" required="" name="nama_alumni" value="<?php echo $alumni->nama_alumni ?>" placeholder="Nama Alumni">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Tahun Angkatan</span>
 					<input type="text" class="form-control" id="angkatan_tahun" required="" name="angkatan_tahun" value="<?php echo $alumni->angkatan_alumni ?>" placeholder="Angkatan Tahun">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Instansi</span>
 					<input type="text" class="form-control" id="instansi_alumni" required="" name="instansi_alumni" value="<?php echo $alumni->instansi_alumni ?>" placeholder="Instansi">
-					<span class="form-text text-muted"></span>
 				</div>
 			<!-- akhir -->
 		</div>

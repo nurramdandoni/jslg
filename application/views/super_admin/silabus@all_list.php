@@ -75,10 +75,11 @@ $this->load->view('template_layout/sidebar_menu');
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
+							<span class="form-text text-muted">Nama Silabus</span>
 							<input type="text" class="form-control"  placeholder="Nama Silabus" required="" name="nama_silabus" value="<?php echo $list->nama_silabus; ?>">
-							<span class="form-text text-muted"></span>
 						</div>
 						<div class="form-group">
+							<span class="form-text text-muted">Nama Narasumber</span>
 							<select class="form-control" id="narasumber_diklat" name="id_narsum">
 									<option value="<?php echo $list->id_narasumber; ?>"><?php echo $list->nama_narasumber; ?></option>
 									<?php foreach($list_narasumber->result() as $narasumber){ ?>
@@ -89,6 +90,7 @@ $this->load->view('template_layout/sidebar_menu');
 								</select>
 						</div>
 						<div class="form-group">
+							<span class="form-text text-muted">File Silabus</span>
 							<div class="custom-file">
 								<input type="file" class="custom-file-input" id="customFile" name="file">
 								<label class="custom-file-label" for="customFile">Upload Materi Pelatihan</label>
@@ -96,6 +98,7 @@ $this->load->view('template_layout/sidebar_menu');
 							<label>Max. 2Mb pdf | doc | docx | ppt | pptx</label>
 						</div>
 						<div class="form-group">
+								<span class="form-text text-muted">Quiz</span>
 								<select class="form-control" id="id_quiz" name="id_quiz">
 									<option value="<?php echo $list->id_quiz; ?>"><?php echo $list->nama_quiz; ?></option>
 									<option value="0">Tidak ada Quiz</option>

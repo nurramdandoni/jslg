@@ -77,6 +77,7 @@ $this->load->view('template_layout/sidebar_menu');
 		<div class="modal-body">
 			<!-- awal -->
 				<div class="form-group">
+					<span class="form-text text-muted">Nama Diklat</span>
 					<select class="form-control" id="pilih_diklat" name="id_diklat">
 						<option value="<?php echo $jadwal->id_diklat; ?>"><?php echo $jadwal->nama_kategori_produk." - ".$jadwal->nama_produk; ?></option>
 						<?php foreach($list_produk->result() as $produk){ ?>
@@ -87,16 +88,16 @@ $this->load->view('template_layout/sidebar_menu');
 					</select>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Tanggal Diklat</span>
 					<input type="text" class="form-control" id="tgl_diklat" required="" name="tanggal" value="<?php echo $jadwal->tanggal_diklat; ?>" disabled="">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Tempat Diklat</span>
 					<input type="text" class="form-control"  placeholder="Nama Tempat" required="" name="nama_tempat" value="<?php echo $jadwal->nama_tempat; ?>">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Kapasistas Tempat Diklat</span>
 					<input type="number" class="form-control"  placeholder="Kapasitas Ruangan" required="" name="kapasitas" value="<?php echo $jadwal->kapasitas; ?>">
-					<span class="form-text text-muted"></span>
 				</div>
 				<div class="row">
 				<div class="col-md-12">

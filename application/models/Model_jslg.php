@@ -90,6 +90,10 @@ class Model_jslg extends CI_Model
 		return $this->db->query("SELECT * FROM ms_silabus a join ms_narasumber b on a.id_narasumber=b.id_narasumber join ms_quiz c on a.id_quiz=c.id_quiz"); 
 	}
 
+	public function select_silabus_narasumber_id($id){
+		return $this->db->query("SELECT * FROM ms_silabus WHERE id_narasumber='$id'"); 
+	}
+
 	public function select_diklat(){
 		return $this->db->query("SELECT * FROM ms_diklat a join ms_produk b on a.id_produk=b.id_produk join ms_penyelenggara c on a.id_penyelenggara=c.id_penyelenggara join ms_narasumber d on a.id_narasumber=d.id_narasumber join ms_kategori_produk e on b.id_kategori_produk=e.id_kategori_produk join ms_silabus f on a.id_silabus=f.id_silabus order by a.tanggal_diklat ASC"); 
 	}

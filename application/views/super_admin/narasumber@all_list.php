@@ -137,6 +137,13 @@ $this->load->view('template_layout/sidebar_menu');
 					<input type="text" class="form-control" id="portofolio_narasumber" required="" name="portofolio_narasumber" value="<?php echo $narsum->portofolio_narasumber; ?>" placeholder="Portofolio Narasumber">
 				</div>
 				<div class="form-group">
+					<span class="form-text text-muted">Curiculum Vitae (CV)</span>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="cv" id="cv">
+						<label class="custom-file-label" for="customFile"></label>
+					</div>
+				</div>
+				<div class="form-group">
 					<span class="form-text text-muted">Pendidikan S1</span>
 					<input type="text" class="form-control" id="pendidikan_s1_narasumber" required="" name="pendidikan_s1_narasumber" value="<?php echo $narsum->pendidikan_s1_narasumber; ?>" placeholder="Pendidikan S1 Narasumber">
 				</div>

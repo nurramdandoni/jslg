@@ -1112,6 +1112,7 @@ class Admin extends CI_Controller {
 			$data['menu'] = 'Narasumber';
 			$data['submenu'] = 'Detail Narasumber';
 			$data['detail_narasumber'] = $this->Model_jslg->select_narasumber_id($id);
+			$data['silabus_narasumber'] = $this->Model_jslg->select_silabus_narasumber_id($id);
 			$this->load->view('super_admin/narasumber@detail_narasumber',$data);
 		}else{
 			redirect('login');
@@ -1248,6 +1249,7 @@ class Admin extends CI_Controller {
 			$pendidikan_s3_narasumber = $this->input->post('pendidikan_s3_narasumber');
 			$status_verifikasi_narasumber = $this->input->post('status_verifikasi_narasumber');
 			$img = $_FILES['foto']['tmp_name'];
+			$cv = $_FILES['cv']['tmp_name'];
 			$s1 = $_FILES['ijazah_s1']['tmp_name'];
 			$s2 = $_FILES['ijazah_s2']['tmp_name'];
 			$s3 = $_FILES['ijazah_s3']['tmp_name'];
@@ -1264,7 +1266,7 @@ class Admin extends CI_Controller {
 					
 				}else{
 
-					$config['max_size']=2048;
+						$config['max_size']=2048;
 						$config['allowed_types']="*";
 						$config['remove_spaces']=TRUE;
 						$config['overwrite']=TRUE;
@@ -1286,9 +1288,44 @@ class Admin extends CI_Controller {
 				}
 
 			}
-			if($s1 != NULL){
+			if($cv != NULL){
 
-				$config['max_size']=2048;
+				if(($_FILES['cv']['size']/1024) > 2048){
+
+					echo "<script>alert('Ukuran File tidak boleh lebih dari 2MB!');javascript:history.go(-1);</script>";
+					
+				}else{
+
+						$config['max_size']=2048;
+						$config['allowed_types']="*";
+						$config['remove_spaces']=TRUE;
+						$config['overwrite']=TRUE;
+						$config['upload_path']='cv_narasumber';
+						$config['encrypt_name']=TRUE;
+						// inisialisasi konfigurasi upload
+						$this->upload->initialize($config);
+						//ambil data image
+						$this->upload->do_upload('cv');
+						$data_file=$this->upload->data('file_name');
+						$location='cv_narasumber/';
+						$d_file=$location.$data_file;
+	
+					$data5 = array(
+						'cv' => $d_file
+					);
+	
+					$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data5);
+				}
+
+			}
+			if($s1 != NULL){
+				if(($_FILES['foto']['size']/1024) > 2048){
+
+					echo "<script>alert('Ukuran File tidak boleh lebih dari 2MB!');javascript:history.go(-1);</script>";
+					
+				}else{
+
+						$config['max_size']=2048;
 						$config['allowed_types']="*";
 						$config['remove_spaces']=TRUE;
 						$config['overwrite']=TRUE;
@@ -1302,15 +1339,22 @@ class Admin extends CI_Controller {
 						$location='ijazah_narasumber/';
 						$d_file=$location.$data_file;
 
-				$data2 = array(
-					'ijazah_s1_narasumber' => $d_file
-				);
+					$data2 = array(
+						'ijazah_s1_narasumber' => $d_file
+					);
 
-				$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data2);
+					$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data2);
+				}
 			}
 			if($s2 != NULL){
 
-				$config['max_size']=2048;
+				if(($_FILES['foto']['size']/1024) > 2048){
+
+					echo "<script>alert('Ukuran File tidak boleh lebih dari 2MB!');javascript:history.go(-1);</script>";
+					
+				}else{
+
+						$config['max_size']=2048;
 						$config['allowed_types']="*";
 						$config['remove_spaces']=TRUE;
 						$config['overwrite']=TRUE;
@@ -1324,15 +1368,22 @@ class Admin extends CI_Controller {
 						$location='ijazah_narasumber/';
 						$d_file=$location.$data_file;
 
-				$data3 = array(
-					'ijazah_s2_narasumber' => $d_file
-				);
+					$data3 = array(
+						'ijazah_s2_narasumber' => $d_file
+					);
 
-				$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data3);
+					$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data3);
+				}
 			}
 			if($s3 != NULL){
 
-				$config['max_size']=2048;
+				if(($_FILES['foto']['size']/1024) > 2048){
+
+					echo "<script>alert('Ukuran File tidak boleh lebih dari 2MB!');javascript:history.go(-1);</script>";
+					
+				}else{
+
+						$config['max_size']=2048;
 						$config['allowed_types']="*";
 						$config['remove_spaces']=TRUE;
 						$config['overwrite']=TRUE;
@@ -1346,11 +1397,12 @@ class Admin extends CI_Controller {
 						$location='ijazah_narasumber/';
 						$d_file=$location.$data_file;
 
-				$data4 = array(
-					'ijazah_s3_narasumber' => $d_file
-				);
+					$data4 = array(
+						'ijazah_s3_narasumber' => $d_file
+					);
 
-				$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data4);
+					$this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data4);
+				}
 			}
 			
 			$data = array(

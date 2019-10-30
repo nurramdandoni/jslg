@@ -97,13 +97,13 @@ $this->load->view('template_layout/sidebar_menu');
 								<div class="card" style="height: 100px; width: 100px;">
 									<?php 
 									$google = 'https://docs.google.com/viewer?url=';
-									$file = $detail->ijazah_s1_narasumber; 
+									$file = base_url().$detail->ijazah_s1_narasumber; 
 									$c = '&embedded=true';
 
-									echo $google.$file.$c;
+									// echo $google.$file.$c;
 									
 									?>
-									<!-- <iframe src="" style="width:100%; height:100%;" frameborder="0"></iframe> -->
+									<iframe src="<?php echo $google.$file.$c ?>" style="width:100px; height:100px;" frameborder="0"></iframe>
 									
 								</div>
 							</center>
@@ -113,7 +113,15 @@ $this->load->view('template_layout/sidebar_menu');
 						<div class="form-group">
 							<center>
 								<div class="card" style="height: 100px; width: 100px;">
-								foto
+								<?php 
+									$google = 'https://docs.google.com/viewer?url=';
+									$file = base_url().$detail->ijazah_s2_narasumber; 
+									$c = '&embedded=true';
+
+									// echo $google.$file.$c;
+									
+									?>
+									<iframe src="<?php echo $google.$file.$c ?>" style="width:100px; height:100px;" frameborder="0"></iframe>
 								</div>
 							</center>
 						</div>
@@ -122,7 +130,15 @@ $this->load->view('template_layout/sidebar_menu');
 						<div class="form-group">
 							<center>
 								<div class="card" style="height: 100px; width: 100px;">
-								foto
+								<?php 
+									$google = 'https://docs.google.com/viewer?url=';
+									$file = base_url().$detail->ijazah_s3_narasumber; 
+									$c = '&embedded=true';
+
+									// echo $google.$file.$c;
+									
+									?>
+									<iframe src="<?php echo $google.$file.$c ?>" style="width:100px; height:100px;" frameborder="0"></iframe>
 								</div>
 							</center>
 						</div>
@@ -134,11 +150,14 @@ $this->load->view('template_layout/sidebar_menu');
 					</div>
 				</div>
 				<div class="row">
-					<div>
-						<div>Silabus 1</div>
-						<div>Silabus 2</div>
-						<div>Silabus 3</div>
+					<?php 
+					$no = 1;
+					foreach($silabus_narasumber->result() as $slbs){ ?>
+					<div class="col-md-1"><?php echo $no++."."; ?></div>
+					<div class="col-md-11">
+						<div><a href="<?php echo base_url() ?><?php echo $slbs->file_materi_silabus ?>"><?php echo $slbs->nama_silabus ?></a></div>
 					</div>
+					<?php } ?>
 				</div>
 				<div class="row">
 					<div style="margin:30px;">
@@ -148,24 +167,24 @@ $this->load->view('template_layout/sidebar_menu');
 				<div class="row">
 					<div class="col-md-8">
 						<div>
-							Pertanyaan 1
+							<!-- Pertanyaan 1 -->
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div>
-							Jawaban Pertanyaan 1
+							<!-- Jawaban Pertanyaan 1 -->
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-8">
 						<div>
-							Pertanyaan 2
+							<!-- Pertanyaan 2 -->
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div>
-							Jawaban Pertanyaan 2
+							<!-- Jawaban Pertanyaan 2 -->
 						</div>
 					</div>
 				</div>
@@ -178,7 +197,15 @@ $this->load->view('template_layout/sidebar_menu');
 					<span>CV</span>
 					<div class="form-group">
 						<div class="card" style="height: 300px; width: 300px;">
-						preview cv
+						<?php 
+									$google = 'https://docs.google.com/viewer?url=';
+									$file = base_url().$detail->cv; 
+									$c = '&embedded=true';
+
+									// echo $google.$file.$c;
+									
+									?>
+									<iframe src="<?php echo $google.$file.$c ?>" style="width:300px; height:300px;" frameborder="0"></iframe>
 						</div>
 					</div>
 				</center>

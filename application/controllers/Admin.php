@@ -1100,11 +1100,166 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Narasumber';
 			$data['submenu'] = 'Permohonan Narasumber';
+			$data['list_email_narasumber'] = $this->Model_jslg->select_narasumber();
 			$this->load->view('super_admin/narasumber@permohonan_narasumber',$data);
 		}else{
 			redirect('login');
 		}
 	}
+
+	public function save_temp_permohonan_narasumber()
+	{	
+
+		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
+			$surat = $_FILES['surat']['tmp_name'];
+			$email_narasumber = $this->input->post('narasumber');
+			$tanggal = date('Y-m-d');
+
+			$id_narsum = $this->Model_jslg->select_narsum_email($email_narasumber);
+			foreach($id_narsum->result() as $im){
+				$id_nar = $im->id_narasumber;
+			}
+
+			if($email_narasumber=="0"){
+				$res = array(
+					'status' => 0,
+					'key' => ''
+				);
+				echo json_encode($res);
+			}elseif($surat==NULL){	
+				$res = array(
+					'status' => 1,
+					'key' => ''
+				);
+				echo json_encode($res);
+			}else{
+
+					//upload photo
+					$config['max_size']=2048;
+					$config['allowed_types']="*";
+					$config['remove_spaces']=TRUE;
+					$config['overwrite']=TRUE;
+					$config['upload_path']='surat_keluar';
+					$config['encrypt_name']=TRUE;
+					// inisialisasi konfigurasi upload
+					$this->upload->initialize($config);
+					//ambil data image
+					$this->upload->do_upload('surat');
+					$data_file=$this->upload->data('file_name');
+					$location='surat_keluar/';
+					$pict=$location.$data_file;
+					
+					$data = array(
+						'id_narasumber' => $id_nar,
+						'file_permohonan' => $pict,
+						'tanggal_permohonan' => $tanggal
+					);
+					
+					$datainsert = $this->Model_jslg->insertdatajslg($data,'ms_permohonan_narasumber');
+					$last_id = $this->db->insert_id();
+					
+					if($datainsert){
+						$res = array(
+							'status' => 2,
+							'key' => $last_id
+						);
+						echo json_encode($res);
+						
+					}else{
+						$res = array(
+							'status' => 3,
+							'key' => ''
+						);
+						echo json_encode($res);
+					}
+				
+			}
+
+		}else{
+			redirect('login');
+		}
+	}
+
+
+	public function send_email_attach(){
+		$surat = $_FILES['surat']['name'];
+		$email_narasumber = $this->input->post('narasumber');
+		$last_id = $this->input->post('last_id');
+		$subject_email = $this->input->post('subject');
+		$isi_email = $this->input->post('isi_email');
+
+		$doc = $this->Model_jslg->select_docs_send($last_id);
+		foreach($doc->result() as $doc_x){
+			$file_att = $doc_x->file_permohonan;
+		}
+
+		// $data = array(
+		// 	'surat' => $surat,
+		// 	'email_narasumber' => $email_narasumber,
+		// 	'last_id' => $last_id
+		// );
+		// echo var_dump($data);
+		// die();
+
+
+		$email_config = Array(
+			'protocol'  => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'schooljimly@gmail.com',
+			'smtp_pass' => 'schooljimly@@@1',
+			'mailtype'  => 'html',
+			'newline'   => "\r\n",
+			'charset'	=> 'utf-8',
+		);
+
+
+			$email_message['login'] = 'Konfirmasi';
+			$email_message['login_url'] = base_url('admin/konfirm_narasumber/'.$last_id);
+			$email_message['title'] = $subject_email;
+			$email_message['message'] = $isi_email;
+
+			$this->load->library('email');
+			$this->email->initialize($email_config);
+			$this->email->from('schooljimly@gmail.com', 'Admin Jimly School');
+			$this->email->to($email_narasumber);
+			$this->email->subject($subject_email);
+			$this->email->message($this->load->view('email_info',$email_message, TRUE));
+			$this->email->attach($file_att);
+			if($this->email->send()){
+				echo "<script>alert('Email berhasil dikirim!');window.location.href='".base_url('admin/permohonan_narasumber')."';</script>";
+			}else{
+				show_error($this->email->print_debugger()); 
+			}
+
+	}
+
+	public function konfirm_narasumber($id){
+
+		$doc = $this->Model_jslg->select_docs_send($id);
+
+		foreach($doc->result() as $doc_x){
+			$id_narsum = $doc_x->id_narasumber;
+		}
+		$where = array(
+			'id_narasumber' => $id_narsum
+		);
+		
+		$data = array(
+			'status_verifikasi_narasumber' => 'Verified'
+		);
+		
+		$update = $this->Model_jslg->updatedatajslg('ms_narasumber',$where,$data);
+
+		if($update){
+			echo "<script>alert('Konfirmasi Berhasil!');window.location.href='".base_url()."';</script>";
+			
+		}else{
+			echo "<script>alert('Konfirmasi Gagal!');window.location.href='".base_url()."';</script>";
+		}
+
+	}
+
 	public function detail_narasumber($id)
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

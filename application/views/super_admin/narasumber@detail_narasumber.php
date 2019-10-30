@@ -197,7 +197,7 @@ $this->load->view('template_layout/sidebar_menu');
 					<span>CV</span>
 					<div class="form-group">
 						<div class="card" style="height: 300px; width: 300px;">
-						<?php 
+									<?php 
 									$google = 'https://docs.google.com/viewer?url=';
 									$file = base_url().$detail->cv; 
 									$c = '&embedded=true';

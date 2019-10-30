@@ -112,8 +112,10 @@ $this->load->view('template_layout/sidebar_menu');
 
 <script>
 $(document).ready(function(){
+
 	$('#narasumber_diklat').change(function(){
 		var id_narsum_v = $('#narasumber_diklat').val();
+		console.log(id_narsum_v);
 		$.ajax({
 				url: '<?php base_url() ?>view_image_narasumber',
 				data: 'id='+id_narsum_v,
@@ -121,7 +123,7 @@ $(document).ready(function(){
 				dataType: 'JSON',
 				success: function(msg){
 					console.log(msg);
-					$('#img_narsum').html("<img src='"+msg.foto+"' alt='' id='img-prev' class='img-thumbnail'>");
+					$('#img_narsum').html("<img src='<?php echo base_url()?>"+msg.foto+"' alt='' id='img-prev' class='img-thumbnail'>");
 					$('#namanya').html(msg.nama_narasumber);
 					$('#alamat').html(msg.alamat_narasumber);
 					$('#email').html(msg.email_narasumber);

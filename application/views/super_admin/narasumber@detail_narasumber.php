@@ -14,20 +14,19 @@ $this->load->view('template_layout/sidebar_menu');
 		</div>
 	</div>
 	<!--begin::Form-->
+	<?php foreach($detail_narasumber->result() as $detail){ ?>
 	<div class="row">
 		<div class="col-md-4">
 			<div class="kt-portlet__body">
 				<form class="kt-form">
 					<center>
-					<div class="form-group">
-						<div class="card" style="height: 150px; width: 150px;">
-						foto
+						<div class="card" style="min-height: 70px; margin-bottom:10px;padding:10px; min-width: 70px; max-width: 150px;">
+							<img src="<?php echo base_url().$detail->foto ?>" alt="" id="img-prev" class="img-thumbnail" width="150px">
 						</div>
-					</div>
 					<div class="form-group">
-						<div class="kt-form__actions">
+						<!-- <div class="kt-form__actions">
 								<button type="submit" class="btn btn-primary">Approve</button>
-						</div>
+						</div> -->
 					</div>
 					</center>
 				</form>
@@ -38,27 +37,27 @@ $this->load->view('template_layout/sidebar_menu');
 			<div class="kt-portlet__body">
 				<div>
 					<label>Nama :</label>
-					<span>Namanya, S.T</span>
+					<span><?php echo $detail->nama_narasumber ?></span>
 				</div>
 				<div>
 					<label>NIK :</label>
-					<span>3207100703920001</span>
+					<span><?php echo $detail->nik_narasumber ?></span>
 				</div>
 				<div>
 					<label>Tempat Lahir :</label>
-					<span>Bandung</span>
+					<span><?php echo $detail->tempat_lahir_narasumber ?></span>
 				</div>
 				<div>
 					<label>Tanggal Lahir :</label>
-					<span>07 Maret 1992 </span>
+					<span><?php echo $detail->tanggal_lahir_narasumber ?></span>
 				</div>
 				<div>
 					<label>Alamat :</label>
-					<span>Bandung </span>
+					<span><?php echo $detail->alamat_narasumber ?></span>
 				</div>
 				<div>
 					<label>Keahlian :</label>
-					<span>PHP, Javascript, Design </span>
+					<span><?php echo $detail->keahlian_narasumber ?></span>
 				</div>
 			</div>
 		</div>
@@ -66,19 +65,19 @@ $this->load->view('template_layout/sidebar_menu');
 			<div class="kt-portlet__body">
 				<div>
 					<label>Email :</label>
-					<span>namanya@gmail.com</span>
+					<span><?php echo $detail->email_narasumber ?></span>
 				</div>
 				<div>
 					<label>Jenis Kelamin :</label>
-					<span>Laki - laki</span>
+					<span><?php echo $detail->jenis_kelamin_narasumber ?></span>
 				</div>
 				<div>
 					<label>NPWP :</label>
-					<span>3536356</span>
+					<span><?php echo $detail->npwp_narasumber ?></span>
 				</div>
 				<div>
 					<label>Portofolio :</label>
-					<span>portofolio.jpg </span>
+					<span><?php echo $detail->portofolio_narasumber ?></span>
 				</div>
 			</div>
 		</div>
@@ -96,7 +95,16 @@ $this->load->view('template_layout/sidebar_menu');
 						<div class="form-group">
 							<center>
 								<div class="card" style="height: 100px; width: 100px;">
-								foto
+									<?php 
+									$google = 'https://docs.google.com/viewer?url=';
+									$file = $detail->ijazah_s1_narasumber; 
+									$c = '&embedded=true';
+
+									echo $google.$file.$c;
+									
+									?>
+									<!-- <iframe src="" style="width:100%; height:100%;" frameborder="0"></iframe> -->
+									
 								</div>
 							</center>
 						</div>
@@ -177,7 +185,7 @@ $this->load->view('template_layout/sidebar_menu');
 			</div>
 		</div>
 	</div>
-		
+	<?php } ?>	
 </div>
 
 <?php

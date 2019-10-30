@@ -68,7 +68,7 @@ class Admin extends CI_Controller {
 				//ambil data image
 				$this->upload->do_upload('img');
 				$data_image=$this->upload->data('file_name');
-				$location=base_url().'image/';
+				$location='image/';
 				$pict=$location.$data_image;
 
 				$data = array(
@@ -332,7 +332,7 @@ class Admin extends CI_Controller {
 						//ambil data image
 						$this->upload->do_upload('img');
 						$data_image=$this->upload->data('file_name');
-						$location=base_url().'temp_sertificate/';
+						$location='temp_sertificate/';
 						$pict=$location.$data_image;
 						
 						$data = array(
@@ -368,7 +368,7 @@ class Admin extends CI_Controller {
 					//ambil data image
 					$this->upload->do_upload('img');
 					$data_image=$this->upload->data('file_name');
-					$location=base_url().'temp_sertificate/';
+					$location='temp_sertificate/';
 					$pict=$location.$data_image;
 					
 					$data = array(
@@ -426,7 +426,7 @@ class Admin extends CI_Controller {
 						//ambil data image
 						$this->upload->do_upload('img');
 						$data_image=$this->upload->data('file_name');
-						$location=base_url().'temp_sertificate/';
+						$location='temp_sertificate/';
 						$pict=$location.$data_image;
 
 						$data = array(
@@ -656,7 +656,7 @@ class Admin extends CI_Controller {
 				//ambil data image
 				$this->upload->do_upload('file');
 				$data_file=$this->upload->data('file_name');
-				$location=base_url().'file_silabus/';
+				$location='file_silabus/';
 				$d_file=$location.$data_file;
 
 
@@ -818,7 +818,7 @@ class Admin extends CI_Controller {
 					//ambil data image
 					$this->upload->do_upload('file');
 					$data_file=$this->upload->data('file_name');
-					$location=base_url().'file_silabus/';
+					$location='file_silabus/';
 					$d_file=$location.$data_file;
 
 					
@@ -1031,7 +1031,7 @@ class Admin extends CI_Controller {
 					//ambil data image
 					$this->upload->do_upload('file');
 					$data_dokumentasi=$this->upload->data('file_name');
-					$location=base_url().'dokumentasi/';
+					$location='dokumentasi/';
 					$pict=$location.$data_dokumentasi;
 	
 					$data = array(
@@ -1105,12 +1105,13 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}
-	public function detail_narasumber()
+	public function detail_narasumber($id)
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Narasumber';
 			$data['submenu'] = 'Detail Narasumber';
+			$data['detail_narasumber'] = $this->Model_jslg->select_narasumber_id($id);
 			$this->load->view('super_admin/narasumber@detail_narasumber',$data);
 		}else{
 			redirect('login');
@@ -1274,7 +1275,7 @@ class Admin extends CI_Controller {
 						//ambil data image
 						$this->upload->do_upload('foto');
 						$data_file=$this->upload->data('file_name');
-						$location=base_url().'foto_narasumber/';
+						$location='foto_narasumber/';
 						$d_file=$location.$data_file;
 	
 					$data1 = array(
@@ -1298,7 +1299,7 @@ class Admin extends CI_Controller {
 						//ambil data image
 						$this->upload->do_upload('ijazah_s1');
 						$data_file=$this->upload->data('file_name');
-						$location=base_url().'ijazah_narasumber/';
+						$location='ijazah_narasumber/';
 						$d_file=$location.$data_file;
 
 				$data2 = array(
@@ -1320,7 +1321,7 @@ class Admin extends CI_Controller {
 						//ambil data image
 						$this->upload->do_upload('ijazah_s1');
 						$data_file=$this->upload->data('file_name');
-						$location=base_url().'ijazah_narasumber/';
+						$location='ijazah_narasumber/';
 						$d_file=$location.$data_file;
 
 				$data3 = array(
@@ -1342,7 +1343,7 @@ class Admin extends CI_Controller {
 						//ambil data image
 						$this->upload->do_upload('ijazah_s1');
 						$data_file=$this->upload->data('file_name');
-						$location=base_url().'ijazah_narasumber/';
+						$location='ijazah_narasumber/';
 						$d_file=$location.$data_file;
 
 				$data4 = array(

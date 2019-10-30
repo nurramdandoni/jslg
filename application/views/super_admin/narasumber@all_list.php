@@ -222,7 +222,7 @@ $(document).ready(function(){
 					tbl += `<tr>
 				  		<td>
 						  <div class="card" style="min-height: 70px; margin-bottom:10px;padding:10px; min-width: 70px;">
-						<img src="`+key.foto+`" alt="" id="img-prev" class="img-thumbnail" width="100px">
+						<img src="<?php echo base_url()?>`+key.foto+`" alt="" id="img-prev" class="img-thumbnail" width="100px">
 						</div>
 						</td>
 				  		<td>`+key.nama_narasumber+`</td>
@@ -256,7 +256,7 @@ $(document).ready(function(){
 							tbl1 += `<tr>
 								<td>
 								<div class="card" style="min-height: 70px; margin-bottom:10px;padding:10px; min-width: 70px;">
-								<img src="`+key.foto+`" alt="" id="img-prev" class="img-thumbnail" width="100px">
+								<img src="<?php echo base_url()?>`+key.foto+`" alt="" id="img-prev" class="img-thumbnail" width="100px">
 								</div>
 								</td>
 								<td>`+key.nama_narasumber+`</td>
@@ -288,7 +288,7 @@ $(document).ready(function(){
 							tbl1 += `<tr>
 								<td>
 								<div class="card" style="min-height: 70px; margin-bottom:10px;padding:10px; min-width: 70px;">
-								<img src="`+key.foto+`" alt="" id="img-prev" class="img-thumbnail" width="100px">
+								<img src="<?php echo base_url()?>`+key.foto+`" alt="" id="img-prev" class="img-thumbnail" width="100px">
 								</div>
 								</td>
 								<td>`+key.nama_narasumber+`</td>

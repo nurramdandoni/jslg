@@ -67,6 +67,17 @@ $this->load->view('template_layout/sidebar_menu');
 						</select>
 					</div>
 					<div class="form-group">
+						<select class="form-control" id="kategori_peserta" name="kategori_peserta">
+							<option value="0">-Pilih Kategori Peserta-</option>
+								<option value="Individu">
+									Individu
+								</option>
+								<option value="Instansi">
+									Instansi
+								</option>
+						</select>
+					</div>
+					<div class="form-group">
 						<input type="number" class="form-control"  placeholder="Jumlah Sesi" required="" name="jumlah_sesi">
 						<span class="form-text text-muted"></span>
 					</div>

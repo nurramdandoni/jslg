@@ -1279,11 +1279,32 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Peserta';
 			$data['submenu'] = 'Calon Peserta';
+			$data['list_calon_peserta'] = $this->Model_jslg->select_calon_peserta();
 			$this->load->view('super_admin/peserta@calon_peserta',$data);
 		}else{
 			redirect('login');
 		}
 	}
+
+	public function approve_kepesertaan($id_peserta){
+		$where = array(
+			'id_peserta' => $id_peserta
+		);
+		
+		$data = array(
+			'status_kepesertaan' => 'Approved'
+		);
+
+		$update = $this->Model_jslg->updatedatajslg('ms_peserta',$where,$data);
+
+		if($update){
+			echo "<script>alert('Data Berhasil di Approve!');window.location.href='".base_url('admin/calon_peserta')."';</script>";
+			
+		}else{
+			echo "<script>alert('Data Gagal di Approve!');window.location.href='".base_url('admin/calon_peserta')."';</script>";
+		}
+	}
+
 	public function peserta()
 	{
 		if($this->session->userdata('u_status_log')=='ok' AND $this->session->userdata('u_level')=='super_admin'){

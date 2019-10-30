@@ -30,24 +30,17 @@ $this->load->view('template_layout/sidebar_menu');
 				  	</tr>
 				</thead>
 				<tbody>
+					<?php foreach($list_calon_peserta->result() as $calon){ ?>
 					<tr>
-						<td>3207100703920001</td>
-				  		<td>Dadang</td>
-				  		<td>dadang@gmail.com</td>
-				  		<td>Individu</td>
-				  		<td>image.jpg</td>
-				  		<td><button class="btn btn-primary">Approve</button></td>
-				  		<td>Approval</td>
+						<td><?php echo $calon->nik_peserta ?></td>
+				  		<td><?php echo $calon->nama_peserta ?></td>
+				  		<td><?php echo $calon->email_peserta ?></td>
+				  		<td><?php echo $calon->id_kategori_peserta ?></td>
+				  		<td><?php echo $calon->bukti_pembayaran ?></td>
+				  		<td><a class="btn btn-primary" href="<?php echo base_url()?>admin/approve_kepesertaan/<?php echo $calon->id_peserta ?>">Approve</a></td>
+				  		<td><?php echo $calon->status_kepesertaan ?></td>
 					</tr>
-					<tr>
-						<td>3208100703920001</td>
-				  		<td>Dani</td>
-				  		<td>dani@gmail.com</td>
-				  		<td>Instansi</td>
-				  		<td>image.jpg</td>
-				  		<td><button class="btn btn-primary">Approve</button></td>
-				  		<td>Waiting Approval</td>
-					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 			<!--end: Datatable -->

@@ -40,6 +40,8 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>template/assets2/fancybox/dist/jquery.fancybox.min.css">
+    <script src="<?php echo base_url(); ?>template/assets2/fancybox/dist/jquery.fancybox.min.js"></script>
         <!--end::Layout Skins -->
 
         <link rel="shortcut icon" type="image/ico" href="<?php echo base_url(); ?>template/assets2/media/logos/A7eUV8OZt8H93930i90E.png" />

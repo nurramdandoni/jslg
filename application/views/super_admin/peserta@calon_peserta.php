@@ -36,7 +36,14 @@ $this->load->view('template_layout/sidebar_menu');
 				  		<td><?php echo $calon->nama_peserta ?></td>
 				  		<td><?php echo $calon->email_peserta ?></td>
 				  		<td><?php echo $calon->id_kategori_peserta ?></td>
-				  		<td><?php echo $calon->bukti_pembayaran ?></td>
+				  		<td>
+							  <div class="card" style="min-height: 70px; margin-bottom:10px;padding:10px; max-width: 100%;">
+							  <a href="<?php echo base_url()?><?php echo $calon->bukti_pembayaran ?>" data-fancybox="gallery">
+
+								  <img src="<?php echo base_url()?><?php echo $calon->bukti_pembayaran ?>" alt="" id="img-prev" class="img-thumbnail" width="100%">
+								</a>
+							</div>
+						  </td>
 				  		<td><a class="btn btn-primary" href="<?php echo base_url()?>admin/approve_kepesertaan/<?php echo $calon->id_peserta ?>">Approve</a></td>
 				  		<td><?php echo $calon->status_kepesertaan ?></td>
 					</tr>

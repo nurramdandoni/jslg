@@ -1311,6 +1311,8 @@ class Admin extends CI_Controller {
 			$data['nama_user'] = $this->session->userdata('u_name');
 			$data['menu'] = 'Peserta';
 			$data['submenu'] = 'Peserta';
+			$data['list_peserta_list'] = $this->Model_jslg->select_peserta_list();
+			// echo var_dump($data['list_peserta_list']->result());die();
 			$this->load->view('super_admin/peserta@peserta',$data);
 		}else{
 			redirect('login');

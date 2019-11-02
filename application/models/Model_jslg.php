@@ -71,7 +71,11 @@ class Model_jslg extends CI_Model
 	}
 
 	public function select_calon_peserta(){
-		return $this->db->query("SELECT * FROM ms_peserta a join ms_biodata_peserta b on a.id_biodata_peserta=b.id_biodata join ms_diklat c on a.id_diklat=c.id_diklat WHERE a.status_kepesertaan='Waiting Approve'"); 
+		return $this->db->query("SELECT * FROM ms_peserta a join ms_biodata_peserta b on a.id_biodata_peserta=b.id_biodata join ms_diklat c on a.id_diklat=c.id_diklat join ms_produk d on c.id_produk=d.id_produk WHERE a.status_kepesertaan='Waiting Approve'"); 
+	}
+
+	public function select_peserta_list(){
+		return $this->db->query("SELECT * FROM ms_peserta a join ms_biodata_peserta b on a.id_biodata_peserta=b.id_biodata join ms_diklat c on a.id_diklat=c.id_diklat join ms_produk d on c.id_produk=d.id_produk WHERE a.status_kepesertaan='Approved'"); 
 	}
 
 	public function select_narsum_email($email){

@@ -23,18 +23,24 @@ $this->load->view('template_layout/sidebar_menu');
 				  		<th>Nama Lengkap</th>
 				  		<th>NIK</th>
 				  		<th>Email</th>
+				  		<th>Nama Diklat</th>
+				  		<th>Kategori</th>
 				  		<th>Telepon</th>
 				  		<th>Aksi</th>
 				  	</tr>
 				</thead>
 				<tbody>
+					<?php foreach($list_peserta_list->result() as $peserta){ ?>
 					<tr>
-				  		<td>Dadang</td>
-				  		<td>3207100703920001</td>
-				  		<td>dadang@gmail.com</td>
-				  		<td>089xxxxx</td>
-				  		<td><a href="<?php echo base_url() ?>admin/detail_peserta">Detail</a> | Update | Delete</td>
+				  		<td><?php echo $peserta->nama_peserta ?></td>
+				  		<td><?php echo $peserta->nik_peserta ?></td>
+				  		<td><?php echo $peserta->email_peserta ?></td>
+						  <td><?php echo $peserta->nama_produk ?></td>
+						  <td><?php echo $peserta->id_kategori_peserta ?></td>
+				  		<td><?php echo $peserta->telp_peserta ?></td>
+				  		<td><a href="<?php echo base_url() ?>admin/detail_peserta/<?php echo $peserta->id_peserta ?>">Detail</a> | Update | Delete</td>
 					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 			<!--end: Datatable -->

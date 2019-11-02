@@ -23,6 +23,7 @@ $this->load->view('template_layout/sidebar_menu');
 				  		<th>NIK</th>
 				  		<th>Nama</th>
 				  		<th>Email</th>
+				  		<th>Nama Diklat</th>
 				  		<th>Kategori</th>
 				  		<th>Bukti Bayar Asli</th>
 				  		<th>Aksi</th>
@@ -35,6 +36,7 @@ $this->load->view('template_layout/sidebar_menu');
 						<td><?php echo $calon->nik_peserta ?></td>
 				  		<td><?php echo $calon->nama_peserta ?></td>
 				  		<td><?php echo $calon->email_peserta ?></td>
+				  		<td><?php echo $calon->nama_produk ?></td>
 				  		<td><?php echo $calon->id_kategori_peserta ?></td>
 				  		<td>
 							  <div class="card" style="min-height: 70px; margin-bottom:10px;padding:10px; max-width: 100%;">

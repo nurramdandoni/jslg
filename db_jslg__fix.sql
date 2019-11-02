@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2019 at 10:45 AM
+-- Generation Time: Nov 02, 2019 at 06:22 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -7386,8 +7386,8 @@ CREATE TABLE `ms_biodata_peserta` (
 --
 
 INSERT INTO `ms_biodata_peserta` (`id_biodata`, `nik_peserta`, `nama_peserta`, `tempat_lahir_peserta`, `tanggal_lahir_peserta`, `jenis_kelamin_peserta`, `alamat_peserta`, `id_provinsi`, `id_kabkot`, `id_kec`, `email_peserta`, `nama_kantor`, `jabatan_peserta`, `pendidikan_peserta`, `telp_peserta`, `foto`) VALUES
-(26, '3207100703920001', 'Doni Nurramdan', 'Ciamis', '2019-10-03', '', 'Jagara', 32, 3208, 3208010, 'nurramdandoni@gmail.com', 'STT Bandung', 'Programmer', 'D3', '0895330802566', 'http://localhost/jslg/image/5149@16-08-2019@8db152fe24c06b846853d4cbd5204464.png'),
-(27, '3209140303960011', 'Muhammad Faqih', 'Ambon', '1996-03-03', '', 'Ciperna', 32, 3209, 3209111, 'kotarokurosaki@gmail.com', 'STT Bandung', 'Mobile Programmer', 'S2', '085223445334', 'http://localhost/jslg/image/kotarokurosaki.jpg');
+(26, '3207100703920001', 'Doni Nurramdan', 'Ciamis', '2019-10-03', '', 'Jagara', 32, 3208, 3208010, 'nurramdandoni@gmail.com', 'STT Bandung', 'Programmer', 'D3', '0895330802566', 'image/5149@16-08-2019@8db152fe24c06b846853d4cbd5204464.png'),
+(27, '3209140303960011', 'Muhammad Faqih', 'Ambon', '1996-03-03', '', 'Ciperna', 32, 3209, 3209111, 'kotarokurosaki@gmail.com', 'STT Bandung', 'Mobile Programmer', 'S2', '085223445334', 'image/kotarokurosaki.jpg');
 
 -- --------------------------------------------------------
 
@@ -7428,6 +7428,13 @@ CREATE TABLE `ms_dokumentasi` (
   `img_dokumentasi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ms_dokumentasi`
+--
+
+INSERT INTO `ms_dokumentasi` (`id_dokumentasi`, `id_batch`, `nama_dokumentasi`, `img_dokumentasi`) VALUES
+(1, 1, 'cek', 'dokumentasi/cd9b038e14686cc4d92e331459fb6819.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -7460,7 +7467,7 @@ CREATE TABLE `ms_narasumber` (
   `id_narasumber` int(11) NOT NULL,
   `nama_narasumber` varchar(255) NOT NULL,
   `nik_narasumber` int(16) NOT NULL,
-  `npwp_narasumber` int(20) NOT NULL,
+  `npwp_narasumber` varchar(20) NOT NULL,
   `tempat_lahir_narasumber` varchar(60) NOT NULL,
   `tanggal_lahir_narasumber` date NOT NULL,
   `jenis_kelamin_narasumber` enum('L','P') NOT NULL,
@@ -7468,20 +7475,24 @@ CREATE TABLE `ms_narasumber` (
   `email_narasumber` varchar(255) NOT NULL,
   `keahlian_narasumber` text NOT NULL,
   `portofolio_narasumber` varchar(255) NOT NULL,
-  `pendidikan_s1_narasumber` varchar(150) NOT NULL,
-  `pendidikan_s2_narasumber` varchar(150) NOT NULL,
-  `pendidikan_s3_narasumber` varchar(150) NOT NULL,
+  `pendidikan_s1_narasumber` text NOT NULL,
+  `ijazah_s1_narasumber` text NOT NULL,
+  `pendidikan_s2_narasumber` text NOT NULL,
+  `ijazah_s2_narasumber` text NOT NULL,
+  `pendidikan_s3_narasumber` text NOT NULL,
+  `ijazah_s3_narasumber` text NOT NULL,
   `status_verifikasi_narasumber` enum('Waiting Verification','Verified') NOT NULL,
-  `foto` text NOT NULL
+  `foto` text NOT NULL,
+  `cv` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ms_narasumber`
 --
 
-INSERT INTO `ms_narasumber` (`id_narasumber`, `nama_narasumber`, `nik_narasumber`, `npwp_narasumber`, `tempat_lahir_narasumber`, `tanggal_lahir_narasumber`, `jenis_kelamin_narasumber`, `alamat_narasumber`, `email_narasumber`, `keahlian_narasumber`, `portofolio_narasumber`, `pendidikan_s1_narasumber`, `pendidikan_s2_narasumber`, `pendidikan_s3_narasumber`, `status_verifikasi_narasumber`, `foto`) VALUES
-(1, 'DR. Fauzi Firdaus, S.Kom., M. Kom.', 12345678, 123, 'Bandung', '1990-11-06', 'L', 'Bandung Kota', 'firdausfauzi@gmail.com', 'SQL, OOP', 'github.com/firdausfauzi', 'Oxford University', 'Oxford University', 'Berlin University', 'Verified', 'http://localhost/jslg/image/fauzi.jpg'),
-(2, 'Doni Nurramdan', 3213213, 1231, 'Ciamis', '1992-03-07', 'L', 'Kuningan', 'nurramdandoni@gmail.com', 'SQL', 'github.com/nurramdandoni', 'STT Bandung', 'mm', 'bb', 'Waiting Verification', '');
+INSERT INTO `ms_narasumber` (`id_narasumber`, `nama_narasumber`, `nik_narasumber`, `npwp_narasumber`, `tempat_lahir_narasumber`, `tanggal_lahir_narasumber`, `jenis_kelamin_narasumber`, `alamat_narasumber`, `email_narasumber`, `keahlian_narasumber`, `portofolio_narasumber`, `pendidikan_s1_narasumber`, `ijazah_s1_narasumber`, `pendidikan_s2_narasumber`, `ijazah_s2_narasumber`, `pendidikan_s3_narasumber`, `ijazah_s3_narasumber`, `status_verifikasi_narasumber`, `foto`, `cv`) VALUES
+(1, 'DR. Fauzi Firdaus, S.Kom., M. Kom.', 12345678, '000000000000001', 'Bandung', '1990-11-06', 'L', 'Alamat Narasumber', 'firdausfauzi@gmail.com', 'SQL, OOP', 'github.com/firdausfauzi', 'Oxford University', 'ijazah_narasumber/6ae08c4efaf9dd22a72bf4bf54e43760.docx', 'Oxford University', 'ijazah_narasumber/a9352e1d91197fef301f474d790afb03.docx', 'Berlin University', 'ijazah_narasumber/d938732c64f0b6461e054f06c0285719.docx', 'Verified', 'image/fauzi.jpg', 'cv_narasumber/80f97e6c34a4b87641e5445899d1177c.docx'),
+(2, 'Doni Nurramdan, A.Md.', 32, '1234', 'Ciamis', '1992-03-07', 'L', 'Alamat Narasumber', 'nurramdandoni@gmail.com', 'SQL', 'https://github.com/nurramdandoni', 'STT Bandung', 'ijazah_narasumber/4b8775ebdb33b7299c38df66631a44a0.jpg', 'mm', '', 'bb', '', 'Verified', 'foto_narasumber/001733f641e3dfbf46765f7e62e0405b.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -7515,9 +7526,16 @@ CREATE TABLE `ms_permohonan_narasumber` (
   `id_permohonan_ns` int(11) NOT NULL,
   `id_narasumber` int(11) NOT NULL,
   `file_permohonan` varchar(255) NOT NULL,
-  `tanggal_permohonan` date NOT NULL,
-  `status_permohonan` enum('Yes','No') NOT NULL
+  `tanggal_permohonan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ms_permohonan_narasumber`
+--
+
+INSERT INTO `ms_permohonan_narasumber` (`id_permohonan_ns`, `id_narasumber`, `file_permohonan`, `tanggal_permohonan`) VALUES
+(32, 2, 'surat_keluar/0ef9941ee801d5a02e3da7280a16a09d.docx', '2019-10-30'),
+(33, 1, 'surat_keluar/630e96a172ab5bd559dece08fcadc1d9.pdf', '2019-11-02');
 
 -- --------------------------------------------------------
 
@@ -7530,15 +7548,18 @@ CREATE TABLE `ms_peserta` (
   `id_diklat` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_biodata_peserta` int(11) NOT NULL,
-  `status_alumni_peserta` enum('Yes','No','InTraining') NOT NULL
+  `bukti_pembayaran` text NOT NULL,
+  `status_kepesertaan` enum('Waiting Approve','Approved') NOT NULL,
+  `status_alumni_peserta` enum('No','InTraining','Yes') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ms_peserta`
 --
 
-INSERT INTO `ms_peserta` (`id_peserta`, `id_diklat`, `id_user`, `id_biodata_peserta`, `status_alumni_peserta`) VALUES
-(2, 6, 3, 26, 'Yes');
+INSERT INTO `ms_peserta` (`id_peserta`, `id_diklat`, `id_user`, `id_biodata_peserta`, `bukti_pembayaran`, `status_kepesertaan`, `status_alumni_peserta`) VALUES
+(2, 6, 3, 26, 'bukti_pembayaran/error.png', 'Waiting Approve', 'Yes'),
+(3, 7, 3, 27, '', 'Approved', 'No');
 
 -- --------------------------------------------------------
 
@@ -7559,8 +7580,8 @@ CREATE TABLE `ms_produk` (
 --
 
 INSERT INTO `ms_produk` (`id_produk`, `id_kategori_produk`, `nama_produk`, `img_produk`, `harga_diskon`) VALUES
-(6, 2, 'Auditor Hukum PPSI', 'http://localhost/jslg/image/0fb61722fa8786b70351b4ec9559c2ea.png', '50000000.00'),
-(7, 1, 'Test Diklat', 'http://localhost/jslg/image/53329378da15fbab3583782c28320983.jpg', '600000.00');
+(6, 2, 'Auditor Hukum PPSI', 'image/0fb61722fa8786b70351b4ec9559c2ea.png', '50000000.00'),
+(7, 1, 'Test Diklat', 'image/53329378da15fbab3583782c28320983.jpg', '600000.00');
 
 -- --------------------------------------------------------
 
@@ -7620,7 +7641,7 @@ CREATE TABLE `ms_sertificate_temp` (
 --
 
 INSERT INTO `ms_sertificate_temp` (`id_sertificate_temp`, `id_diklat_temp`, `template_img`) VALUES
-(8, 6, 'http://localhost/jslg/temp_sertificate/587e4daf20af374cadad4c88348dc4cf.jpg');
+(8, 6, 'temp_sertificate/587e4daf20af374cadad4c88348dc4cf.jpg');
 
 -- --------------------------------------------------------
 
@@ -7641,7 +7662,8 @@ CREATE TABLE `ms_silabus` (
 --
 
 INSERT INTO `ms_silabus` (`id_silabus`, `id_narasumber`, `nama_silabus`, `file_materi_silabus`, `id_quiz`) VALUES
-(1, 1, 'Silabus 12', 'http://localhost/jslg/file_silabus/cc14da9d3409e5f9de34a3c399df668b.php', 2);
+(1, 1, 'Silabus 12', 'file_silabus/cc14da9d3409e5f9de34a3c399df668b.docx', 2),
+(2, 1, 'Silabus Perkenalan Hukum', '', 0);
 
 -- --------------------------------------------------------
 
@@ -7952,7 +7974,7 @@ ALTER TABLE `ms_diklat`
 -- AUTO_INCREMENT for table `ms_dokumentasi`
 --
 ALTER TABLE `ms_dokumentasi`
-  MODIFY `id_dokumentasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_dokumentasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ms_kategori_produk`
@@ -7976,13 +7998,13 @@ ALTER TABLE `ms_penyelenggara`
 -- AUTO_INCREMENT for table `ms_permohonan_narasumber`
 --
 ALTER TABLE `ms_permohonan_narasumber`
-  MODIFY `id_permohonan_ns` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permohonan_ns` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `ms_peserta`
 --
 ALTER TABLE `ms_peserta`
-  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_peserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ms_produk`
@@ -8012,7 +8034,7 @@ ALTER TABLE `ms_sertificate_temp`
 -- AUTO_INCREMENT for table `ms_silabus`
 --
 ALTER TABLE `ms_silabus`
-  MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_silabus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ms_soal_quiz`
